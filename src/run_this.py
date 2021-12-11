@@ -8,8 +8,8 @@ import time
 #####################  hyper parameters  ####################
 CHECK_EPISODE = 4
 LEARNING_MAX_EPISODE = 10
-MAX_EP_STEPS = 3000
-TEXT_RENDER = False
+MAX_EP_STEPS = 300
+TEXT_RENDER = True
 SCREEN_RENDER = False
 CHANGE = False
 SLEEP_TIME = 0.1
@@ -59,8 +59,10 @@ if __name__ == "__main__":
             # DDPG
             # choose action according to state
             a = ddpg.choose_action(s)  # a = [R B O]
+            # print("Output of ddpg.choose_action(s) : action : ", a)
             # add randomness to action selection for exploration
             a = exploration(a, r_dim, b_dim, r_var, b_var)
+            # print("exploration(a, r_dim, b_dim, r_var, b_var) : action : ", a)
             # store the transition parameter
             s_, r = env.ddpg_step_forward(a, r_dim, b_dim)
             ddpg.store_transition(s, a, r / 10, s_)
@@ -100,7 +102,8 @@ if __name__ == "__main__":
         episode += 1
 
     # make directory
-    dir_name = 'output/' + 'ddpg_'+str(r_dim) + 'u' + str(int(o_dim / r_dim)) + 'e' + str(limit) + 'l' + location
+    # dir_name = 'output/' + 'ddpg_'+str(r_dim) + 'u' + str(int(o_dim / r_dim)) + 'e' + str(limit) + 'l' + location
+    dir_name = 'output/' + 'priority_baseline_run1_ddpg_'+str(r_dim) + 'u' + str(int(o_dim / r_dim)) + 'e' + str(limit) + 'l' + location
     if (os.path.isdir(dir_name)):
         os.rmdir(dir_name)
     os.makedirs(dir_name)
