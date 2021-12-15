@@ -8,7 +8,7 @@ import time
 #####################  hyper parameters  ####################
 CHECK_EPISODE = 4
 LEARNING_MAX_EPISODE = 10
-MAX_EP_STEPS = 3000
+MAX_EP_STEPS = 600 #3000
 TEXT_RENDER = False
 SCREEN_RENDER = False
 CHANGE = False
@@ -29,7 +29,7 @@ def exploration (a, r_dim, b_dim, r_var, b_var):
 
 if __name__ == "__main__":
     env = Env()
-    s_dim, r_dim, b_dim, o_dim, r_bound, b_bound, task_inf, limit, location = env.get_inf()
+    s_dim, r_dim, b_dim, o_dim, r_bound, b_bound, task_inf, limit, location, MAX_REQ_TIMER, ALGORITHM, METHOD, CONCEPT, SERVER_LIMIT_RANGE, LATENCY_REQUIREMENTS = env.get_inf()
     ddpg = DDPG(s_dim, r_dim, b_dim, o_dim, r_bound, b_bound)
 
     r_var = 1  # control exploration
@@ -41,7 +41,8 @@ if __name__ == "__main__":
     episode = 0
     var_counter = 0
     epoch_inf = []
-    while var_counter < LEARNING_MAX_EPISODE:
+    while var_counter < LEARNING_MAX_EPISODE and episode <=19:
+        print("Learning step is: ", var_counter, "/", LEARNING_MAX_EPISODE)
         # initialize
         s = env.reset()
         ep_reward.append(0)
@@ -100,7 +101,7 @@ if __name__ == "__main__":
         episode += 1
 
     # make directory
-    dir_name = 'output/' + 'ddpg_'+str(r_dim) + 'u' + str(int(o_dim / r_dim)) + 'e' + str(limit) + 'l' + location
+    dir_name = 'output/' + 'ddpg_' + ALGORITHM + '_' + METHOD + '_' + 'with concept_' + CONCEPT + '_' + 'with server limit range_'+ SERVER_LIMIT_RANGE + '_with latency requirements_' + LATENCY_REQUIREMENTS + '_' + str(MAX_REQ_TIMER) + 'MRT' +str(r_dim) + 'u' + str(int(o_dim / r_dim)) + 'e' + str(limit) + 'l' + location + '_for ' + str(MAX_EP_STEPS) + 'steps'
     if (os.path.isdir(dir_name)):
         os.rmdir(dir_name)
     os.makedirs(dir_name)
