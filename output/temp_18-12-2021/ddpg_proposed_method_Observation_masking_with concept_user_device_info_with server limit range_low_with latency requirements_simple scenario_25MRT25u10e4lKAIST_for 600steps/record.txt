@@ -1,0 +1,39 @@
+time(s):600
+
+user_number:25
+
+edge_number:10
+
+limit:4
+
+task information:
+req_u2e_size:270000
+process_loading:1080000
+req_e2u_size:96
+
+Episode:  0 Reward:  4136###  r_var: 1.00 b_var: 1.00 
+Episode:  1 Reward:  3786###  r_var: 1.00 b_var: 1.00 
+Episode:  2 Reward:  3334###  r_var: 1.00 b_var: 1.00 
+Episode:  3 Reward:  4599###  r_var: 1.00 b_var: 1.00 
+Episode:  4 Reward:  3335###  r_var: 1.00 b_var: 1.00 
+Episode:  5 Reward:  4823###  r_var: 1.00 b_var: 1.00 
+Episode:  6 Reward:  4588###  r_var: 1.00 b_var: 1.00 
+Episode:  7 Reward:  3905###  r_var: 1.00 b_var: 1.00 
+Episode:  8 Reward:  3351###  r_var: 1.00 b_var: 1.00 
+Episode:  9 Reward:  3452###  r_var: 1.00 b_var: 1.00 
+Episode: 10 Reward:  3127###  r_var: 1.00 b_var: 1.00 
+Episode: 11 Reward:  4694###  r_var: 1.00 b_var: 1.00 
+Episode: 12 Reward:  3834###  r_var: 1.00 b_var: 1.00 
+Episode: 13 Reward:  3082###  r_var: 1.00 b_var: 1.00 
+Episode: 14 Reward:  3570###  r_var: 1.00 b_var: 1.00 
+Episode: 15 Reward:  3633###  r_var: 1.00 b_var: 1.00 
+Episode: 16 Reward:  4875###  r_var: 1.00 b_var: 1.00 
+Episode: 17 Reward:  4278###  r_var: 1.00 b_var: 1.00 
+Episode: 18 Reward:  4863###  r_var: 0.99 b_var: 0.99 
+Episode: 19 Reward:  4372###  r_var: 0.99 b_var: 0.99 
+the mean of the rewards:4032.8
+
+the standard deviation of the rewards:644.1224728264028
+
+the range of the rewards:1793
+
