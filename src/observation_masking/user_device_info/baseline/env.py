@@ -4,7 +4,6 @@ import math
 import matplotlib.pyplot as plt
 import os
 from render import Demo
-import random
 import copy
 
 #####################  hyper parameters  ####################
@@ -17,7 +16,7 @@ TXT_NUM = 92
 r_bound = 1e9 * 0.063
 b_bound = 1e9
 
-MAX_REQ_TIMER = 10 #25 #5
+MAX_REQ_TIMER = 5 #10 #25 #5
 ALGORITHM = "baseline"
 METHOD = "Observation_masking"
 CONCEPT = "user_device_info"
@@ -335,9 +334,9 @@ class Request():
         # timer
         self.timer = 0
 
-        if self.tasktype.task_latency == 1: self.max_latency_time = 10
-        if self.tasktype.task_latency == 2: self.max_latency_time = 20
-        if self.tasktype.task_latency == 3: self.max_latency_time = 30
+        if self.tasktype.task_latency == 1: self.max_latency_time = 5 #10
+        if self.tasktype.task_latency == 2: self.max_latency_time = 10 #20
+        if self.tasktype.task_latency == 3: self.max_latency_time = 20 #30
         
 class TaskType():
     def __init__(self):
@@ -395,7 +394,7 @@ class EdgeServer():
                 if U[user_id].req.state != 6:
                     self.connection_num += 1
             # maintain the request
-            if user.req.edge_id == self.edge_id: # and self.capability - R[user.user_id] > 0:
+            if user.req.edge_id == self.edge_id and self.capability - R[user.user_id] > 0:
                 # maintain the preliminary connection
                 if user.req.user_id not in self.server_workload and self.connection_num+1 <= self.limit:
                     # first time : do not belong to any edge(server_workload)
@@ -454,7 +453,7 @@ class EdgeServer():
                                     target_connection_num += 1
                             #print("user", U[user_id].req.user_id, ":migration step 3")
                             # change to another edge
-                            if target_connection_num + 1 <= E[target_edge].limit: # and E[target_edge].capability - U[user_id].req.resource >= 0:
+                            if target_connection_num + 1 <= E[target_edge].limit and E[target_edge].capability - U[user_id].req.resource >= 0:
                                 # register in the new edge
                                 E[target_edge].capability -= U[user_id].req.resource
                                 E[target_edge].server_workload.append(user_id)
@@ -661,14 +660,10 @@ class Env():
         for user in self.U:
             # update the state of the request
             user.request_update()
-            #print("user id: ", user.user_id)
-            #print("user.req.timer: ", user.req.timer)
-            #print("user.req.max_latency_time: ", user.req.max_latency_time)
             if user.req.timer == 0: tasks_without_delay += 1 
             if user.req.timer > 0 and user.req.timer < user.req.max_latency_time: tasks_with_delay += 1 
-            if user.req.timer >= user.req.max_latency_time:
+            if  user.req.timer >= user.req.max_latency_time:#MAX_REQ_TIMER:
                 tasks_failed_due_delay += 1
-            if  user.req.timer >= MAX_REQ_TIMER:
                 user.generate_request(self.O[user.user_id])  # offload according to the priority
             # it has already finished the request
             if user.req.state == 4:

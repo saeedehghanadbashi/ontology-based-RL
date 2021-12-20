@@ -44,7 +44,7 @@ if __name__ == "__main__":
     episode = 0
     var_counter = 0
     epoch_inf = []
-    while var_counter < LEARNING_MAX_EPISODE  and episode <=19:
+    while var_counter < LEARNING_MAX_EPISODE:
         print("Learning step is: ", var_counter, "/", LEARNING_MAX_EPISODE)
         #print("episode: ", episode)
         # initialize

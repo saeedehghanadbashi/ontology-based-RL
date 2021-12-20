@@ -1,0 +1,45 @@
+time(s):1500
+
+user_number:10
+
+edge_number:10
+
+limit:4
+
+task information:
+req_u2e_size:270000
+process_loading:1080000
+req_e2u_size:96
+
+Episode:  0 Reward:  6049 Tasks without delay: 14986 Tasks with delay:    14 Tasks failed due delay:     0###  r_var: 1.00 b_var: 1.00 
+Episode:  1 Reward:  6028 Tasks without delay: 14971 Tasks with delay:    29 Tasks failed due delay:     0###  r_var: 1.00 b_var: 1.00 
+Episode:  2 Reward:  5977 Tasks without delay: 14981 Tasks with delay:    19 Tasks failed due delay:     0###  r_var: 1.00 b_var: 1.00 
+Episode:  3 Reward:  6044 Tasks without delay: 14990 Tasks with delay:    10 Tasks failed due delay:     0###  r_var: 1.00 b_var: 1.00 
+Episode:  4 Reward:  6070 Tasks without delay: 14987 Tasks with delay:    13 Tasks failed due delay:     0###  r_var: 1.00 b_var: 1.00 
+Episode:  5 Reward:  6030 Tasks without delay: 14978 Tasks with delay:    22 Tasks failed due delay:     0###  r_var: 1.00 b_var: 1.00 
+Episode:  6 Reward:  6010 Tasks without delay: 14967 Tasks with delay:    33 Tasks failed due delay:     0###  r_var: 1.00 b_var: 1.00 
+Episode:  7 Reward:  6053 Tasks without delay: 14990 Tasks with delay:    10 Tasks failed due delay:     0###  r_var: 1.00 b_var: 1.00 
+Episode:  8 Reward:  6007 Tasks without delay: 14973 Tasks with delay:    26 Tasks failed due delay:     1###  r_var: 1.00 b_var: 1.00 
+Episode:  9 Reward:  6023 Tasks without delay: 14989 Tasks with delay:    11 Tasks failed due delay:     0###  r_var: 1.00 b_var: 1.00 
+Episode: 10 Reward:  6062 Tasks without delay: 14989 Tasks with delay:    11 Tasks failed due delay:     0###  r_var: 1.00 b_var: 1.00 
+Episode: 11 Reward:  6032 Tasks without delay: 14990 Tasks with delay:    10 Tasks failed due delay:     0###  r_var: 0.99 b_var: 0.99 
+Episode: 12 Reward:  6052 Tasks without delay: 14989 Tasks with delay:    11 Tasks failed due delay:     0###  r_var: 0.99 b_var: 0.99 
+Episode: 13 Reward:  6032 Tasks without delay: 14981 Tasks with delay:    19 Tasks failed due delay:     0###  r_var: 0.99 b_var: 0.99 
+Episode: 14 Reward:  6018 Tasks without delay: 14989 Tasks with delay:    11 Tasks failed due delay:     0###  r_var: 0.99 b_var: 0.99 
+Episode: 15 Reward:  5987 Tasks without delay: 14982 Tasks with delay:    18 Tasks failed due delay:     0###  r_var: 0.99 b_var: 0.99 
+Episode: 16 Reward:  6044 Tasks without delay: 14990 Tasks with delay:    10 Tasks failed due delay:     0###  r_var: 0.99 b_var: 0.99 
+Episode: 17 Reward:  6034 Tasks without delay: 14986 Tasks with delay:    14 Tasks failed due delay:     0###  r_var: 0.99 b_var: 0.99 
+Episode: 18 Reward:  6020 Tasks without delay: 14971 Tasks with delay:    29 Tasks failed due delay:     0###  r_var: 0.99 b_var: 0.99 
+Episode: 19 Reward:  6031 Tasks without delay: 14990 Tasks with delay:    10 Tasks failed due delay:     0###  r_var: 0.99 b_var: 0.99 
+the mean of the rewards:6031.2
+
+the mean of the tasks without delay:14985.7
+
+the mean of the tasks with delay:14.3
+
+the mean of the tasks failed due to the delay:0.0
+
+the standard deviation of the rewards:19.51307254124783
+
+the range of the rewards:75
+
