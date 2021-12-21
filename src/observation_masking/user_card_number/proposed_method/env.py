@@ -565,8 +565,11 @@ class Env():
         self.reward_all = []
         self.U = []
         self.fin_req_count = 0
-        self.prev_count = 0
+        self.fail_req_count = 0
+        self.prev_fin_req_count = 0
+        self.prev_fail_req_count = 0
         self.rewards = 0
+        self.penalizations = 0
         self.R = np.zeros((self.user_num))
         self.O = np.zeros((self.user_num))
         self.B = np.zeros((self.user_num))
@@ -610,7 +613,9 @@ class Env():
         # user
         self.U = []
         self.fin_req_count = 0
-        self.prev_count = 0
+        self.fail_req_count = 0
+        self.prev_fin_req_count = 0
+        self.prev_fail_req_count = 0
         data_num = random.sample(list(range(TXT_NUM)), self.user_num)
         for i in range(self.user_num):
             new_user = UE(i, data_num[i])
@@ -668,37 +673,36 @@ class Env():
                
             self.O[user_id] = action
             
-        tasks_without_delay = 0
-        tasks_with_delay = 0
-        tasks_failed_due_delay = 0
         # request update
         for user in self.U:
             # update the state of the request
             user.request_update()
-            if user.req.timer == 0: tasks_without_delay += 1 
-            if user.req.timer > 0 and user.req.timer < user.req.max_latency_time: tasks_with_delay += 1 
             if  user.req.timer >= user.req.max_latency_time:#MAX_REQ_TIMER:
-                tasks_failed_due_delay += 1
+                self.fail_req_count += 1
                 user.generate_request(self.O[user.user_id])  # offload according to the priority
             # it has already finished the request
             if user.req.state == 4:
                 # rewards
-                self.fin_req_count += 1    
+                self.fin_req_count += 1       
 
                 self.usage_history[user.user_id] += 1
                 
                 user.req.state = 5  # request turn to "disconnect"
                 self.E[int(user.req.edge_id)].server_workload.remove(user.req.user_id)
                 user.generate_request(self.O[user.user_id])  # offload according to the priority
-   
+        
         # edge update
         for edge in self.E:
             edge.maintain_request(self.R, self.U)
             self.table = edge.migration_update(self.O, self.B, self.table, self.U, self.E)
 
         # rewards
-        self.rewards = self.fin_req_count - self.prev_count
-        self.prev_count = self.fin_req_count
+        self.rewards = self.fin_req_count - self.prev_fin_req_count
+        self.prev_fin_req_count = self.fin_req_count
+
+        # penalizations
+        self.penalizations = self.fail_req_count - self.prev_fail_req_count
+        self.prev_fail_req_count = self.fail_req_count 
 
         # every user start to move
         if self.time % self.step == 0:
@@ -709,7 +713,7 @@ class Env():
         self.time += 1
 
         # return s_, r
-        return generate_state(self.table, self.U, self.E, self.usage_history, self.x_min, self.y_min), self.rewards, tasks_without_delay, tasks_with_delay, tasks_failed_due_delay
+        return generate_state(self.table, self.U, self.E, self.usage_history, self.x_min, self.y_min), self.rewards, self.penalizations
 
     def text_render(self):
         print("R:", self.R)

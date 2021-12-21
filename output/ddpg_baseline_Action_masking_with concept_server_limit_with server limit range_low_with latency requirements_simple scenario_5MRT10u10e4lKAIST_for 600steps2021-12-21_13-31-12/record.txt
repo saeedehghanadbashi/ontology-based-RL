@@ -1,0 +1,40 @@
+time(s):600
+
+user_number:10
+
+edge_number:10
+
+limit:4
+
+task information:
+req_u2e_size:270000
+process_loading:1080000
+req_e2u_size:96
+
+Episode:  0 Reward:  2125 Penalization:    11###  r_var: 1.00 b_var: 1.00 
+Episode:  1 Reward:  2293 Penalization:     3###  r_var: 1.00 b_var: 1.00 
+Episode:  2 Reward:  2055 Penalization:    20###  r_var: 1.00 b_var: 1.00 
+Episode:  3 Reward:  2228 Penalization:    11###  r_var: 1.00 b_var: 1.00 
+Episode:  4 Reward:  2093 Penalization:    19###  r_var: 1.00 b_var: 1.00 
+Episode:  5 Reward:  2033 Penalization:    22###  r_var: 1.00 b_var: 1.00 
+Episode:  6 Reward:  2129 Penalization:    15###  r_var: 1.00 b_var: 1.00 
+Episode:  7 Reward:  1834 Penalization:    53###  r_var: 1.00 b_var: 1.00 
+Episode:  8 Reward:  2001 Penalization:    26###  r_var: 1.00 b_var: 1.00 
+Episode:  9 Reward:  1950 Penalization:    35###  r_var: 1.00 b_var: 1.00 
+Episode: 10 Reward:  2251 Penalization:     5###  r_var: 1.00 b_var: 1.00 
+Episode: 11 Reward:  2080 Penalization:    29###  r_var: 1.00 b_var: 1.00 
+Episode: 12 Reward:  2004 Penalization:    21###  r_var: 1.00 b_var: 1.00 
+Episode: 13 Reward:  2095 Penalization:    16###  r_var: 1.00 b_var: 1.00 
+Episode: 14 Reward:  2119 Penalization:    13###  r_var: 1.00 b_var: 1.00 
+the mean of the rewards:2049.6
+
+the mean of the penalizations:23.5
+
+the standard deviation of the rewards:107.60501847032972
+
+the range of the rewards:417
+
+the standard deviation of the penalizations:12.761269529321916
+
+the range of the penalizations:48
+

@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 import time
+import datetime
 
 #####################  hyper parameters  ####################
 CHECK_EPISODE = 4
@@ -35,9 +36,7 @@ if __name__ == "__main__":
     r_var = 1  # control exploration
     b_var = 1
     ep_reward = []
-    ep_tasks_without_delay = []
-    ep_tasks_with_delay = []
-    ep_tasks_failed_due_delay = []   
+    ep_penalization = []
     r_v, b_v = [], []
     var_reward = []
     max_rewards = 0
@@ -50,9 +49,7 @@ if __name__ == "__main__":
         # initialize
         s = env.reset()
         ep_reward.append(0)
-        ep_tasks_without_delay.append(0)
-        ep_tasks_with_delay.append(0)
-        ep_tasks_failed_due_delay.append(0)
+        ep_penalization.append(0)
         if SCREEN_RENDER:
             env.initial_screen_demo()
 
@@ -70,7 +67,7 @@ if __name__ == "__main__":
             # add randomness to action selection for exploration
             a = exploration(a, r_dim, b_dim, r_var, b_var)
             # store the transition parameter
-            s_, r,  tasks_without_delay, tasks_with_delay, tasks_failed_due_delay = env.ddpg_step_forward(a, r_dim, b_dim)
+            s_, r,  p = env.ddpg_step_forward(a, r_dim, b_dim)
             ddpg.store_transition(s, a, r / 10, s_)
             # learn
             if ddpg.pointer == ddpg.memory_capacity:
@@ -84,16 +81,15 @@ if __name__ == "__main__":
             s = s_
             # sum up the reward
             ep_reward[episode] += r
-            ep_tasks_without_delay[episode] += tasks_without_delay
-            ep_tasks_with_delay[episode] += tasks_with_delay
-            ep_tasks_failed_due_delay[episode] += tasks_failed_due_delay
+            # sum up the penalization
+            ep_penalization[episode] += p
             # in the end of the episode
             if j == MAX_EP_STEPS - 1:
                 var_reward.append(ep_reward[episode])
                 r_v.append(r_var)
                 b_v.append(b_var)
-                print('Episode:%3d' % episode, ' Reward: %5d' % ep_reward[episode], ' Tasks without delay: %5d' % ep_tasks_without_delay[episode], ' Tasks with delay: %5d' % ep_tasks_with_delay[episode], ' Tasks failed due delay: %5d' % ep_tasks_failed_due_delay[episode], '###  r_var: %.2f ' % r_var,'b_var: %.2f ' % b_var, )
-                string = 'Episode:%3d' % episode + ' Reward: %5d' % ep_reward[episode] + ' Tasks without delay: %5d' % ep_tasks_without_delay[episode] + ' Tasks with delay: %5d' % ep_tasks_with_delay[episode] + ' Tasks failed due delay: %5d' % ep_tasks_failed_due_delay[episode] + '###  r_var: %.2f ' % r_var + 'b_var: %.2f ' % b_var
+                print('Episode:%3d' % episode, ' Reward: %5d' % ep_reward[episode], ' Penalization: %5d' % ep_penalization[episode], '###  r_var: %.2f ' % r_var,'b_var: %.2f ' % b_var, )
+                string = 'Episode:%3d' % episode + ' Reward: %5d' % ep_reward[episode] + ' Penalization: %5d' % ep_penalization[episode] + '###  r_var: %.2f ' % r_var + 'b_var: %.2f ' % b_var
                 epoch_inf.append(string)
                 # variation change
                 if var_counter >= CHECK_EPISODE and np.mean(var_reward[-CHECK_EPISODE:]) >= max_rewards:
@@ -111,7 +107,7 @@ if __name__ == "__main__":
         episode += 1
 
     # make directory
-    dir_name = 'output/' + 'ddpg_' + ALGORITHM + '_' + METHOD + '_' + 'with concept_' + CONCEPT + '_' + 'with server limit range_'+ SERVER_LIMIT_RANGE +  '_with latency requirements_' + LATENCY_REQUIREMENTS + '_' + str(MAX_REQ_TIMER) + 'MRT' +str(r_dim) + 'u' + str(int(o_dim / r_dim)) + 'e' + str(limit) + 'l' + location + '_for ' + str(MAX_EP_STEPS) + 'steps'
+    dir_name = 'output/' + 'ddpg_' + ALGORITHM + '_' + METHOD + '_' + 'with concept_' + CONCEPT + '_' + 'with server limit range_'+ SERVER_LIMIT_RANGE +  '_with latency requirements_' + LATENCY_REQUIREMENTS + '_' + str(MAX_REQ_TIMER) + 'MRT' +str(r_dim) + 'u' + str(int(o_dim / r_dim)) + 'e' + str(limit) + 'l' + location + '_for ' + str(MAX_EP_STEPS) + 'steps' + str(datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
     if (os.path.isdir(dir_name)):
         os.rmdir(dir_name)
     os.makedirs(dir_name)
@@ -140,20 +136,19 @@ if __name__ == "__main__":
     # mean of the rewards
     print("the mean of the rewards in the last", LEARNING_MAX_EPISODE, " epochs:", str(np.mean(ep_reward[-LEARNING_MAX_EPISODE:])))
     f.write("the mean of the rewards:" + str(np.mean(ep_reward[-LEARNING_MAX_EPISODE:])) + '\n\n')
-    # mean of the tasks without delay
-    print("the mean of the tasks without delay in the last", LEARNING_MAX_EPISODE, " epochs:", str(np.mean(ep_tasks_without_delay[-LEARNING_MAX_EPISODE:])))
-    f.write("the mean of the tasks without delay:" + str(np.mean(ep_tasks_without_delay[-LEARNING_MAX_EPISODE:])) + '\n\n')
-    # mean of the tasks with delay
-    print("the mean of the tasks with delay in the last", LEARNING_MAX_EPISODE, " epochs:", str(np.mean(ep_tasks_with_delay[-LEARNING_MAX_EPISODE:])))
-    f.write("the mean of the tasks with delay:" + str(np.mean(ep_tasks_with_delay[-LEARNING_MAX_EPISODE:])) + '\n\n')
-    # mean of the tasks failed due to the delay
-    print("the mean of the tasks failed due to the delay in the last", LEARNING_MAX_EPISODE, " epochs:", str(np.mean(ep_tasks_failed_due_delay[-LEARNING_MAX_EPISODE:])))
-    f.write("the mean of the tasks failed due to the delay:" + str(np.mean(ep_tasks_failed_due_delay[-LEARNING_MAX_EPISODE:])) + '\n\n')
+    # mean of the penalizations
+    print("the mean of the penalizations in the last", LEARNING_MAX_EPISODE, " epochs:",    str(np.mean(ep_penalization[-LEARNING_MAX_EPISODE:])))
+    f.write("the mean of the penalizations:" + str(np.mean(ep_penalization[-LEARNING_MAX_EPISODE:])) + '\n\n')
     # standard deviation
     print("the standard deviation of the rewards:", str(np.std(ep_reward[-LEARNING_MAX_EPISODE:])))
     f.write("the standard deviation of the rewards:" + str(np.std(ep_reward[-LEARNING_MAX_EPISODE:])) + '\n\n')
     # range
     print("the range of the rewards:", str(max(ep_reward[-LEARNING_MAX_EPISODE:]) - min(ep_reward[-LEARNING_MAX_EPISODE:])))
     f.write("the range of the rewards:" + str(max(ep_reward[-LEARNING_MAX_EPISODE:]) - min(ep_reward[-LEARNING_MAX_EPISODE:])) + '\n\n')
+    print("the standard deviation of the penalizations:", str(np.std(ep_penalization[-LEARNING_MAX_EPISODE:])))
+    f.write("the standard deviation of the penalizations:" + str(np.std(ep_penalization[-LEARNING_MAX_EPISODE:])) + '\n\n')
+    # range
+    print("the range of the penalizations:", str(max(ep_penalization[-LEARNING_MAX_EPISODE:]) - min(ep_penalization[-LEARNING_MAX_EPISODE:])))
+    f.write("the range of the penalizations:" + str(max(ep_penalization[-LEARNING_MAX_EPISODE:]) - min(ep_penalization[-LEARNING_MAX_EPISODE:])) + '\n\n')
     f.close()
 
