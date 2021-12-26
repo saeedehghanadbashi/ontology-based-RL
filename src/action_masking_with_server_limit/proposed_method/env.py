@@ -18,8 +18,8 @@ r_bound = 1e9 * 0.063
 b_bound = 1e9
 
 MAX_REQ_TIMER = 5 #10 #25 #5
-ALGORITHM = "proposed_method"
-METHOD = "Action_masking"
+ALGORITHM = "prop"
+METHOD = "AM"
 CONCEPT = "server_limit"
 SERVER_LIMIT_RANGE = "low"
 

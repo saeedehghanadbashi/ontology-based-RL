@@ -17,8 +17,8 @@ r_bound = 1e9 * 0.063
 b_bound = 1e9
 
 MAX_REQ_TIMER = 5 #10 #25 #5
-ALGORITHM = "proposed_method"
-METHOD = "Observation_masking"
+ALGORITHM = "prop"
+METHOD = "OM"
 CONCEPT = "user_device_info"
 SERVER_LIMIT_RANGE = "low"
 

@@ -1,0 +1,60 @@
+time(s):100
+
+user_number:10
+
+edge_number:10
+
+limit:4
+
+task information:
+req_u2e_size:270000
+process_loading:1080000
+req_e2u_size:96
+
+Episode:  0 Reward:   321 Reward for tasks with priority 1:   189 Reward for tasks with priority 2:    99 Reward for tasks with priority 3:    33 Penalization:     2 Penalization for tasks with priority 1:     1 Penalization for tasks with priority 2:     1 Penalization for tasks with priority 3:     0###  r_var: 1.00 b_var: 1.00 
+Episode:  1 Reward:   316 Reward for tasks with priority 1:   205 Reward for tasks with priority 2:    88 Reward for tasks with priority 3:    23 Penalization:     6 Penalization for tasks with priority 1:     4 Penalization for tasks with priority 2:     2 Penalization for tasks with priority 3:     0###  r_var: 1.00 b_var: 1.00 
+Episode:  2 Reward:   347 Reward for tasks with priority 1:   207 Reward for tasks with priority 2:   114 Reward for tasks with priority 3:    26 Penalization:     2 Penalization for tasks with priority 1:     1 Penalization for tasks with priority 2:     1 Penalization for tasks with priority 3:     0###  r_var: 1.00 b_var: 1.00 
+Episode:  3 Reward:   339 Reward for tasks with priority 1:   204 Reward for tasks with priority 2:   105 Reward for tasks with priority 3:    30 Penalization:     1 Penalization for tasks with priority 1:     0 Penalization for tasks with priority 2:     1 Penalization for tasks with priority 3:     0###  r_var: 1.00 b_var: 1.00 
+Episode:  4 Reward:   385 Reward for tasks with priority 1:   231 Reward for tasks with priority 2:   118 Reward for tasks with priority 3:    36 Penalization:     0 Penalization for tasks with priority 1:     0 Penalization for tasks with priority 2:     0 Penalization for tasks with priority 3:     0###  r_var: 1.00 b_var: 1.00 
+Episode:  5 Reward:   359 Reward for tasks with priority 1:   208 Reward for tasks with priority 2:   114 Reward for tasks with priority 3:    37 Penalization:     2 Penalization for tasks with priority 1:     0 Penalization for tasks with priority 2:     2 Penalization for tasks with priority 3:     0###  r_var: 1.00 b_var: 1.00 
+Episode:  6 Reward:   346 Reward for tasks with priority 1:   225 Reward for tasks with priority 2:    96 Reward for tasks with priority 3:    25 Penalization:     2 Penalization for tasks with priority 1:     0 Penalization for tasks with priority 2:     2 Penalization for tasks with priority 3:     0###  r_var: 1.00 b_var: 1.00 
+Episode:  7 Reward:   349 Reward for tasks with priority 1:   219 Reward for tasks with priority 2:    93 Reward for tasks with priority 3:    37 Penalization:     4 Penalization for tasks with priority 1:     3 Penalization for tasks with priority 2:     1 Penalization for tasks with priority 3:     0###  r_var: 1.00 b_var: 1.00 
+Episode:  8 Reward:   326 Reward for tasks with priority 1:   196 Reward for tasks with priority 2:   103 Reward for tasks with priority 3:    27 Penalization:     3 Penalization for tasks with priority 1:     1 Penalization for tasks with priority 2:     2 Penalization for tasks with priority 3:     0###  r_var: 1.00 b_var: 1.00 
+Episode:  9 Reward:   337 Reward for tasks with priority 1:   203 Reward for tasks with priority 2:    99 Reward for tasks with priority 3:    35 Penalization:     1 Penalization for tasks with priority 1:     1 Penalization for tasks with priority 2:     0 Penalization for tasks with priority 3:     0###  r_var: 1.00 b_var: 1.00 
+Episode: 10 Reward:   363 Reward for tasks with priority 1:   234 Reward for tasks with priority 2:    98 Reward for tasks with priority 3:    31 Penalization:     2 Penalization for tasks with priority 1:     1 Penalization for tasks with priority 2:     1 Penalization for tasks with priority 3:     0###  r_var: 1.00 b_var: 1.00 
+Episode: 11 Reward:   337 Reward for tasks with priority 1:   183 Reward for tasks with priority 2:   123 Reward for tasks with priority 3:    31 Penalization:     2 Penalization for tasks with priority 1:     0 Penalization for tasks with priority 2:     2 Penalization for tasks with priority 3:     0###  r_var: 1.00 b_var: 1.00 
+Episode: 12 Reward:   364 Reward for tasks with priority 1:   225 Reward for tasks with priority 2:   104 Reward for tasks with priority 3:    35 Penalization:     3 Penalization for tasks with priority 1:     1 Penalization for tasks with priority 2:     2 Penalization for tasks with priority 3:     0###  r_var: 1.00 b_var: 1.00 
+Episode: 13 Reward:   363 Reward for tasks with priority 1:   215 Reward for tasks with priority 2:   114 Reward for tasks with priority 3:    34 Penalization:     1 Penalization for tasks with priority 1:     0 Penalization for tasks with priority 2:     1 Penalization for tasks with priority 3:     0###  r_var: 1.00 b_var: 1.00 
+Episode: 14 Reward:   350 Reward for tasks with priority 1:   224 Reward for tasks with priority 2:    96 Reward for tasks with priority 3:    30 Penalization:     1 Penalization for tasks with priority 1:     1 Penalization for tasks with priority 2:     0 Penalization for tasks with priority 3:     0###  r_var: 1.00 b_var: 1.00 
+Episode: 15 Reward:   317 Reward for tasks with priority 1:   185 Reward for tasks with priority 2:   108 Reward for tasks with priority 3:    24 Penalization:     5 Penalization for tasks with priority 1:     3 Penalization for tasks with priority 2:     2 Penalization for tasks with priority 3:     0###  r_var: 1.00 b_var: 1.00 
+Episode: 16 Reward:   306 Reward for tasks with priority 1:   199 Reward for tasks with priority 2:    79 Reward for tasks with priority 3:    28 Penalization:    10 Penalization for tasks with priority 1:     6 Penalization for tasks with priority 2:     3 Penalization for tasks with priority 3:     1###  r_var: 1.00 b_var: 1.00 
+Episode: 17 Reward:   385 Reward for tasks with priority 1:   232 Reward for tasks with priority 2:   111 Reward for tasks with priority 3:    42 Penalization:     0 Penalization for tasks with priority 1:     0 Penalization for tasks with priority 2:     0 Penalization for tasks with priority 3:     0###  r_var: 1.00 b_var: 1.00 
+Episode: 18 Reward:   322 Reward for tasks with priority 1:   174 Reward for tasks with priority 2:   115 Reward for tasks with priority 3:    33 Penalization:     6 Penalization for tasks with priority 1:     1 Penalization for tasks with priority 2:     5 Penalization for tasks with priority 3:     0###  r_var: 1.00 b_var: 1.00 
+Episode: 19 Reward:   312 Reward for tasks with priority 1:   171 Reward for tasks with priority 2:   102 Reward for tasks with priority 3:    39 Penalization:     8 Penalization for tasks with priority 1:     5 Penalization for tasks with priority 2:     2 Penalization for tasks with priority 3:     1###  r_var: 1.00 b_var: 1.00 
+Episode: 20 Reward:   333 Reward for tasks with priority 1:   209 Reward for tasks with priority 2:    90 Reward for tasks with priority 3:    34 Penalization:     6 Penalization for tasks with priority 1:     1 Penalization for tasks with priority 2:     5 Penalization for tasks with priority 3:     0###  r_var: 1.00 b_var: 1.00 
+Episode: 21 Reward:   356 Reward for tasks with priority 1:   204 Reward for tasks with priority 2:   110 Reward for tasks with priority 3:    42 Penalization:     4 Penalization for tasks with priority 1:     0 Penalization for tasks with priority 2:     4 Penalization for tasks with priority 3:     0###  r_var: 1.00 b_var: 1.00 
+Episode: 22 Reward:   364 Reward for tasks with priority 1:   203 Reward for tasks with priority 2:   126 Reward for tasks with priority 3:    35 Penalization:     1 Penalization for tasks with priority 1:     0 Penalization for tasks with priority 2:     1 Penalization for tasks with priority 3:     0###  r_var: 1.00 b_var: 1.00 
+the mean of the rewards:340.8
+
+the mean of the rewards for tasks with priority 1:201.6
+
+the mean of the rewards for tasks with priority 2:105.1
+
+the mean of the rewards for tasks with priority 3:34.1
+
+the mean of the penalizations:4.2
+
+the mean of the penalizations for tasks with priority 1:1.7
+
+the mean of the penalizations for tasks with priority 2:2.3
+
+the mean of the penalizations for tasks with priority 3:0.2
+
+the standard deviation of the rewards:25.142792207708357
+
+the range of the rewards:79
+
+the standard deviation of the penalizations:3.218695387886217
+
+the range of the penalizations:10
+

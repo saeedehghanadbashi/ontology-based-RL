@@ -107,7 +107,9 @@ if __name__ == "__main__":
         episode += 1
 
     # make directory
-    dir_name = 'output/' + 'ddpg_' + ALGORITHM + '_' + METHOD + '_' + 'with concept_' + CONCEPT + '_' + 'with server limit range_'+ SERVER_LIMIT_RANGE +  '_with latency requirements_' + LATENCY_REQUIREMENTS + '_' + str(MAX_REQ_TIMER) + 'MRT' +str(r_dim) + 'u' + str(int(o_dim / r_dim)) + 'e' + str(limit) + 'l' + location + '_for ' + str(MAX_EP_STEPS) + 'steps' + str(datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
+    dir_name = 'output/' +  str(datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')) + '_' + ALGORITHM + '_' + METHOD + '_' + \
+               CONCEPT + '_' +  LATENCY_REQUIREMENTS + '_' + str(r_dim) + 'u' + '_' +  str(int(o_dim / r_dim)) + 'e' + '_for ' + \
+               str(MAX_EP_STEPS) + ' steps'
     if (os.path.isdir(dir_name)):
         os.rmdir(dir_name)
     os.makedirs(dir_name)
