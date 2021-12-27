@@ -36,13 +36,27 @@ if __name__ == "__main__":
     r_var = 1  # control exploration
     b_var = 1
     ep_reward = []
-    ep_reward1 = []
-    ep_reward2= []
-    ep_reward3 = []
+    ep_reward_task_prio_1 = []
+    ep_reward_task_prio_2= []
+    ep_reward_task_prio_3 = []
+    ep_reward_task_lat_1 = []
+    ep_reward_task_lat_2= []
+    ep_reward_task_lat_3 = []
+    ep_reward_app_typ_1 = []
+    ep_reward_app_typ_2 = []
+    ep_reward_app_typ_3 = []
+    ep_reward_app_typ_4 = []
     ep_penalization = []
-    ep_penalization1 = []
-    ep_penalization2 = []
-    ep_penalization3 = []
+    ep_penalization_task_prio_1 = []
+    ep_penalization_task_prio_2 = []
+    ep_penalization_task_prio_3 = []
+    ep_penalization_task_lat_1 = []
+    ep_penalization_task_lat_2 = []
+    ep_penalization_task_lat_3 = []
+    ep_penalization_app_typ_1 = []
+    ep_penalization_app_typ_2 = []
+    ep_penalization_app_typ_3 = []
+    ep_penalization_app_typ_4 = []
     r_v, b_v = [], []
     var_reward = []
     max_rewards = 0
@@ -55,13 +69,27 @@ if __name__ == "__main__":
         # initialize
         s = env.reset()
         ep_reward.append(0)
-        ep_reward1.append(0)
-        ep_reward2.append(0)
-        ep_reward3.append(0)
+        ep_reward_task_prio_1.append(0)
+        ep_reward_task_prio_2.append(0)
+        ep_reward_task_prio_3.append(0)
+        ep_reward_task_lat_1.append(0)
+        ep_reward_task_lat_2.append(0)
+        ep_reward_task_lat_3.append(0)
+        ep_reward_app_typ_1.append(0)
+        ep_reward_app_typ_2.append(0)
+        ep_reward_app_typ_3.append(0)
+        ep_reward_app_typ_4.append(0)
         ep_penalization.append(0)
-        ep_penalization1.append(0)
-        ep_penalization2.append(0)
-        ep_penalization3.append(0)
+        ep_penalization_task_prio_1.append(0)
+        ep_penalization_task_prio_2.append(0)
+        ep_penalization_task_prio_3.append(0)
+        ep_penalization_task_lat_1.append(0)
+        ep_penalization_task_lat_2.append(0)
+        ep_penalization_task_lat_3.append(0)
+        ep_penalization_app_typ_1.append(0)
+        ep_penalization_app_typ_2.append(0)
+        ep_penalization_app_typ_3.append(0)
+        ep_penalization_app_typ_4.append(0)        
         if SCREEN_RENDER:
             env.initial_screen_demo()
 
@@ -79,7 +107,7 @@ if __name__ == "__main__":
             # add randomness to action selection for exploration
             a = exploration(a, r_dim, b_dim, r_var, b_var)
             # store the transition parameter
-            s_, r,  p, r1, r2, r3, p1, p2, p3 = env.ddpg_step_forward(a, r_dim, b_dim)
+            s_, r,  p, r_task_prio_1, r_task_prio_2, r_task_prio_3, p_task_prio_1, p_task_prio_2, p_task_prio_3, r_task_lat_1, r_task_lat_2, r_task_lat_3, p_task_lat_1, p_task_lat_2, p_task_lat_3, r_app_typ_1, r_app_typ_2, r_app_typ_3, r_app_typ_4, p_app_typ_1, p_app_typ_2, p_app_typ_3, p_app_typ_4 = env.ddpg_step_forward(a, r_dim, b_dim)
             ddpg.store_transition(s, a, r / 10, s_)
             # learn
             if ddpg.pointer == ddpg.memory_capacity:
@@ -93,21 +121,35 @@ if __name__ == "__main__":
             s = s_
             # sum up the reward
             ep_reward[episode] += r
-            ep_reward1[episode] += r1
-            ep_reward2[episode] += r2
-            ep_reward3[episode] += r3
+            ep_reward_task_prio_1[episode] += r_task_prio_1
+            ep_reward_task_prio_2[episode] += r_task_prio_2
+            ep_reward_task_prio_3[episode] += r_task_prio_3
+            ep_reward_task_lat_1[episode] += r_task_lat_1
+            ep_reward_task_lat_2[episode] += r_task_lat_2
+            ep_reward_task_lat_3[episode] += r_task_lat_3
+            ep_reward_app_typ_1[episode] += r_app_typ_1
+            ep_reward_app_typ_2[episode] += r_app_typ_2
+            ep_reward_app_typ_3[episode] += r_app_typ_3
+            ep_reward_app_typ_4[episode] += r_app_typ_4
             # sum up the penalization
             ep_penalization[episode] += p
-            ep_penalization1[episode] += p1
-            ep_penalization2[episode] += p2
-            ep_penalization3[episode] += p3
+            ep_penalization_task_prio_1[episode] += p_task_prio_1
+            ep_penalization_task_prio_2[episode] += p_task_prio_2
+            ep_penalization_task_prio_3[episode] += p_task_prio_3
+            ep_penalization_task_lat_1[episode] += p_task_lat_1
+            ep_penalization_task_lat_2[episode] += p_task_lat_2
+            ep_penalization_task_lat_3[episode] += p_task_lat_3
+            ep_penalization_app_typ_1[episode] += p_app_typ_1
+            ep_penalization_app_typ_2[episode] += p_app_typ_2
+            ep_penalization_app_typ_3[episode] += p_app_typ_3
+            ep_penalization_app_typ_4[episode] += p_app_typ_4
             # in the end of the episode
             if j == MAX_EP_STEPS - 1:
                 var_reward.append(ep_reward[episode])
                 r_v.append(r_var)
                 b_v.append(b_var)
-                print('Episode:%3d' % episode, ' Reward: %5d' % ep_reward[episode], ' Reward for tasks with priority 1: %5d' % ep_reward1[episode], ' Reward for tasks with priority 2: %5d' % ep_reward2[episode], ' Reward for tasks with priority 3: %5d' % ep_reward3[episode], ' Penalization: %5d' % ep_penalization[episode], ' Penalization for tasks with priority 1: %5d' % ep_penalization1[episode], ' Penalization for tasks with priority 2: %5d' % ep_penalization2[episode], ' Penalization for tasks with priority 3: %5d' % ep_penalization3[episode], '###  r_var: %.2f ' % r_var,'b_var: %.2f ' % b_var, )
-                string = 'Episode:%3d' % episode + ' Reward: %5d' % ep_reward[episode] + ' Reward for tasks with priority 1: %5d' % ep_reward1[episode] + ' Reward for tasks with priority 2: %5d' % ep_reward2[episode] + ' Reward for tasks with priority 3: %5d' % ep_reward3[episode] + ' Penalization: %5d' % ep_penalization[episode] + ' Penalization for tasks with priority 1: %5d' % ep_penalization1[episode] + ' Penalization for tasks with priority 2: %5d' % ep_penalization2[episode] + ' Penalization for tasks with priority 3: %5d' % ep_penalization3[episode] + '###  r_var: %.2f ' % r_var + 'b_var: %.2f ' % b_var
+                print('Episode:%3d' % episode, ' Reward: %5d' % ep_reward[episode], ' Reward for tasks with priority 1: %5d' % ep_reward_task_prio_1[episode], ' Reward for tasks with priority 2: %5d' % ep_reward_task_prio_2[episode], ' Reward for tasks with priority 3: %5d' % ep_reward_task_prio_3[episode], ' Reward for tasks with latency 1: %5d' % ep_reward_task_lat_1[episode], ' Reward for tasks with latency 2: %5d' % ep_reward_task_lat_2[episode], ' Reward for tasks with latency 3: %5d' % ep_reward_task_lat_3[episode], ' Reward for tasks with application type 1: %5d' % ep_reward_app_typ_1[episode], ' Reward for tasks with application type 2: %5d' % ep_reward_app_typ_2[episode], ' Reward for tasks with application type 3: %5d' % ep_reward_app_typ_3[episode], ' Reward for tasks with application type 4: %5d' % ep_reward_app_typ_4[episode], ' Penalization: %5d' % ep_penalization[episode], ' Penalization for tasks with priority 1: %5d' % ep_penalization_task_prio_1[episode], ' Penalization for tasks with priority 2: %5d' % ep_penalization_task_prio_2[episode], ' Penalization for tasks with priority 3: %5d' % ep_penalization_task_prio_3[episode], ' Penalization for tasks with latency 1: %5d' % ep_penalization_task_lat_1[episode], ' Penalization for tasks with latency 2: %5d' % ep_penalization_task_lat_2[episode], ' Penalization for tasks with latency 3: %5d' % ep_penalization_task_lat_3[episode], ' Penalization for tasks with application type 1: %5d' % ep_penalization_app_typ_1[episode], ' Penalization for tasks with application type 2: %5d' % ep_penalization_app_typ_2[episode], ' Penalization for tasks with application type 3: %5d' % ep_penalization_app_typ_3[episode], ' Penalization for tasks with application type 4: %5d' % ep_penalization_app_typ_4[episode], '###  r_var: %.2f ' % r_var,'b_var: %.2f ' % b_var, )
+                string = 'Episode:%3d' % episode + ' Reward: %5d' % ep_reward[episode] + ' Reward for tasks with priority 1: %5d' % ep_reward_task_prio_1[episode] + ' Reward for tasks with priority 2: %5d' % ep_reward_task_prio_2[episode] + ' Reward for tasks with priority 3: %5d' % ep_reward_task_prio_3[episode] + ' Reward for tasks with latency 1: %5d' % ep_reward_task_lat_1[episode] + ' Reward for tasks with latency 2: %5d' % ep_reward_task_lat_2[episode] + ' Reward for tasks with latency 3: %5d' % ep_reward_task_lat_3[episode] + ' Reward for tasks with application type 1: %5d' % ep_reward_app_typ_1[episode] + ' Reward for tasks with application type 2: %5d' % ep_reward_app_typ_2[episode] + ' Reward for tasks with application type 3: %5d' % ep_reward_app_typ_3[episode] + ' Reward for tasks with application type 4: %5d' % ep_reward_app_typ_4[episode] + ' Penalization: %5d' % ep_penalization[episode] + ' Penalization for tasks with priority 1: %5d' % ep_penalization_task_prio_1[episode] + ' Penalization for tasks with priority 2: %5d' % ep_penalization_task_prio_2[episode] + ' Penalization for tasks with priority 3: %5d' % ep_penalization_task_prio_3[episode] + ' Penalization for tasks with latency 1: %5d' % ep_penalization_task_lat_1[episode] + ' Penalization for tasks with latency 2: %5d' % ep_penalization_task_lat_2[episode] + ' Penalization for tasks with latency 3: %5d' % ep_penalization_task_lat_3[episode] + ' Penalization for tasks with application type 1: %5d' % ep_penalization_app_typ_1[episode] + ' Penalization for tasks with application type 2: %5d' % ep_penalization_app_typ_2[episode] + ' Penalization for tasks with application type 3: %5d' % ep_penalization_app_typ_3[episode] + ' Penalization for tasks with application type 4: %5d' % ep_penalization_app_typ_4[episode] + '###  r_var: %.2f ' % r_var + 'b_var: %.2f ' % b_var
                 epoch_inf.append(string)
                 # variation change
                 if var_counter >= CHECK_EPISODE and np.mean(var_reward[-CHECK_EPISODE:]) >= max_rewards:
@@ -156,21 +198,49 @@ if __name__ == "__main__":
     # mean of the rewards
     print("the mean of the rewards in the last", LEARNING_MAX_EPISODE, " epochs:", str(np.mean(ep_reward[-LEARNING_MAX_EPISODE:])))
     f.write("the mean of the rewards:" + str(np.mean(ep_reward[-LEARNING_MAX_EPISODE:])) + '\n\n')
-    print("the mean of the rewards for tasks with priority 1 in the last", LEARNING_MAX_EPISODE, " epochs:", str(np.mean(ep_reward1[-LEARNING_MAX_EPISODE:])))
-    f.write("the mean of the rewards for tasks with priority 1:" + str(np.mean(ep_reward1[-LEARNING_MAX_EPISODE:])) + '\n\n')
-    print("the mean of the rewards for tasks with priority 2 in the last", LEARNING_MAX_EPISODE, " epochs:", str(np.mean(ep_reward2[-LEARNING_MAX_EPISODE:])))
-    f.write("the mean of the rewards for tasks with priority 2:" + str(np.mean(ep_reward2[-LEARNING_MAX_EPISODE:])) + '\n\n')
-    print("the mean of the rewards for tasks with priority 3 in the last", LEARNING_MAX_EPISODE, " epochs:", str(np.mean(ep_reward3[-LEARNING_MAX_EPISODE:])))
-    f.write("the mean of the rewards for tasks with priority 3:" + str(np.mean(ep_reward3[-LEARNING_MAX_EPISODE:])) + '\n\n')
+    print("the mean of the rewards for tasks with priority 1 in the last", LEARNING_MAX_EPISODE, " epochs:", str(np.mean(ep_reward_task_prio_1[-LEARNING_MAX_EPISODE:])))
+    f.write("the mean of the rewards for tasks with priority 1:" + str(np.mean(ep_reward_task_prio_1[-LEARNING_MAX_EPISODE:])) + '\n\n')
+    print("the mean of the rewards for tasks with priority 2 in the last", LEARNING_MAX_EPISODE, " epochs:", str(np.mean(ep_reward_task_prio_2[-LEARNING_MAX_EPISODE:])))
+    f.write("the mean of the rewards for tasks with priority 2:" + str(np.mean(ep_reward_task_prio_2[-LEARNING_MAX_EPISODE:])) + '\n\n')
+    print("the mean of the rewards for tasks with priority 3 in the last", LEARNING_MAX_EPISODE, " epochs:", str(np.mean(ep_reward_task_prio_3[-LEARNING_MAX_EPISODE:])))
+    f.write("the mean of the rewards for tasks with priority 3:" + str(np.mean(ep_reward_task_prio_3[-LEARNING_MAX_EPISODE:])) + '\n\n')
+    print("the mean of the rewards for tasks with latency 1 in the last", LEARNING_MAX_EPISODE, " epochs:", str(np.mean(ep_reward_task_lat_1[-LEARNING_MAX_EPISODE:])))
+    f.write("the mean of the rewards for tasks with latency 1:" + str(np.mean(ep_reward_task_lat_1[-LEARNING_MAX_EPISODE:])) + '\n\n')   
+    print("the mean of the rewards for tasks with latency 2 in the last", LEARNING_MAX_EPISODE, " epochs:", str(np.mean(ep_reward_task_lat_2[-LEARNING_MAX_EPISODE:])))
+    f.write("the mean of the rewards for tasks with latency 2:" + str(np.mean(ep_reward_task_lat_2[-LEARNING_MAX_EPISODE:])) + '\n\n')   
+    print("the mean of the rewards for tasks with latency 3 in the last", LEARNING_MAX_EPISODE, " epochs:", str(np.mean(ep_reward_task_lat_3[-LEARNING_MAX_EPISODE:])))
+    f.write("the mean of the rewards for tasks with latency 3:" + str(np.mean(ep_reward_task_lat_3[-LEARNING_MAX_EPISODE:])) + '\n\n')
+    print("the mean of the rewards for tasks with application type 1 in the last", LEARNING_MAX_EPISODE, " epochs:", str(np.mean(ep_reward_app_typ_1[-LEARNING_MAX_EPISODE:])))    
+    f.write("the mean of the rewards for tasks with application type 1:" + str(np.mean(ep_reward_app_typ_1[-LEARNING_MAX_EPISODE:])) + '\n\n')
+    print("the mean of the rewards for tasks with application type 2 in the last", LEARNING_MAX_EPISODE, " epochs:", str(np.mean(ep_reward_app_typ_2[-LEARNING_MAX_EPISODE:])))
+    f.write("the mean of the rewards for tasks with application type 2:" + str(np.mean(ep_reward_app_typ_2[-LEARNING_MAX_EPISODE:])) + '\n\n')
+    print("the mean of the rewards for tasks with application type 3 in the last", LEARNING_MAX_EPISODE, " epochs:", str(np.mean(ep_reward_app_typ_3[-LEARNING_MAX_EPISODE:])))
+    f.write("the mean of the rewards for tasks with application type 3:" + str(np.mean(ep_reward_app_typ_3[-LEARNING_MAX_EPISODE:])) + '\n\n')
+    print("the mean of the rewards for tasks with application type 4 in the last", LEARNING_MAX_EPISODE, " epochs:", str(np.mean(ep_reward_app_typ_4[-LEARNING_MAX_EPISODE:])))
+    f.write("the mean of the rewards for tasks with application type 4:" + str(np.mean(ep_reward_app_typ_4[-LEARNING_MAX_EPISODE:])) + '\n\n')
     # mean of the penalizations
     print("the mean of the penalizations in the last", LEARNING_MAX_EPISODE, " epochs:",    str(np.mean(ep_penalization[-LEARNING_MAX_EPISODE:])))
     f.write("the mean of the penalizations:" + str(np.mean(ep_penalization[-LEARNING_MAX_EPISODE:])) + '\n\n')
-    print("the mean of the penalizations for tasks with priority 1 in the last", LEARNING_MAX_EPISODE, " epochs:",    str(np.mean(ep_penalization1[-LEARNING_MAX_EPISODE:])))
-    f.write("the mean of the penalizations for tasks with priority 1:" + str(np.mean(ep_penalization1[-LEARNING_MAX_EPISODE:])) + '\n\n')
-    print("the mean of the penalizations for tasks with priority 2 in the last", LEARNING_MAX_EPISODE, " epochs:",    str(np.mean(ep_penalization2[-LEARNING_MAX_EPISODE:])))
-    f.write("the mean of the penalizations for tasks with priority 2:" + str(np.mean(ep_penalization2[-LEARNING_MAX_EPISODE:])) + '\n\n')
-    print("the mean of the penalizations for tasks with priority 3 in the last", LEARNING_MAX_EPISODE, " epochs:",    str(np.mean(ep_penalization3[-LEARNING_MAX_EPISODE:])))
-    f.write("the mean of the penalizations for tasks with priority 3:" + str(np.mean(ep_penalization3[-LEARNING_MAX_EPISODE:])) + '\n\n')
+    print("the mean of the penalizations for tasks with priority 1 in the last", LEARNING_MAX_EPISODE, " epochs:",    str(np.mean(ep_penalization_task_prio_1[-LEARNING_MAX_EPISODE:])))
+    f.write("the mean of the penalizations for tasks with priority 1:" + str(np.mean(ep_penalization_task_prio_1[-LEARNING_MAX_EPISODE:])) + '\n\n')
+    print("the mean of the penalizations for tasks with priority 2 in the last", LEARNING_MAX_EPISODE, " epochs:",    str(np.mean(ep_penalization_task_prio_2[-LEARNING_MAX_EPISODE:])))
+    f.write("the mean of the penalizations for tasks with priority 2:" + str(np.mean(ep_penalization_task_prio_2[-LEARNING_MAX_EPISODE:])) + '\n\n')
+    print("the mean of the penalizations for tasks with priority 3 in the last", LEARNING_MAX_EPISODE, " epochs:",    str(np.mean(ep_penalization_task_prio_3[-LEARNING_MAX_EPISODE:])))
+    f.write("the mean of the penalizations for tasks with priority 3:" + str(np.mean(ep_penalization_task_prio_3[-LEARNING_MAX_EPISODE:])) + '\n\n')
+    print("the mean of the penalizations for tasks with latency 1 in the last", LEARNING_MAX_EPISODE, " epochs:",    str(np.mean(ep_penalization_task_lat_1[-LEARNING_MAX_EPISODE:])))
+    f.write("the mean of the penalizations for tasks with latency 1:" + str(np.mean(ep_penalization_task_lat_1[-LEARNING_MAX_EPISODE:])) + '\n\n')
+    print("the mean of the penalizations for tasks with latency 2 in the last", LEARNING_MAX_EPISODE, " epochs:",    str(np.mean(ep_penalization_task_lat_2[-LEARNING_MAX_EPISODE:])))
+    f.write("the mean of the penalizations for tasks with latency 2:" + str(np.mean(ep_penalization_task_lat_2[-LEARNING_MAX_EPISODE:])) + '\n\n')
+    print("the mean of the penalizations for tasks with latency 3 in the last", LEARNING_MAX_EPISODE, " epochs:",    str(np.mean(ep_penalization_task_lat_3[-LEARNING_MAX_EPISODE:])))
+    f.write("the mean of the penalizations for tasks with latency 3:" + str(np.mean(ep_penalization_task_lat_3[-LEARNING_MAX_EPISODE:])) + '\n\n')
+    print("the mean of the penalizations for tasks with application type 1 in the last", LEARNING_MAX_EPISODE, " epochs:",    str(np.mean(ep_penalization_app_typ_1[-LEARNING_MAX_EPISODE:])))
+    f.write("the mean of the penalizations for tasks with application type 1:" + str(np.mean(ep_penalization_app_typ_1[-LEARNING_MAX_EPISODE:])) + '\n\n')
+    print("the mean of the penalizations for tasks with application type 2 in the last", LEARNING_MAX_EPISODE, " epochs:",    str(np.mean(ep_penalization_app_typ_2[-LEARNING_MAX_EPISODE:])))
+    f.write("the mean of the penalizations for tasks with application type 2:" + str(np.mean(ep_penalization_app_typ_2[-LEARNING_MAX_EPISODE:])) + '\n\n')
+    print("the mean of the penalizations for tasks with application type 3 in the last", LEARNING_MAX_EPISODE, " epochs:",    str(np.mean(ep_penalization_app_typ_3[-LEARNING_MAX_EPISODE:])))
+    f.write("the mean of the penalizations for tasks with application type 3:" + str(np.mean(ep_penalization_app_typ_3[-LEARNING_MAX_EPISODE:])) + '\n\n')
+    print("the mean of the penalizations for tasks with application type 4 in the last", LEARNING_MAX_EPISODE, " epochs:",    str(np.mean(ep_penalization_app_typ_4[-LEARNING_MAX_EPISODE:])))
+    f.write("the mean of the penalizations for tasks with application type 4:" + str(np.mean(ep_penalization_app_typ_4[-LEARNING_MAX_EPISODE:])) + '\n\n')
     # standard deviation
     print("the standard deviation of the rewards:", str(np.std(ep_reward[-LEARNING_MAX_EPISODE:])))
     f.write("the standard deviation of the rewards:" + str(np.std(ep_reward[-LEARNING_MAX_EPISODE:])) + '\n\n')

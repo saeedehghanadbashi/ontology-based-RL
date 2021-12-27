@@ -1,0 +1,62 @@
+time(s):1500
+
+user_number:10
+
+edge_number:10
+
+limit:4
+
+task information:
+req_u2e_size:270000
+process_loading:1080000
+req_e2u_size:96
+
+Episode:  0 Reward:  4903 Reward for tasks with latency 1:   908 Reward for tasks with latency 2:  1231 Reward for tasks with latency 3:  2764 Penalization:    74 Penalization for tasks with latency 1:    39 Penalization for tasks with latency 2:    22 Penalization for tasks with latency 3:    13###  r_var: 1.00 b_var: 1.00 
+Episode:  1 Reward:  5494 Reward for tasks with latency 1:  1157 Reward for tasks with latency 2:  1353 Reward for tasks with latency 3:  2984 Penalization:    34 Penalization for tasks with latency 1:    20 Penalization for tasks with latency 2:     8 Penalization for tasks with latency 3:     6###  r_var: 1.00 b_var: 1.00 
+Episode:  2 Reward:  5203 Reward for tasks with latency 1:  1049 Reward for tasks with latency 2:  1271 Reward for tasks with latency 3:  2883 Penalization:    50 Penalization for tasks with latency 1:    40 Penalization for tasks with latency 2:     8 Penalization for tasks with latency 3:     2###  r_var: 1.00 b_var: 1.00 
+Episode:  3 Reward:  5003 Reward for tasks with latency 1:  1034 Reward for tasks with latency 2:  1299 Reward for tasks with latency 3:  2670 Penalization:    82 Penalization for tasks with latency 1:    54 Penalization for tasks with latency 2:    18 Penalization for tasks with latency 3:    10###  r_var: 1.00 b_var: 1.00 
+Episode:  4 Reward:  5711 Reward for tasks with latency 1:  1189 Reward for tasks with latency 2:  1436 Reward for tasks with latency 3:  3086 Penalization:     5 Penalization for tasks with latency 1:     5 Penalization for tasks with latency 2:     0 Penalization for tasks with latency 3:     0###  r_var: 1.00 b_var: 1.00 
+Episode:  5 Reward:  5097 Reward for tasks with latency 1:  1044 Reward for tasks with latency 2:  1244 Reward for tasks with latency 3:  2809 Penalization:    49 Penalization for tasks with latency 1:    37 Penalization for tasks with latency 2:    10 Penalization for tasks with latency 3:     2###  r_var: 1.00 b_var: 1.00 
+Episode:  6 Reward:  5610 Reward for tasks with latency 1:  1144 Reward for tasks with latency 2:  1418 Reward for tasks with latency 3:  3048 Penalization:     6 Penalization for tasks with latency 1:     5 Penalization for tasks with latency 2:     1 Penalization for tasks with latency 3:     0###  r_var: 1.00 b_var: 1.00 
+Episode:  7 Reward:  5098 Reward for tasks with latency 1:  1017 Reward for tasks with latency 2:  1254 Reward for tasks with latency 3:  2827 Penalization:    63 Penalization for tasks with latency 1:    45 Penalization for tasks with latency 2:    11 Penalization for tasks with latency 3:     7###  r_var: 1.00 b_var: 1.00 
+Episode:  8 Reward:  5233 Reward for tasks with latency 1:  1047 Reward for tasks with latency 2:  1272 Reward for tasks with latency 3:  2914 Penalization:    35 Penalization for tasks with latency 1:    25 Penalization for tasks with latency 2:     8 Penalization for tasks with latency 3:     2###  r_var: 1.00 b_var: 1.00 
+Episode:  9 Reward:  5684 Reward for tasks with latency 1:  1166 Reward for tasks with latency 2:  1390 Reward for tasks with latency 3:  3128 Penalization:     6 Penalization for tasks with latency 1:     6 Penalization for tasks with latency 2:     0 Penalization for tasks with latency 3:     0###  r_var: 1.00 b_var: 1.00 
+Episode: 10 Reward:  5224 Reward for tasks with latency 1:  1002 Reward for tasks with latency 2:  1275 Reward for tasks with latency 3:  2947 Penalization:    46 Penalization for tasks with latency 1:    28 Penalization for tasks with latency 2:    10 Penalization for tasks with latency 3:     8###  r_var: 0.99 b_var: 0.99 
+Episode: 11 Reward:  5771 Reward for tasks with latency 1:  1120 Reward for tasks with latency 2:  1483 Reward for tasks with latency 3:  3168 Penalization:     4 Penalization for tasks with latency 1:     4 Penalization for tasks with latency 2:     0 Penalization for tasks with latency 3:     0###  r_var: 0.99 b_var: 0.99 
+Episode: 12 Reward:  5609 Reward for tasks with latency 1:  1147 Reward for tasks with latency 2:  1391 Reward for tasks with latency 3:  3071 Penalization:    18 Penalization for tasks with latency 1:    14 Penalization for tasks with latency 2:     3 Penalization for tasks with latency 3:     1###  r_var: 0.99 b_var: 0.99 
+Episode: 13 Reward:  5162 Reward for tasks with latency 1:  1075 Reward for tasks with latency 2:  1300 Reward for tasks with latency 3:  2787 Penalization:    59 Penalization for tasks with latency 1:    37 Penalization for tasks with latency 2:    17 Penalization for tasks with latency 3:     5###  r_var: 0.99 b_var: 0.99 
+Episode: 14 Reward:  5619 Reward for tasks with latency 1:  1158 Reward for tasks with latency 2:  1444 Reward for tasks with latency 3:  3017 Penalization:    18 Penalization for tasks with latency 1:    14 Penalization for tasks with latency 2:     4 Penalization for tasks with latency 3:     0###  r_var: 0.99 b_var: 0.99 
+Episode: 15 Reward:  5665 Reward for tasks with latency 1:  1119 Reward for tasks with latency 2:  1390 Reward for tasks with latency 3:  3156 Penalization:    14 Penalization for tasks with latency 1:    14 Penalization for tasks with latency 2:     0 Penalization for tasks with latency 3:     0###  r_var: 0.97 b_var: 0.97 
+Episode: 16 Reward:  5416 Reward for tasks with latency 1:  1092 Reward for tasks with latency 2:  1374 Reward for tasks with latency 3:  2950 Penalization:    38 Penalization for tasks with latency 1:    23 Penalization for tasks with latency 2:    10 Penalization for tasks with latency 3:     5###  r_var: 0.97 b_var: 0.97 
+Episode: 17 Reward:  5073 Reward for tasks with latency 1:   931 Reward for tasks with latency 2:  1293 Reward for tasks with latency 3:  2849 Penalization:    69 Penalization for tasks with latency 1:    43 Penalization for tasks with latency 2:    20 Penalization for tasks with latency 3:     6###  r_var: 0.97 b_var: 0.97 
+Episode: 18 Reward:  5471 Reward for tasks with latency 1:  1077 Reward for tasks with latency 2:  1395 Reward for tasks with latency 3:  2999 Penalization:    33 Penalization for tasks with latency 1:    28 Penalization for tasks with latency 2:     4 Penalization for tasks with latency 3:     1###  r_var: 0.97 b_var: 0.97 
+Episode: 19 Reward:  4884 Reward for tasks with latency 1:  1025 Reward for tasks with latency 2:  1227 Reward for tasks with latency 3:  2632 Penalization:    81 Penalization for tasks with latency 1:    65 Penalization for tasks with latency 2:    13 Penalization for tasks with latency 3:     3###  r_var: 0.97 b_var: 0.97 
+Episode: 20 Reward:  4896 Reward for tasks with latency 1:   983 Reward for tasks with latency 2:  1209 Reward for tasks with latency 3:  2704 Penalization:    83 Penalization for tasks with latency 1:    55 Penalization for tasks with latency 2:    22 Penalization for tasks with latency 3:     6###  r_var: 0.97 b_var: 0.97 
+Episode: 21 Reward:  4641 Reward for tasks with latency 1:   929 Reward for tasks with latency 2:  1192 Reward for tasks with latency 3:  2520 Penalization:    98 Penalization for tasks with latency 1:    66 Penalization for tasks with latency 2:    21 Penalization for tasks with latency 3:    11###  r_var: 0.97 b_var: 0.97 
+Episode: 22 Reward:  5545 Reward for tasks with latency 1:  1141 Reward for tasks with latency 2:  1379 Reward for tasks with latency 3:  3025 Penalization:    13 Penalization for tasks with latency 1:    10 Penalization for tasks with latency 2:     3 Penalization for tasks with latency 3:     0###  r_var: 0.97 b_var: 0.97 
+Episode: 23 Reward:  5069 Reward for tasks with latency 1:   991 Reward for tasks with latency 2:  1263 Reward for tasks with latency 3:  2815 Penalization:    51 Penalization for tasks with latency 1:    36 Penalization for tasks with latency 2:    12 Penalization for tasks with latency 3:     3###  r_var: 0.97 b_var: 0.97 
+Episode: 24 Reward:  5585 Reward for tasks with latency 1:  1104 Reward for tasks with latency 2:  1396 Reward for tasks with latency 3:  3085 Penalization:    10 Penalization for tasks with latency 1:    10 Penalization for tasks with latency 2:     0 Penalization for tasks with latency 3:     0###  r_var: 0.97 b_var: 0.97 
+the mean of the rewards:5224.5
+
+the mean of the rewards for tasks with latency 1:1039.2
+
+the mean of the rewards for tasks with latency 2:1311.8
+
+the mean of the rewards for tasks with latency 3:2873.5
+
+the mean of the penalizations:49.0
+
+the mean of the penalizations for tasks with latency 1:35.0
+
+the mean of the penalizations for tasks with latency 2:10.5
+
+the mean of the penalizations for tasks with latency 3:3.5
+
+the standard deviation of the rewards:336.98850128750684
+
+the range of the rewards:1024
+
+the standard deviation of the penalizations:30.665942020423895
+
+the range of the penalizations:88
+

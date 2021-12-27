@@ -4,26 +4,21 @@ import math
 import matplotlib.pyplot as plt
 import os
 from render import Demo
-import copy
 
 #####################  hyper parameters  ####################
 LOCATION = "KAIST"
-USER_NUM = 10 #50 #25 #10
+USER_NUM = 10
 EDGE_NUM = 10
 LIMIT = 4
-MAX_EP_STEPS = 1000 #3000
+LEARNING_MAX_EPISODE = 20
+MAX_EP_STEPS = 3000
 TXT_NUM = 92
+TEXT_RENDER = False
+SCREEN_RENDER = True
 r_bound = 1e9 * 0.063
 b_bound = 1e9
 
-MAX_REQ_TIMER = 5 #10 #25 #5
-ALGORITHM = "base"
-METHOD = "OM"
-CONCEPT = "user_card_number"
-SERVER_LIMIT_RANGE = "low"
-
-LATENCY_REQUIREMENTS = "simple scenario"
-#####################  function  ####################
+############################ function ###########################
 def trans_rate(user_loc, edge_loc):
     B = 2e6
     P = 0.25
@@ -43,7 +38,8 @@ def two_to_one(two_table):
     one_table = two_table.flatten()
     return one_table
 
-def generate_state(two_table, U, E, usage_history, x_min, y_min):
+def generate_state(two_table, U, E):
+    x_min, y_min = get_minimum()
     # initial
     one_table = two_to_one(two_table)
     S = np.zeros((len(E) + one_table.size + len(U) + len(U)*2))
@@ -51,11 +47,11 @@ def generate_state(two_table, U, E, usage_history, x_min, y_min):
     count = 0
     # available resource of each edge server
     for edge in E:
-        S[count] = edge.capability/(r_bound*10)
+        S[count] = edge.capability/(r_bound)
         count += 1
     # available bandwidth of each connection
     for i in range(len(one_table)):
-        S[count] = one_table[i]/(b_bound*10)
+        S[count] = one_table[i]/(b_bound)
         count += 1
     # offloading of each user
     for user in U:
@@ -63,111 +59,12 @@ def generate_state(two_table, U, E, usage_history, x_min, y_min):
         count += 1
     # location of the user
     for user in U:
-        S[count] = (user.loc[0][0] + abs(x_min))/1e5
-        S[count+1] = (user.loc[0][1] + abs(y_min))/1e5
-        count += 2   
-        
-#****************************observation-transformation***************************    
-    #S = transform_state(S, U, E, usage_history, "user_group")
-    S = transform_state(S, U, E, usage_history, "user_card_number")
-    #S = transform_state(S, U, E, usage_history, "user_device_type")
-    #S = transform_state(S, U, E, usage_history, "user_device_OS")
-    #S = transform_state(S, U, E, usage_history, "usage_history")
-    #S = transform_state(S, U, E, usage_history, "server_group")
-    #S = transform_state(S, U, E, usage_history, "server_board")
-    #S = transform_state(S, U, E, usage_history, "server_workload")
-    #S = transform_state(S, U, E, usage_history, "server_limit")
-    #S = transform_state(S, U, E, usage_history, "server_cost")
-    #S = transform_state(S, U, E, usage_history, "application_type")
-    #S = transform_state(S, U, E, usage_history, "task_latency")
-    #S = transform_state(S, U, E, usage_history, "task_priority")
-    
+        #dist = np.sqrt(np.sum(np.square(user.loc[0] - E[int(user.req.edge_id)].loc)))
+        S[count] = user.loc[0][0] + x_min/1e5
+        S[count+1] = user.loc[0][1] + y_min/1e5
+        count += 2
     return S
-    
-def transform_state(S, U, E, usage_history, concept): 
-    count = S.size
-    
-    if concept == "user_group":
-        S = np.pad(S, (0,  len(U)), 'constant')
-        for user in U:
-            S[count] = user.user_group
-            count += 1
-        
-    if concept == "user_card_number":
-        S = np.pad(S, (0,  len(U)), 'constant')
-        for user in U:
-            S[count] = user.user_card_number
-            count += 1
-        
-    if concept == "user_device_type":
-        S = np.pad(S, (0,  len(U)), 'constant')
-        for user in U:
-            S[count] = user.user_device_type
-            count += 1
 
-    if concept == "user_device_OS":
-        S = np.pad(S, (0,  len(U)), 'constant')
-        for user in U:
-            S[count] = user.user_device_OS
-            count += 1
-
-    if concept == "usage_history":
-        S = np.pad(S, (0,  len(U)), 'constant')
-        for user in U:
-            S[count] =  usage_history[user.user_id]
-            count += 1
-                
-    if concept == "server_group":
-        S = np.pad(S, (0,  len(E)), 'constant')
-        for edge in E:
-            S[count] = edge.server_group
-            count += 1
-        
-    if concept == "server_board":
-        S = np.pad(S, (0,  len(E)), 'constant')
-        for edge in E:
-            S[count] = edge.server_board
-            count += 1
-        
-    if concept == "server_workload":
-        S = np.pad(S, (0,  len(E)), 'constant')
-        for edge in E:
-            S[count] = len(edge.server_workload)
-            count += 1
-        
-    if concept == "server_limit":
-        S = np.pad(S, (0,  len(E)), 'constant')
-        for edge in E:
-            S[count] = edge.limit
-            count += 1
-        
-    if concept == "server_cost":
-        S = np.pad(S, (0,  len(E)), 'constant')
-        for edge in E:
-            S[count] = edge.server_cost
-            count += 1
-        
-    if concept == "application_type":
-        S = np.pad(S, (0,  len(U)), 'constant')
-        for user in U:
-            S[count] = user.req.tasktype.application_type
-            count += 1
-        
-    if concept == "task_latency":
-        S = np.pad(S, (0,  len(U)), 'constant')
-        for user in U:
-            S[count] = user.req.tasktype.task_latency
-            count += 1
-        
-    if concept == "task_priority":
-        S = np.pad(S, (0,  len(U)), 'constant')
-        for user in U:
-            S[count] = user.req.tasktype.task_priority
-            count += 1
-        
-    return S
-#****************************observation-transformation***************************
-   
 def generate_action(R, B, O):
     # resource
     a = np.zeros(USER_NUM + USER_NUM + EDGE_NUM * USER_NUM)
@@ -182,11 +79,10 @@ def generate_action(R, B, O):
     return a
 
 def get_minimum():
-    cal = np.zeros((1, 2))
     for data_num in range(TXT_NUM):
         data_name = str("%03d" % (data_num + 1))  # plus zero
         file_name = LOCATION + "_30sec_" + data_name + ".txt"
-        file_path = "data/" + LOCATION + "/" + file_name
+        file_path = LOCATION + "/" + file_name
         f = open(file_path, "r")
         f1 = f.readlines()
         # get line_num
@@ -201,7 +97,10 @@ def get_minimum():
             data[index][1] = line.split()[2]  # y
             index += 1
         # put data into the cal
-        cal = np.vstack((cal, data))
+        if data_num == 0:
+            cal = data
+        else:
+            cal = np.vstack((cal, data))
     return min(cal[:, 0]), min(cal[:, 1])
 
 def proper_edge_loc(edge_num):
@@ -215,7 +114,7 @@ def proper_edge_loc(edge_num):
         for data_num in range(base, base + group_num):
             data_name = str("%03d" % (data_num + 1))  # plus zero
             file_name = LOCATION + "_30sec_" + data_name + ".txt"
-            file_path = "data/" + LOCATION + "/" + file_name
+            file_path = LOCATION + "/" + file_name
             f = open(file_path, "r")
             f1 = f.readlines()
             # get line_num and initial data
@@ -240,20 +139,15 @@ def proper_edge_loc(edge_num):
 
 #############################UE###########################
 class UE():
-    def __init__(self, user_id, data_num):        
-        self.user_group = np.random.choice(np.arange(1, 4), p=[0.3, 0.3, 0.4])
-        generator = random.Random()
-        generator.seed()        # Seed from current time                
-        self.user_card_number = credit_card_number(generator, mastercardPrefixList, 8, 1)
-        self.user_device_type = random. randint(1,3) # 1 for smartphones, 2 for wearable gadgets, and 3 for laptops                
-        self.user_device_OS = random. randint(1,4) # 1 for Windows, 2 for Linux, 3 for Android, and 4 for iOS
+    def __init__(self, user_id, data_num):
         self.user_id = user_id  # number of the user
         self.loc = np.zeros((1, 2))
         self.num_step = 0  # the number of step
+
         # calculate num_step and define self.mob
         data_num = str("%03d" % (data_num + 1))  # plus zero
         file_name = LOCATION + "_30sec_" + data_num + ".txt"
-        file_path = "data/" + LOCATION + "/" + file_name
+        file_path = LOCATION + "/" + file_name
         f = open(file_path, "r")
         f1 = f.readlines()
         data = 0
@@ -334,34 +228,13 @@ class Request():
         # timer
         self.timer = 0
 
-        if self.tasktype.task_latency == 1: self.max_latency_time = 5 #10
-        if self.tasktype.task_latency == 2: self.max_latency_time = 10 #20
-        if self.tasktype.task_latency == 3: self.max_latency_time = 20 #30
-        
 class TaskType():
     def __init__(self):
-        ##Objection detection: VOC SSD300
+        ##Objection detection: VOC SSD512
         # transmission
         self.req_u2e_size = 300 * 300 * 3 * 1
         self.process_loading = 300 * 300 * 3 * 4
         self.req_e2u_size = 4 * 4 + 20 * 4
-        
-        if LATENCY_REQUIREMENTS == "simple scenario": self.application_type = np.random.choice(np.arange(1, 5), p=[0.05, 0.15, 0.55, 0.25]) #1 is remote healthcare, 2 is VoIP, 3 is data collection, and 4 is entertainment.        
-
-        if LATENCY_REQUIREMENTS == "medium scenario": self.application_type = np.random.choice(np.arange(1, 5), p=[0.1, 0.30, 0.35, 0.25]) #1 is remote healthcare, 2 is VoIP, 3 is data collection, and 4 is entertainment.        
-
-        if LATENCY_REQUIREMENTS == "hard scenario": self.application_type = np.random.choice(np.arange(1, 5), p=[0.20, 0.40, 0.10, 0.30]) #1 is remote healthcare, 2 is VoIP, 3 is data collection, and 4 is entertainment.       
-        
-        if self.application_type == 1: self.task_latency = 1 #remote health care is a very low latency task.
-        if self.application_type == 2: self.task_latency = 1 #VoIP is a very low latency task.        
-        if self.application_type == 3: self.task_latency = 3 #data collection is a high latency task.
-        if self.application_type == 4: self.task_latency = 2 #entertainment is a low latency task.
-
-        if self.application_type == 1: self.task_priority = 3 #remote health care with high priority.
-        if self.application_type == 2: self.task_priority = 2 #VoIP with middle priority.        
-        if self.application_type == 3: self.task_priority = 1 #data collection with low priority.
-        if self.application_type == 4: self.task_priority = 1 #entertainment with low priority.
-        
         # migration
         self.migration_size = 2e9
     def task_inf(self):
@@ -374,44 +247,35 @@ class EdgeServer():
         self.edge_id = edge_id  # edge server number
         self.loc = loc
         self.capability = 1e9 * 0.063
-        self.server_workload = []        
-        #self.limit = LIMIT
-        
-        if SERVER_LIMIT_RANGE == "low": self.limit = np.random.choice(np.arange(1, 5), p=[0.2, 0.3, 0.3, 0.2])
-        if SERVER_LIMIT_RANGE == "medium": self.limit = np.random.choice(np.arange(2, 6), p=[0.2, 0.3, 0.3, 0.2]) #server_limit for medium freq
-        if SERVER_LIMIT_RANGE == "high": self.limit = np.random.choice(np.arange(3, 7), p=[0.2, 0.3, 0.3, 0.2]) #server_limit for high freq
-      
-        self.connection_num = 0       
-        self.server_group = np.random.choice(np.arange(1, 4), p=[0.3, 0.3, 0.4])       
-        self.server_board = np.random.choice(np.arange(0, 2), p=[0.3, 0.7]) # 0 is equal to the low server board (lower than or equal to 800) and 1 is equal to the high server board (higher than 800)
-        self.server_cost = np.random.choice(np.arange(0, 2), p=[0.8, 0.2]) # 0 is equal to the free server and 1 is equal to the paid server
-
+        self.user_group = []
+        self.limit = LIMIT
+        self.connection_num = 0
     def maintain_request(self, R, U):
         for user in U:
             # the number of the connection user
             self.connection_num = 0
-            for user_id in self.server_workload:
+            for user_id in self.user_group:
                 if U[user_id].req.state != 6:
                     self.connection_num += 1
             # maintain the request
             if user.req.edge_id == self.edge_id and self.capability - R[user.user_id] > 0:
                 # maintain the preliminary connection
-                if user.req.user_id not in self.server_workload and self.connection_num+1 <= self.limit:
-                    # first time : do not belong to any edge(server_workload)
-                    self.server_workload.append(user.user_id)  # add to the server_workload
+                if user.req.user_id not in self.user_group and self.connection_num+1 <= self.limit:
+                    # first time : do not belong to any edge(user_group)
+                    self.user_group.append(user.user_id)  # add to the user_group
                     user.req.state = 0  # prepare to connect
                     # notify the request
                     user.req.edge_id = self.edge_id
                     user.req.edge_loc = self.loc
 
-                # dispatch the resource
+                # dispatch the resource   
                 user.req.resource = R[user.user_id]
                 self.capability -= R[user.user_id]
-                
+
     def migration_update(self, O, B, table, U, E):
 
         # maintain the the migration
-        for user_id in self.server_workload:
+        for user_id in self.user_group:
             # prepare to migration
             if U[user_id].req.edge_id != O[user_id]:
                 # initial
@@ -448,16 +312,16 @@ class EdgeServer():
                         else:
                             # the number of the connection user
                             target_connection_num = 0
-                            for target_user_id in E[target_edge].server_workload:
+                            for target_user_id in E[target_edge].user_group:
                                 if U[target_user_id].req.state != 6:
                                     target_connection_num += 1
                             #print("user", U[user_id].req.user_id, ":migration step 3")
                             # change to another edge
-                            if target_connection_num + 1 <= E[target_edge].limit and E[target_edge].capability - U[user_id].req.resource >= 0:
+                            if E[target_edge].capability - U[user_id].req.resource >= 0 and target_connection_num + 1 <= E[target_edge].limit:
                                 # register in the new edge
                                 E[target_edge].capability -= U[user_id].req.resource
-                                E[target_edge].server_workload.append(user_id)
-                                self.server_workload.remove(user_id)
+                                E[target_edge].user_group.append(user_id)
+                                self.user_group.remove(user_id)
                                 # update the request
                                 # id
                                 U[user_id].req.edge_id = E[target_edge].edge_id
@@ -502,11 +366,11 @@ class priority_policy():
         for edge in E:
             # count the number of the connection user
             connect_num = 0
-            for user_id in edge.server_workload:
+            for user_id in edge.user_group:
                 if U[user_id].req.state != 5 and U[user_id].req.state != 6:
                     connect_num += 1
             # dispatch the resource to the connection user
-            for user_id in edge.server_workload:
+            for user_id in edge.user_group:
                 # no need to provide resource to the disconnecting users
                 if U[user_id].req.state == 5 or U[user_id].req.state == 6:
                     R[user_id] = 0
@@ -526,11 +390,11 @@ class priority_policy():
             # provide bandwidth to migrate
             else:
                 # share bandwidth with user from migration edge
-                for user_id in E[target_edge].server_workload:
+                for user_id in E[target_edge].user_group:
                     if O[user_id] == ini_edge:
                         share_number += 1
                 # share bandwidth with the user from the original edge to migration edge
-                for ini_user_id in E[ini_edge].server_workload:
+                for ini_user_id in E[ini_edge].user_group:
                     if ini_user_id != user.req.user_id and O[ini_user_id] == target_edge:
                         share_number += 1
                 # allocate the bandwidth
@@ -547,21 +411,16 @@ class Env():
         self.edge_num = EDGE_NUM  # the number of servers
         self.user_num = USER_NUM  # the number of users
         # define environment object
-        self.reward_all = []
         self.U = []
         self.fin_req_count = 0
-        self.fail_req_count = 0
-        self.prev_fin_req_count = 0
-        self.prev_fail_req_count = 0
+        self.prev_count = 0
         self.rewards = 0
-        self.penalizations = 0
         self.R = np.zeros((self.user_num))
         self.O = np.zeros((self.user_num))
         self.B = np.zeros((self.user_num))
         self.table = BandwidthTable(self.edge_num)
         self.priority = np.zeros((self.user_num, self.edge_num))
         self. E = []
-        self.x_min, self.y_min = get_minimum()
 
         self.e_l = 0
         self.model = 0
@@ -569,7 +428,7 @@ class Env():
     def get_inf(self):
         # s_dim
         self.reset()
-        s = generate_state(self.table, self.U, self.E, self.usage_history, self.x_min, self.y_min)        
+        s = generate_state(self.table, self.U, self.E)
         s_dim = s.size
 
         # a_dim
@@ -588,19 +447,15 @@ class Env():
         task = TaskType()
         task_inf = task.task_inf()
 
-        return s_dim, r_dim, b_dim, o_dim, r_bound, b_bound, task_inf, LIMIT, LOCATION, MAX_REQ_TIMER, ALGORITHM, METHOD, CONCEPT, SERVER_LIMIT_RANGE, LATENCY_REQUIREMENTS
+        return s_dim, r_dim, b_dim, o_dim, r_bound, b_bound, task_inf, LIMIT, LOCATION
 
     def reset(self):
         # reset time
         self.time = 0
-        # reward
-        self.reward_all = []
         # user
         self.U = []
         self.fin_req_count = 0
-        self.fail_req_count = 0
-        self.prev_fin_req_count = 0
-        self.prev_fail_req_count = 0
+        self.prev_count = 0
         data_num = random.sample(list(range(TXT_NUM)), self.user_num)
         for i in range(self.user_num):
             new_user = UE(i, data_num[i])
@@ -615,9 +470,6 @@ class Env():
         self.table = BandwidthTable(self.edge_num)
         # server
         self.E = []
-      
-        self.usage_history = np.zeros((self.user_num))
-               
         e_l = proper_edge_loc(self.edge_num)
         for i in range(self.edge_num):
             new_e = EdgeServer(i, e_l[i, :])
@@ -634,60 +486,43 @@ class Env():
         self.O = self.model.indicate_edge(self.O, self.U, self.priority)
         for user in self.U:
             user.generate_request(self.O[user.user_id])
-        return generate_state(self.table, self.U, self.E, self.usage_history, self.x_min, self.y_min)
 
-    def ddpg_step_forward(self, a, r_dim, b_dim):
+
+    def priority_step_forward(self):
         # release the bandwidth
         self.table = BandwidthTable(self.edge_num)
         # release the resource
         for edge in self.E:
             edge.release()
 
-        # update the policy every second
         # resource update
-        self.R = a[:r_dim]
-        # bandwidth update
-        self.B = a[r_dim:r_dim + b_dim]
+        self.R = self.model.resource_update(self.R, self.E, self.U)
         # offloading update
-        base = r_dim + b_dim        
-        for user_id in range(self.user_num):
-            prob_weights = a[base:base + self.edge_num]
-            #print("user", user_id, ":", prob_weights)
-            action = np.random.choice(range(len(prob_weights)), p=prob_weights.ravel())  # select action w.r.t the actions prob
-            base += self.edge_num            
-               
-            self.O[user_id] = action
-            
+        self.priority = self.model.generate_priority(self.U, self.E, self.priority)
+        self.O = self.model.indicate_edge(self.O, self.U, self.priority)
+        # bandwidth update
+        self.B = self.model.bandwidth_update(self.O, self.table, self.B, self.U, self.E)
+
         # request update
         for user in self.U:
             # update the state of the request
             user.request_update()
-            if  user.req.timer >= user.req.max_latency_time:#MAX_REQ_TIMER:
-                self.fail_req_count += 1
-                user.generate_request(self.O[user.user_id])  # offload according to the priority
             # it has already finished the request
             if user.req.state == 4:
                 # rewards
-                self.fin_req_count += 1       
-
-                self.usage_history[user.user_id] += 1
-                
+                self.fin_req_count += 1
                 user.req.state = 5  # request turn to "disconnect"
-                self.E[int(user.req.edge_id)].server_workload.remove(user.req.user_id)
+                self.E[int(user.req.edge_id)].user_group.remove(user.req.user_id)
                 user.generate_request(self.O[user.user_id])  # offload according to the priority
-        
+
         # edge update
         for edge in self.E:
             edge.maintain_request(self.R, self.U)
             self.table = edge.migration_update(self.O, self.B, self.table, self.U, self.E)
 
         # rewards
-        self.rewards = self.fin_req_count - self.prev_fin_req_count
-        self.prev_fin_req_count = self.fin_req_count
-
-        # penalizations
-        self.penalizations = self.fail_req_count - self.prev_fail_req_count
-        self.prev_fail_req_count = self.fail_req_count 
+        self.rewards = self.fin_req_count - self.prev_count
+        self.prev_count = self.fin_req_count
 
         # every user start to move
         if self.time % self.step == 0:
@@ -696,27 +531,29 @@ class Env():
 
         # update time
         self.time += 1
+        return self.rewards
 
-        # return s_, r
-        return generate_state(self.table, self.U, self.E, self.usage_history, self.x_min, self.y_min), self.rewards, self.penalizations
-        
     def text_render(self):
-        print("R:", self.R)
-        print("B:", self.B)
-        """
-        base = USER_NUM +USER_NUM
-        for user in range(len(self.U)):
-            print("user", user, " offload probabilty:", a[base:base + self.edge_num])
-            base += self.edge_num
-        """
-        print("O:", self.O)
         for user in self.U:
-            print("user", user.user_id, "'s loc:\n", user.loc)
+            print("user", user.user_id, "'s loc:", user.loc)
             print("request state:", user.req.state)
             print("edge serve:", user.req.edge_id)
-        for edge in self.E:
-            print("edge", edge.edge_id, "server_workload:", edge.server_workload)
+        print("========================================================")
+
+        # show policy
+        print("priority:\n", self.priority)
+        print("O:", self.O)
+        print("R:", self.R)
+        print("B:", self.B)
+        print("========================================================")
+
+        # rewards
         print("reward:", self.rewards)
+        print("========================================================")
+
+        # connection state:
+        for edge in self.E:
+            print("edge", edge.edge_id, "user_group:", np.sort(edge.user_group))
         print("=====================update==============================")
 
     def initial_screen_demo(self):
@@ -724,111 +561,55 @@ class Env():
 
     def screen_demo(self):
         self.canvas.draw(self.E, self.U, self.O)
-        
-#********************credit-card-numbers-generator********************
-#reference: https://github.com/eye9poob/python
+#############################Run###########################
 
-visaPrefixList = [
-        ['4', '5', '3', '9'],
-        ['4', '5', '5', '6'],
-        ['4', '9', '1', '6'],
-        ['4', '5', '3', '2'],
-        ['4', '9', '2', '9'],
-        ['4', '0', '2', '4', '0', '0', '7', '1'],
-        ['4', '4', '8', '6'],
-        ['4', '7', '1', '6'],
-        ['4']]
+if __name__ == "__main__":
+    env = Env()
+    ep_reward = []
+    epoch_inf = []
+    for episode in range(LEARNING_MAX_EPISODE):
+        env.reset()
+        ep_reward.append(0)
+        # initialize render
+        if SCREEN_RENDER:
+            env.initial_screen_demo()
+        for j in range(MAX_EP_STEPS):
+            r = env.priority_step_forward()
+            ep_reward[episode] += r
+            # text render
+            if TEXT_RENDER and j % 30 == 0:
+                env.text_render()
+            # screen render
+            if SCREEN_RENDER:
+                env.screen_demo()
+        # close the window
+        if SCREEN_RENDER:
+            env.canvas.tk.destroy()
+        # end for loop
+        print("Episode %3d: " % episode + "%5d" % ep_reward[episode])
+        string = "Episode %3d: " % episode + "%5d" % ep_reward[episode]
+        epoch_inf.append(string)
 
-mastercardPrefixList = [
-        ['5', '1'], ['5', '2'], ['5', '3'], ['5', '4'], ['5', '5']]
-
-amexPrefixList = [['3', '4'], ['3', '7']]
-
-discoverPrefixList = [['6', '0', '1', '1']]
-
-dinersPrefixList = [
-        ['3', '0', '0'],
-        ['3', '0', '1'],
-        ['3', '0', '2'],
-        ['3', '0', '3'],
-        ['3', '6'],
-        ['3', '8']]
-
-enRoutePrefixList = [['2', '0', '1', '4'], ['2', '1', '4', '9']]
-
-jcbPrefixList = [['3', '5']]
-
-voyagerPrefixList = [['8', '6', '9', '9']]
-
-def completed_number(generator, prefix, length):
-    """
-    'prefix' is the start of the CC number as a string, any number of digits.
-    'length' is the length of the CC number to generate. Typically 13 or 16
-    """
-
-    ccnumber = prefix
-
-    # generate digits
-
-    while len(ccnumber) < (length - 1):
-        digit = str(generator.choice(range(0, 10)))
-        ccnumber.append(digit)
-
-    # Calculate sum
-
-    sum = 0
-    pos = 0
-
-    reversedCCnumber = []
-    reversedCCnumber.extend(ccnumber)
-    reversedCCnumber.reverse()
-
-    while pos < length - 1:
-
-        odd = int(reversedCCnumber[pos]) * 2
-        if odd > 9:
-            odd -= 9
-
-        sum += odd
-
-        if pos != (length - 2):
-
-            sum += int(reversedCCnumber[pos + 1])
-
-        pos += 2
-
-    # Calculate check digit
-
-    checkdigit = ((sum / 10 + 1) * 10 - sum) % 10
-
-    ccnumber.append(str(checkdigit))
-
-    return ''.join(ccnumber)
-
-
-def credit_card_number(rnd, prefixList, length, howMany):
-
-    ccnumber = copy.copy(rnd.choice(prefixList))
-    result = completed_number(rnd, ccnumber, length)
-
-    '''
-    result = []
-
-    while len(result) < howMany:
-
-        ccnumber = copy.copy(rnd.choice(prefixList))
-        result.append(completed_number(rnd, ccnumber, length))
-    '''
-    return result
-
-def output(title, numbers):
-
-    result = []
-    result.append(title)
-    result.append('-' * len(title))
-    result.append('\n'.join(numbers))
-    result.append('')
-
-    return '\n'.join(result)
-
-#********************credit-card-numbers-generator********************
+    # make directory
+    dir_name = "priority_" + str(USER_NUM) + 'u' + str(EDGE_NUM) + 'e' + str(LIMIT) + 'l' + LOCATION
+    os.makedirs(dir_name)
+    # plot the reward
+    fig_reward = plt.figure()
+    plt.plot([i + 1 for i in range(LEARNING_MAX_EPISODE)], ep_reward)
+    plt.xlabel("episode")
+    plt.ylabel("rewards")
+    fig_reward.savefig(dir_name + '/rewards.png')
+    # write the record
+    f = open(dir_name + '/record.txt', 'a')
+    f.write('time(s):' + str(MAX_EP_STEPS) + '\n\n')
+    f.write('user_number:' + str(USER_NUM) + '\n\n')
+    f.write('edge_number:' + str(EDGE_NUM) + '\n\n')
+    f.write('limit:' + str(LIMIT) + '\n\n')
+    for i in range(LEARNING_MAX_EPISODE):
+        f.write(epoch_inf[i] + '\n')
+    print("the mean of the rewards:", str(np.mean(ep_reward)))
+    f.write("the mean of the rewards:" + str(np.mean(ep_reward)) + '\n\n')
+    print("the standard deviation of the rewards:", str(np.std(ep_reward)))
+    f.write("the standard deviation of the rewards:" + str(np.std(ep_reward)) + '\n\n')
+    print("the range of the rewards:", str(max(ep_reward) - min(ep_reward)))
+    f.write("the range of the rewards:" + str(max(ep_reward) - min(ep_reward)) + '\n\n')

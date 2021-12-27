@@ -575,6 +575,48 @@ class Env():
         self.penalizations_task_prio_1 = 0
         self.penalizations_task_prio_2 = 0
         self.penalizations_task_prio_3 = 0
+        self.rewards_task_lat_1 = 0
+        self.rewards_task_lat_2 = 0
+        self.rewards_task_lat_3 = 0
+        self.fin_task_lat_1 = 0
+        self.fin_task_lat_2 = 0
+        self.fin_task_lat_3 = 0
+        self.prev_fin_task_lat_1 = 0
+        self.prev_fin_task_lat_2 = 0
+        self.prev_fin_task_lat_3 = 0
+        self.fail_task_lat_1 = 0
+        self.fail_task_lat_2 = 0
+        self.fail_task_lat_3 = 0
+        self.prev_fail_task_lat_1 = 0
+        self.prev_fail_task_lat_2 = 0
+        self.prev_fail_task_lat_3 = 0       
+        self.penalizations_task_lat_1 = 0
+        self.penalizations_task_lat_2 = 0
+        self.penalizations_task_lat_3 = 0
+        self.rewards_app_typ_1 = 0
+        self.rewards_app_typ_2 = 0
+        self.rewards_app_typ_3 = 0
+        self.rewards_app_typ_4 = 0
+        self.fin_app_typ_1 = 0
+        self.fin_app_typ_2 = 0
+        self.fin_app_typ_3 = 0
+        self.fin_app_typ_4 = 0
+        self.prev_fin_app_typ_1 = 0
+        self.prev_fin_app_typ_2 = 0
+        self.prev_fin_app_typ_3 = 0
+        self.prev_fin_app_typ_4 = 0
+        self.fail_app_typ_1 = 0
+        self.fail_app_typ_2 = 0
+        self.fail_app_typ_3 = 0
+        self.fail_app_typ_4 = 0
+        self.prev_fail_app_typ_1 = 0
+        self.prev_fail_app_typ_2 = 0
+        self.prev_fail_app_typ_3 = 0   
+        self.prev_fail_app_typ_4 = 0      
+        self.penalizations_app_typ_1 = 0
+        self.penalizations_app_typ_2 = 0
+        self.penalizations_app_typ_3 = 0
+        self.penalizations_app_typ_4 = 0
         self.R = np.zeros((self.user_num))
         self.O = np.zeros((self.user_num))
         self.B = np.zeros((self.user_num))
@@ -632,7 +674,35 @@ class Env():
         self.fail_task_prio_3 = 0
         self.prev_fail_task_prio_1 = 0
         self.prev_fail_task_prio_2 = 0
-        self.prev_fail_task_prio_3 = 0       
+        self.prev_fail_task_prio_3 = 0 
+        self.fin_task_lat_1 = 0
+        self.fin_task_lat_2 = 0
+        self.fin_task_lat_3 = 0
+        self.prev_fin_task_lat_1 = 0
+        self.prev_fin_task_lat_2 = 0
+        self.prev_fin_task_lat_3 = 0
+        self.fail_task_lat_1 = 0
+        self.fail_task_lat_2 = 0
+        self.fail_task_lat_3 = 0
+        self.prev_fail_task_lat_1 = 0
+        self.prev_fail_task_lat_2 = 0
+        self.prev_fail_task_lat_3 = 0   
+        self.fin_app_typ_1 = 0
+        self.fin_app_typ_2 = 0
+        self.fin_app_typ_3 = 0
+        self.fin_app_typ_4 = 0
+        self.prev_fin_app_typ_1 = 0
+        self.prev_fin_app_typ_2 = 0
+        self.prev_fin_app_typ_3 = 0
+        self.prev_fin_app_typ_4 = 0
+        self.fail_app_typ_1 = 0
+        self.fail_app_typ_2 = 0
+        self.fail_app_typ_3 = 0
+        self.fail_app_typ_4 = 0
+        self.prev_fail_app_typ_1 = 0
+        self.prev_fail_app_typ_2 = 0
+        self.prev_fail_app_typ_3 = 0   
+        self.prev_fail_app_typ_4 = 0          
         data_num = random.sample(list(range(TXT_NUM)), self.user_num)
         for i in range(self.user_num):
             new_user = UE(i, data_num[i])
@@ -697,11 +767,25 @@ class Env():
             if  user.req.timer >= user.req.max_latency_time:#MAX_REQ_TIMER:
                 self.fail_req_count += 1
                 if user.req.tasktype.task_priority == 1:
-                   self.fail_task_prio_1 += 1
+                    self.fail_task_prio_1 += 1
                 if user.req.tasktype.task_priority == 2:
-                   self.fail_task_prio_2 += 1
+                    self.fail_task_prio_2 += 1
                 if user.req.tasktype.task_priority == 3:
-                   self.fail_task_prio_3 += 1  
+                    self.fail_task_prio_3 += 1  
+                if user.req.tasktype.task_latency == 1:
+                    self.fail_task_lat_1 += 1
+                if user.req.tasktype.task_latency == 2:
+                    self.fail_task_lat_2 += 1
+                if user.req.tasktype.task_latency == 3:
+                    self.fail_task_lat_3 += 1 
+                if user.req.tasktype.application_type == 1:
+                    self.fail_app_typ_1 += 1
+                if user.req.tasktype.application_type == 2:
+                    self.fail_app_typ_2 += 1
+                if user.req.tasktype.application_type  == 3:
+                    self.fail_app_typ_3 += 1  
+                if user.req.tasktype.application_type  == 4:
+                    self.fail_app_typ_4 += 1   
                 user.generate_request(self.O[user.user_id])  # offload according to the priority
             # it has already finished the request
             if user.req.state == 4:
@@ -715,11 +799,27 @@ class Env():
                 user.generate_request(self.O[user.user_id])  # offload according to the priority
         
                 if user.req.tasktype.task_priority == 1:
-                   self.fin_task_prio_1 += 1
+                    self.fin_task_prio_1 += 1
                 if user.req.tasktype.task_priority == 2:
-                   self.fin_task_prio_2 += 1
+                    self.fin_task_prio_2 += 1
                 if user.req.tasktype.task_priority == 3:
-                   self.fin_task_prio_3 += 1                 
+                    self.fin_task_prio_3 += 1    
+                    
+                if user.req.tasktype.task_latency == 1:
+                    self.fin_task_lat_1 += 1
+                if user.req.tasktype.task_latency == 2:
+                    self.fin_task_lat_2 += 1
+                if user.req.tasktype.task_latency == 3:
+                    self.fin_task_lat_3 += 1   
+                    
+                if user.req.tasktype.application_type == 1:
+                    self.fin_app_typ_1 += 1
+                if user.req.tasktype.application_type == 2:
+                    self.fin_app_typ_2 += 1
+                if user.req.tasktype.application_type == 3:
+                    self.fin_app_typ_3 += 1    
+                if user.req.tasktype.application_type == 4:
+                    self.fin_app_typ_4 += 1            
       
         # edge update
         for edge in self.E:
@@ -739,6 +839,27 @@ class Env():
         self.rewards_task_prio_3 = self.fin_task_prio_3 - self.prev_fin_task_prio_3
         self.prev_fin_task_prio_3 = self.fin_task_prio_3 
 
+        self.rewards_task_lat_1 = self.fin_task_lat_1 - self.prev_fin_task_lat_1
+        self.prev_fin_task_lat_1 = self.fin_task_lat_1 
+        
+        self.rewards_task_lat_2 = self.fin_task_lat_2 - self.prev_fin_task_lat_2
+        self.prev_fin_task_lat_2 = self.fin_task_lat_2 
+        
+        self.rewards_task_lat_3 = self.fin_task_lat_3 - self.prev_fin_task_lat_3
+        self.prev_fin_task_lat_3 = self.fin_task_lat_3 
+        
+        self.rewards_app_typ_1 = self.fin_app_typ_1 - self.prev_fin_app_typ_1
+        self.prev_fin_app_typ_1 = self.fin_app_typ_1 
+        
+        self.rewards_app_typ_2 = self.fin_app_typ_2 - self.prev_fin_app_typ_2
+        self.prev_fin_app_typ_2 = self.fin_app_typ_2 
+        
+        self.rewards_app_typ_3 = self.fin_app_typ_3 - self.prev_fin_app_typ_3
+        self.prev_fin_app_typ_3 = self.fin_app_typ_3 
+        
+        self.rewards_app_typ_4 = self.fin_app_typ_4 - self.prev_fin_app_typ_4
+        self.prev_fin_app_typ_4 = self.fin_app_typ_4
+        
         # penalizations
         self.penalizations = self.fail_req_count - self.prev_fail_req_count
         self.prev_fail_req_count = self.fail_req_count 
@@ -751,7 +872,28 @@ class Env():
         
         self.penalizations_task_prio_3 = self.fail_task_prio_3 - self.prev_fail_task_prio_3
         self.prev_fail_task_prio_3 = self.fail_task_prio_3 
-                
+
+        self.penalizations_task_lat_1 = self.fail_task_lat_1 - self.prev_fail_task_lat_1
+        self.prev_fail_task_lat_1 = self.fail_task_lat_1 
+        
+        self.penalizations_task_lat_2 = self.fail_task_lat_2 - self.prev_fail_task_lat_2
+        self.prev_fail_task_lat_2 = self.fail_task_lat_2 
+        
+        self.penalizations_task_lat_3 = self.fail_task_lat_3 - self.prev_fail_task_lat_3
+        self.prev_fail_task_lat_3 = self.fail_task_lat_3 
+        
+        self.penalizations_app_typ_1 = self.fail_app_typ_1 - self.prev_fail_app_typ_1
+        self.prev_fail_app_typ_1 = self.fail_app_typ_1 
+        
+        self.penalizations_app_typ_2 = self.fail_app_typ_2 - self.prev_fail_app_typ_2
+        self.prev_fail_app_typ_2 = self.fail_app_typ_2 
+        
+        self.penalizations_app_typ_3 = self.fail_app_typ_3 - self.prev_fail_app_typ_3
+        self.prev_fail_app_typ_3 = self.fail_app_typ_3 
+        
+        self.penalizations_app_typ_4 = self.fail_app_typ_4 - self.prev_fail_app_typ_4
+        self.prev_fail_app_typ_4 = self.fail_app_typ_4 
+                        
         # every user start to move
         if self.time % self.step == 0:
             for user in self.U:
@@ -761,7 +903,7 @@ class Env():
         self.time += 1
 
         # return s_, r
-        return generate_state(self.table, self.U, self.E, self.usage_history, self.x_min, self.y_min), self.rewards, self.penalizations, self.rewards_task_prio_1, self.rewards_task_prio_2, self.rewards_task_prio_3, self.penalizations_task_prio_1, self.penalizations_task_prio_2, self.penalizations_task_prio_3
+        return generate_state(self.table, self.U, self.E, self.usage_history, self.x_min, self.y_min), self.rewards, self.penalizations, self.rewards_task_prio_1, self.rewards_task_prio_2, self.rewards_task_prio_3, self.penalizations_task_prio_1, self.penalizations_task_prio_2, self.penalizations_task_prio_3, self.rewards_task_lat_1, self.rewards_task_lat_2, self.rewards_task_lat_3, self.penalizations_task_lat_1, self.penalizations_task_lat_2, self.penalizations_task_lat_3, self.rewards_app_typ_1, self.rewards_app_typ_2, self.rewards_app_typ_3, self.rewards_app_typ_4, self.penalizations_app_typ_1, self.penalizations_app_typ_2, self.penalizations_app_typ_3, self.penalizations_app_typ_4
         
     def text_render(self):
         print("R:", self.R)

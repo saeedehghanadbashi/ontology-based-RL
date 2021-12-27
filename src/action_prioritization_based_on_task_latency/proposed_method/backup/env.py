@@ -4,11 +4,15 @@ import math
 import matplotlib.pyplot as plt
 import os
 from render import Demo
+
+#****************************PMC-start***************************
+import random
 import copy
+#****************************PMC-end***************************
 
 #####################  hyper parameters  ####################
 LOCATION = "KAIST"
-USER_NUM = 10 #50 #25 #10
+USER_NUM = 25 #10
 EDGE_NUM = 10
 LIMIT = 4
 MAX_EP_STEPS = 1000 #3000
@@ -16,13 +20,6 @@ TXT_NUM = 92
 r_bound = 1e9 * 0.063
 b_bound = 1e9
 
-MAX_REQ_TIMER = 5 #10 #25 #5
-ALGORITHM = "prop"
-METHOD = "AP"
-CONCEPT = "task_priority"
-SERVER_LIMIT_RANGE = "low"
-
-LATENCY_REQUIREMENTS = "simple scenario"
 #####################  function  ####################
 def trans_rate(user_loc, edge_loc):
     B = 2e6
@@ -67,7 +64,8 @@ def generate_state(two_table, U, E, usage_history, x_min, y_min):
         S[count+1] = (user.loc[0][1] + abs(y_min))/1e5
         count += 2   
         
-#****************************observation-transformation***************************    
+#****************************PMC-start-state-transformation***************************    
+    #print("state before transformation: ", S)    
     #S = transform_state(S, U, E, usage_history, "user_group")
     #S = transform_state(S, U, E, usage_history, "user_card_number")
     #S = transform_state(S, U, E, usage_history, "user_device_type")
@@ -75,16 +73,19 @@ def generate_state(two_table, U, E, usage_history, x_min, y_min):
     #S = transform_state(S, U, E, usage_history, "usage_history")
     #S = transform_state(S, U, E, usage_history, "server_group")
     #S = transform_state(S, U, E, usage_history, "server_board")
-    #S = transform_state(S, U, E, usage_history, "server_workload")
-    #S = transform_state(S, U, E, usage_history, "server_limit")
+    S = transform_state(S, U, E, usage_history, "server_workload")
+    S = transform_state(S, U, E, usage_history, "server_limit")
     #S = transform_state(S, U, E, usage_history, "server_cost")
     #S = transform_state(S, U, E, usage_history, "application_type")
     #S = transform_state(S, U, E, usage_history, "task_latency")
-    S = transform_state(S, U, E, usage_history, "task_priority")
-    
+    #S = transform_state(S, U, E, usage_history, "task_priority")
+    #print("state after transformation: ", S)
+#****************************PMC-end-state-transformation***************************  
     return S
     
+#****************************PMC-start-state-transformation***************************
 def transform_state(S, U, E, usage_history, concept): 
+    #print("size of state-before transformation: ", S.size)
     count = S.size
     
     if concept == "user_group":
@@ -92,85 +93,94 @@ def transform_state(S, U, E, usage_history, concept):
         for user in U:
             S[count] = user.user_group
             count += 1
+        #print("size of state-after transformation: ", S.size)
         
     if concept == "user_card_number":
         S = np.pad(S, (0,  len(U)), 'constant')
         for user in U:
             S[count] = user.user_card_number
             count += 1
+        #print("size of state-after transformation: ", S.size)
         
     if concept == "user_device_type":
         S = np.pad(S, (0,  len(U)), 'constant')
         for user in U:
             S[count] = user.user_device_type
             count += 1
+        #print("size of state-after transformation: ", S.size)
 
     if concept == "user_device_OS":
         S = np.pad(S, (0,  len(U)), 'constant')
         for user in U:
             S[count] = user.user_device_OS
             count += 1
+        #print("size of state-after transformation: ", S.size)
 
     if concept == "usage_history":
         S = np.pad(S, (0,  len(U)), 'constant')
         for user in U:
             S[count] =  usage_history[user.user_id]
             count += 1
+        #print("size of state-after transformation: ", S.size)
                 
     if concept == "server_group":
         S = np.pad(S, (0,  len(E)), 'constant')
         for edge in E:
             S[count] = edge.server_group
             count += 1
+        #print("size of state-after transformation: ", S.size)
         
     if concept == "server_board":
         S = np.pad(S, (0,  len(E)), 'constant')
         for edge in E:
             S[count] = edge.server_board
             count += 1
+        #print("size of state-after transformation: ", S.size)
         
     if concept == "server_workload":
         S = np.pad(S, (0,  len(E)), 'constant')
         for edge in E:
-            connection_num = 0
-            for user_id in edge.server_workload:
-                if U[user_id].req.state != 6:
-                    connection_num += 1
-            S[count] = connection_num
+            S[count] = len(edge.server_workload)
             count += 1
+        #print("size of state-after transformation: ", S.size)
         
     if concept == "server_limit":
         S = np.pad(S, (0,  len(E)), 'constant')
         for edge in E:
             S[count] = edge.limit
             count += 1
+        #print("size of state-after transformation: ", S.size)
         
     if concept == "server_cost":
         S = np.pad(S, (0,  len(E)), 'constant')
         for edge in E:
             S[count] = edge.server_cost
             count += 1
+        #print("size of state-after transformation: ", S.size)
         
     if concept == "application_type":
         S = np.pad(S, (0,  len(U)), 'constant')
         for user in U:
             S[count] = user.req.tasktype.application_type
             count += 1
+        #print("size of state-after transformation: ", S.size)
         
     if concept == "task_latency":
         S = np.pad(S, (0,  len(U)), 'constant')
         for user in U:
             S[count] = user.req.tasktype.task_latency
             count += 1
+        #print("size of state-after transformation: ", S.size)
         
     if concept == "task_priority":
         S = np.pad(S, (0,  len(U)), 'constant')
         for user in U:
             S[count] = user.req.tasktype.task_priority
             count += 1
+        #print("size of state-after transformation: ", S.size)
         
     return S
-#****************************observation_transformation***************************
+#****************************PMC-end-state-transformation***************************
    
 def generate_action(R, B, O):
     # resource
@@ -244,16 +254,100 @@ def proper_edge_loc(edge_num):
 
 #############################UE###########################
 class UE():
-    def __init__(self, user_id, data_num):            
+    def __init__(self, user_id, data_num):
+    
+#****************************PMC-start-adding-user_group***************************
+        
         self.user_group = np.random.choice(np.arange(1, 4), p=[0.3, 0.3, 0.4])
+        
+        #print(user_id, " ", self.user_group) 
+        
+        '''
+	0   2
+	1   3
+	2   1
+	3   2
+	4   3
+	5   3
+	6   3
+	7   3
+	8   2
+	9   1
+	
+	3 -> 5
+	2 -> 3
+	1 -> 2
+        '''
+#****************************PMC-end-adding-user_group***************************
+
+#****************************PMC-start-adding-user_card_number*******************
+
         generator = random.Random()
-        generator.seed()        # Seed from current time                
+        generator.seed()        # Seed from current time        
+        
         self.user_card_number = credit_card_number(generator, mastercardPrefixList, 16, 1)
-        self.user_device_type = random. randint(1,3) # 1 for smartphones, 2 for wearable gadgets, and 3 for laptops                
+        
+        #print(user_id, " ", self.user_card_number) 
+        
+        '''
+	0   5441189301408470.0
+	1   5397709410016770.0
+	2   5497971715232440.0
+	3   5375247678243680.0
+	4   5476678473475530.0
+	5   5597598108810370.0
+	6   5233807811025120.0
+	7   5131504085133750.0
+	8   5493875548638190.0
+	9   5153358991245610.0
+
+        '''
+#****************************PMC-end-adding-user_card_number***********************
+
+#****************************PMC-start-adding-user_device_type*******************
+
+        self.user_device_type = random. randint(1,3) # 1 for smartphones, 2 for wearable gadgets, and 3 for laptops
+                
+        #print(user_id, " ", self.user_device_type) 
+        
+        '''
+	0   1
+	1   2
+	2   2
+	3   2
+	4   1
+	5   2
+	6   2
+	7   1
+	8   1
+	9   3
+        '''
+#****************************PMC-end-adding-user_device_type***********************
+
+#****************************PMC-start-adding-user_device_OS*******************
+
         self.user_device_OS = random. randint(1,4) # 1 for Windows, 2 for Linux, 3 for Android, and 4 for iOS
+                
+        #print(user_id, " ", self.user_device_OS) 
+        
+        '''
+	0   1
+	1   2
+	2   4
+	3   2
+	4   2
+	5   2
+	6   1
+	7   1
+	8   4
+	9   2
+        '''
+#****************************PMC-end-adding-user_device_OS***********************
+
         self.user_id = user_id  # number of the user
         self.loc = np.zeros((1, 2))
         self.num_step = 0  # the number of step
+
         # calculate num_step and define self.mob
         data_num = str("%03d" % (data_num + 1))  # plus zero
         file_name = LOCATION + "_30sec_" + data_num + ".txt"
@@ -337,10 +431,6 @@ class Request():
         self.last_offlaoding = 0
         # timer
         self.timer = 0
-        
-        if self.tasktype.task_latency == 1: self.max_latency_time = 5 #10
-        if self.tasktype.task_latency == 2: self.max_latency_time = 10 #20
-        if self.tasktype.task_latency == 3: self.max_latency_time = 20 #30
 
 class TaskType():
     def __init__(self):
@@ -348,24 +438,101 @@ class TaskType():
         # transmission
         self.req_u2e_size = 300 * 300 * 3 * 1
         self.process_loading = 300 * 300 * 3 * 4
-        self.req_e2u_size = 4 * 4 + 20 * 4   
-             
-        if LATENCY_REQUIREMENTS == "simple scenario": self.application_type = np.random.choice(np.arange(1, 5), p=[0.05, 0.15, 0.55, 0.25]) #1 is remote healthcare, 2 is VoIP, 3 is data collection, and 4 is entertainment.        
-
-        if LATENCY_REQUIREMENTS == "medium scenario": self.application_type = np.random.choice(np.arange(1, 5), p=[0.1, 0.30, 0.35, 0.25]) #1 is remote healthcare, 2 is VoIP, 3 is data collection, and 4 is entertainment.        
-
-        if LATENCY_REQUIREMENTS == "hard scenario": self.application_type = np.random.choice(np.arange(1, 5), p=[0.20, 0.40, 0.10, 0.30]) #1 is remote healthcare, 2 is VoIP, 3 is data collection, and 4 is entertainment.       
+        self.req_e2u_size = 4 * 4 + 20 * 4
         
+#****************************PMC-start-adding-application_type*******************
+
+        #Simple scenario
+        self.application_type = np.random.choice(np.arange(1, 5), p=[0.05, 0.15, 0.55, 0.25]) #1 is remote healthcare, 2 is VoIP, 3 is data collection, and 4 is entertainment.
+        
+        #Medium scenario
+        #self.application_type = np.random.choice(np.arange(1, 5), p=[0.1, 0.30, 0.35, 0.25]) #1 is remote healthcare, 2 is VoIP, 3 is data collection, and 4 is entertainment.
+        
+        #Hard scenario
+        #self.application_type = np.random.choice(np.arange(1, 5), p=[0.20, 0.40, 0.10, 0.30]) #1 is remote healthcare, 2 is VoIP, 3 is data collection, and 4 is entertainment.       
+        
+        #print("application_type: ", self.application_type) 
+        
+        '''
+	application_type:  3
+	application_type:  3
+	application_type:  2
+	application_type:  2
+	application_type:  2
+	application_type:  2
+	application_type:  1
+	application_type:  4
+	application_type:  3
+	application_type:  4
+	application_type:  3
+	application_type:  3
+	application_type:  3
+	application_type:  3
+	application_type:  4
+        '''
+
+#****************************PMC-end-adding-application_type*******************
+
+#****************************PMC-start-adding-task_latency*******************
+
         if self.application_type == 1: self.task_latency = 1 #remote health care is a very low latency task.
         if self.application_type == 2: self.task_latency = 1 #VoIP is a very low latency task.        
         if self.application_type == 3: self.task_latency = 3 #data collection is a high latency task.
         if self.application_type == 4: self.task_latency = 2 #entertainment is a low latency task.
+                        
+        #print("task latency: ", self.task_latency) 
+        
+        '''
+	task latency:  1
+	task latency:  3
+	task latency:  2
+	task latency:  3
+	task latency:  3
+	task latency:  3
+	task latency:  3
+	task latency:  2
+	task latency:  3
+	task latency:  3
+	task latency:  3
+	task latency:  3
+	task latency:  3
+	task latency:  2
+	task latency:  3
+	task latency:  2
+	task latency:  2
+        '''
+
+#****************************PMC-end-adding-task_latency*******************
+
+#****************************PMC-start-adding-task_priority*******************
 
         if self.application_type == 1: self.task_priority = 3 #remote health care with high priority.
         if self.application_type == 2: self.task_priority = 2 #VoIP with middle priority.        
         if self.application_type == 3: self.task_priority = 1 #data collection with low priority.
         if self.application_type == 4: self.task_priority = 1 #entertainment with low priority.
-                                
+                        
+        #print("task priority: ", self.task_priority) 
+        
+        '''
+	task priority:  1
+	task priority:  1
+	task priority:  1
+	task priority:  1
+	task priority:  3
+	task priority:  3
+	task priority:  1
+	task priority:  1
+	task priority:  1
+	task priority:  2
+	task priority:  1
+	task priority:  3
+	task priority:  1
+	task priority:  1
+	task priority:  1
+        '''
+
+#****************************PMC-end-adding-task_priority*******************
+        
         # migration
         self.migration_size = 2e9
     def task_inf(self):
@@ -381,99 +548,180 @@ class EdgeServer():
         self.server_workload = []        
         #self.limit = LIMIT
         
-        if SERVER_LIMIT_RANGE == "low": self.limit = np.random.choice(np.arange(1, 5), p=[0.2, 0.3, 0.3, 0.2])
-        if SERVER_LIMIT_RANGE == "medium": self.limit = np.random.choice(np.arange(2, 6), p=[0.2, 0.3, 0.3, 0.2]) #server_limit for medium freq
-        if SERVER_LIMIT_RANGE == "high": self.limit = np.random.choice(np.arange(3, 7), p=[0.2, 0.3, 0.3, 0.2]) #server_limit for high freq
-     
-        self.connection_num = 0        
-        self.server_group = np.random.choice(np.arange(1, 4), p=[0.3, 0.3, 0.4])        
-        self.server_board = np.random.choice(np.arange(0, 2), p=[0.3, 0.7]) # 0 is equal to the low server board and 1 is equal to the high server board       
-        self.server_cost = np.random.choice(np.arange(0, 2), p=[0.8, 0.2]) # 0 is equal to the free server and 1 is equal to the paid server         
+#****************************PMC-start-adding-server_limit***************************
 
-    def maintain_request(self, R, U, users_prioritization):
-        for i in range(USER_NUM):    
-            for user in U:
-                if user.user_id == users_prioritization[i][0]:
-                    # the number of the connection user
-                    self.connection_num = 0
-                    for user_id in self.server_workload:
-                        if U[user_id].req.state != 6:
-                            self.connection_num += 1
-                    # maintain the request
-                    if user.req.edge_id == self.edge_id and self.capability - R[user.user_id] > 0:
-                        # maintain the preliminary connection
-                        if user.req.user_id not in self.server_workload and self.connection_num+1 <= self.limit:
-                            # first time : do not belong to any edge(server_workload)
-                            self.server_workload.append(user.user_id)  # add to the server_workload
-                            user.req.state = 0  # prepare to connect
-                            # notify the request
-                            user.req.edge_id = self.edge_id
-                            user.req.edge_loc = self.loc
+        self.limit = np.random.choice(np.arange(1, 5), p=[0.2, 0.3, 0.3, 0.2])
+        #print(edge_id, " ", self.limit) 
 
-                        # dispatch the resource
-                        user.req.resource = R[user.user_id]
-                        self.capability -= R[user.user_id]
+        '''
+	0   4
+	1   3
+	2   4
+	3   2
+	4   3
+	5   3
+	6   1
+	7   1
+	8   4
+	9   3
+	
+	4 -> 3
+	3 -> 4
+	2 -> 1
+	1 -> 2
+        '''        
+#****************************PMC-end-adding-server_limit***************************
+      
+        self.connection_num = 0
+        
+#****************************PMC-start-adding-server_group***************************
+        self.server_group = np.random.choice(np.arange(1, 4), p=[0.3, 0.3, 0.4])
+        
+        #print(edge_id, " ", self.server_group) 
+        
+        '''
+	0   1
+	1   2
+	2   3
+	3   2
+	4   3
+	5   2
+	6   2
+	7   2
+	8   3
+	9   2
+	
+	3 -> 3
+	2 -> 6
+	1 -> 1
+        '''
+#****************************PMC-end-adding-server_group***************************
 
-    def migration_update(self, O, B, table, U, E, users_prioritization):
-        for i in range(USER_NUM):  
-        # maintain the the migration
+#****************************PMC-start-adding-server_board***************************
+        self.server_board = np.random.choice(np.arange(0, 2), p=[0.3, 0.7]) # 0 is equal to the low server board (lower than or equal to 800) and 1 is equal to the high server board (higher than 800)
+        
+        #print(edge_id, " ", self.server_board) 
+        
+        '''
+	0   1
+	1   0
+	2   1
+	3   1
+	4   0
+	5   1
+	6   0
+	7   1
+	8   1
+	9   1
+
+	0 -> 3
+	1-> 7
+        '''
+#****************************PMC-end-adding-server_board***************************
+
+#****************************PMC-start-adding-server_cost***************************
+        self.server_cost = np.random.choice(np.arange(0, 2), p=[0.8, 0.2]) # 0 is equal to the free server and 1 is equal to the paid serverj, 
+        
+        #print(edge_id, " ", self.server_cost) 
+        
+        '''
+	0   1
+	1   0
+	2   0
+	3   0
+	4   0
+	5   0
+	6   1
+	7   0
+	8   0
+	9   0
+
+	0 -> 8
+	1-> 2
+        '''
+#****************************PMC-end-adding-server_cost***************************
+
+    def maintain_request(self, R, U):
+        for user in U:
+            # the number of the connection user
+            self.connection_num = 0
             for user_id in self.server_workload:
-                if user_id == users_prioritization[i][0]:
-                    # prepare to migration
-                    if U[user_id].req.edge_id != O[user_id]:
-                    # initial
-                        ini_edge = int(U[user_id].req.edge_id)
-                        target_edge = int(O[user_id])
-                        if table[ini_edge][target_edge] - B[user_id] >= 0:
-                            # on the way to migration, but offloading to another edge computer(step 1)
-                            if U[user_id].req.state == 6 and target_edge != U[user_id].req.last_offlaoding:
-                                # reduce the bandwidth
-                                table[ini_edge][target_edge] -= B[user_id]
-                                # start migration
-                                U[user_id].req.mig_size = U[user_id].req.tasktype.migration_size
-                                U[user_id].req.mig_size -= B[user_id]
-                                #print("user", U[user_id].req.user_id, ":migration step 1")
-                            # first try to migration(step 1)
-                            elif U[user_id].req.state != 6:
-                                table[ini_edge][target_edge] -= B[user_id]
-                                # start migration
-                                U[user_id].req.mig_size = U[user_id].req.tasktype.migration_size
-                                U[user_id].req.mig_size -= B[user_id]
-                                # store the pre state
-                                U[user_id].req.pre_state = U[user_id].req.state
-                                # on the way to migration, disconnect to the old edge
-                                U[user_id].req.state = 6
-                                #print("user", U[user_id].req.user_id, ":migration step 1")
-                            elif U[user_id].req.state == 6 and target_edge == U[user_id].req.last_offlaoding:
-                                # keep migration(step 2)
-                                if U[user_id].req.mig_size > 0:
-                                    # reduce the bandwidth
-                                    table[ini_edge][target_edge] -= B[user_id]
-                                    U[user_id].req.mig_size -= B[user_id]
-                                    #print("user", U[user_id].req.user_id, ":migration step 2")
-                                # end the migration(step 3)
-                                else:
-                                    # the number of the connection user
-                                    target_connection_num = 0
-                                    for target_user_id in E[target_edge].server_workload:
-                                        if U[target_user_id].req.state != 6:
-                                            target_connection_num += 1
-                                    #print("user", U[user_id].req.user_id, ":migration step 3")
-                                    # change to another edge
-                                    if  target_connection_num + 1 <= E[target_edge].limit and E[target_edge].capability - U[user_id].req.resource >= 0:
-                                        # register in the new edge
-                                        E[target_edge].capability -= U[user_id].req.resource
-                                        E[target_edge].server_workload.append(user_id)
-                                        self.server_workload.remove(user_id)
-                                        # update the request
-                                        # id
-                                        U[user_id].req.edge_id = E[target_edge].edge_id
-                                        U[user_id].req.edge_loc = E[target_edge].loc
-                                        # release the pre-state, continue to transmission process
-                                        U[user_id].req.state = U[user_id].req.pre_state
-                                        #print("user", U[user_id].req.user_id, ":migration finish")
-                    #store pre_offloading
-                    U[user_id].req.last_offlaoding = int(O[user_id])
+                if U[user_id].req.state != 6:
+                    self.connection_num += 1
+            # maintain the request
+            if user.req.edge_id == self.edge_id and self.capability - R[user.user_id] > 0:
+                # maintain the preliminary connection
+                if user.req.user_id not in self.server_workload and self.connection_num+1 <= self.limit:
+                    # first time : do not belong to any edge(server_workload)
+                    self.server_workload.append(user.user_id)  # add to the server_workload
+                    user.req.state = 0  # prepare to connect
+                    # notify the request
+                    user.req.edge_id = self.edge_id
+                    user.req.edge_loc = self.loc
+
+                # dispatch the resource
+                user.req.resource = R[user.user_id]
+                self.capability -= R[user.user_id]
+
+    def migration_update(self, O, B, table, U, E):
+
+        # maintain the the migration
+        for user_id in self.server_workload:
+            # prepare to migration
+            if U[user_id].req.edge_id != O[user_id]:
+                # initial
+                ini_edge = int(U[user_id].req.edge_id)
+                target_edge = int(O[user_id])
+                if table[ini_edge][target_edge] - B[user_id] >= 0:
+                    # on the way to migration, but offloading to another edge computer(step 1)
+                    if U[user_id].req.state == 6 and target_edge != U[user_id].req.last_offlaoding:
+                        # reduce the bandwidth
+                        table[ini_edge][target_edge] -= B[user_id]
+                        # start migration
+                        U[user_id].req.mig_size = U[user_id].req.tasktype.migration_size
+                        U[user_id].req.mig_size -= B[user_id]
+                        #print("user", U[user_id].req.user_id, ":migration step 1")
+                    # first try to migration(step 1)
+                    elif U[user_id].req.state != 6:
+                        table[ini_edge][target_edge] -= B[user_id]
+                        # start migration
+                        U[user_id].req.mig_size = U[user_id].req.tasktype.migration_size
+                        U[user_id].req.mig_size -= B[user_id]
+                        # store the pre state
+                        U[user_id].req.pre_state = U[user_id].req.state
+                        # on the way to migration, disconnect to the old edge
+                        U[user_id].req.state = 6
+                        #print("user", U[user_id].req.user_id, ":migration step 1")
+                    elif U[user_id].req.state == 6 and target_edge == U[user_id].req.last_offlaoding:
+                        # keep migration(step 2)
+                        if U[user_id].req.mig_size > 0:
+                            # reduce the bandwidth
+                            table[ini_edge][target_edge] -= B[user_id]
+                            U[user_id].req.mig_size -= B[user_id]
+                            #print("user", U[user_id].req.user_id, ":migration step 2")
+                        # end the migration(step 3)
+                        else:
+                            # the number of the connection user
+                            target_connection_num = 0
+                            for target_user_id in E[target_edge].server_workload:
+                                if U[target_user_id].req.state != 6:
+                                    target_connection_num += 1
+                            #print("user", U[user_id].req.user_id, ":migration step 3")
+                            # change to another edge
+                            if E[target_edge].capability - U[user_id].req.resource >= 0 and target_connection_num + 1 <= E[target_edge].limit:
+                                # register in the new edge
+                                E[target_edge].capability -= U[user_id].req.resource
+                                E[target_edge].server_workload.append(user_id)
+                                self.server_workload.remove(user_id)
+                                # update the request
+                                # id
+                                U[user_id].req.edge_id = E[target_edge].edge_id
+                                U[user_id].req.edge_loc = E[target_edge].loc
+                                # release the pre-state, continue to transmission process
+                                U[user_id].req.state = U[user_id].req.pre_state
+                                #print("user", U[user_id].req.user_id, ":migration finish")
+            #store pre_offloading
+            U[user_id].req.last_offlaoding = int(O[user_id])
 
         return table
 
@@ -557,29 +805,8 @@ class Env():
         self.reward_all = []
         self.U = []
         self.fin_req_count = 0
-        self.fail_req_count = 0
-        self.prev_fin_req_count = 0
-        self.prev_fail_req_count = 0
+        self.prev_count = 0
         self.rewards = 0
-        self.penalizations = 0
-        self.rewards_task_prio_1 = 0
-        self.rewards_task_prio_2 = 0
-        self.rewards_task_prio_3 = 0
-        self.fin_task_prio_1 = 0
-        self.fin_task_prio_2 = 0
-        self.fin_task_prio_3 = 0
-        self.prev_fin_task_prio_1 = 0
-        self.prev_fin_task_prio_2 = 0
-        self.prev_fin_task_prio_3 = 0
-        self.fail_task_prio_1 = 0
-        self.fail_task_prio_2 = 0
-        self.fail_task_prio_3 = 0
-        self.prev_fail_task_prio_1 = 0
-        self.prev_fail_task_prio_2 = 0
-        self.prev_fail_task_prio_3 = 0       
-        self.penalizations_task_prio_1 = 0
-        self.penalizations_task_prio_2 = 0
-        self.penalizations_task_prio_3 = 0
         self.R = np.zeros((self.user_num))
         self.O = np.zeros((self.user_num))
         self.B = np.zeros((self.user_num))
@@ -613,7 +840,7 @@ class Env():
         task = TaskType()
         task_inf = task.task_inf()
 
-        return s_dim, r_dim, b_dim, o_dim, r_bound, b_bound, task_inf, LIMIT, LOCATION, MAX_REQ_TIMER, ALGORITHM, METHOD, CONCEPT, SERVER_LIMIT_RANGE, LATENCY_REQUIREMENTS
+        return s_dim, r_dim, b_dim, o_dim, r_bound, b_bound, task_inf, LIMIT, LOCATION
 
     def reset(self):
         # reset time
@@ -623,21 +850,7 @@ class Env():
         # user
         self.U = []
         self.fin_req_count = 0
-        self.fail_req_count = 0
-        self.prev_fin_req_count = 0
-        self.prev_fail_req_count = 0
-        self.fin_task_prio_1 = 0
-        self.fin_task_prio_2 = 0
-        self.fin_task_prio_3 = 0
-        self.prev_fin_task_prio_1 = 0
-        self.prev_fin_task_prio_2 = 0
-        self.prev_fin_task_prio_3 = 0
-        self.fail_task_prio_1 = 0
-        self.fail_task_prio_2 = 0
-        self.fail_task_prio_3 = 0
-        self.prev_fail_task_prio_1 = 0
-        self.prev_fail_task_prio_2 = 0
-        self.prev_fail_task_prio_3 = 0 
+        self.prev_count = 0
         data_num = random.sample(list(range(TXT_NUM)), self.user_num)
         for i in range(self.user_num):
             new_user = UE(i, data_num[i])
@@ -652,8 +865,12 @@ class Env():
         self.table = BandwidthTable(self.edge_num)
         # server
         self.E = []
+
+#****************************PMC-start-adding-usage_history***************************  
       
-        self.usage_history = np.zeros((self.user_num))        
+        self.usage_history = np.zeros((self.user_num))
+        
+#****************************PMC-end-adding-usage_history***************************
         
         e_l = proper_edge_loc(self.edge_num)
         for i in range(self.edge_num):
@@ -687,86 +904,65 @@ class Env():
         self.B = a[r_dim:r_dim + b_dim]
         # offloading update
         base = r_dim + b_dim
-        s_ = generate_state(self.table, self.U, self.E, self.usage_history, self.x_min, self.y_min)       
         
+        s_ = generate_state(self.table, self.U, self.E, self.usage_history, self.x_min, self.y_min)        
+        #print("start of selecting action")
         for user_id in range(self.user_num):
-            prob_weights = a[base:base + self.edge_num]                                         
+            prob_weights = a[base:base + self.edge_num]   
+            
+                            
+#****************************PMC-start-action_masking***************************
 
+            prob_weights = action_masking(s_, prob_weights, "server_limit")
+                
+#****************************PMC-end-action_masking***************************
+        
             action = np.random.choice(range(len(prob_weights)), p=prob_weights.ravel())  # select action w.r.t the actions prob
-            base += self.edge_num 
-                                     
-            self.O[user_id] = action 
- 
+            base += self.edge_num     
+                                  
+            self.O[user_id] = action
+            
+            #print(user_id, action)
+        #print("end of selecting action")   
+        task_without_delay = 0
+        task_with_delay = 0                   
         # request update
         for user in self.U:
             # update the state of the request
             user.request_update()
-            if  user.req.timer >= user.req.max_latency_time:#MAX_REQ_TIMER:
-                self.fail_req_count += 1
-                if user.req.tasktype.task_priority == 1:
-                    self.fail_task_prio_1 += 1
-                if user.req.tasktype.task_priority == 2:
-                    self.fail_task_prio_2 += 1
-                if user.req.tasktype.task_priority == 3:
-                    self.fail_task_prio_3 += 1  
+            if user.req.timer == 0: task_without_delay += 1
+            if user.req.timer > 0: task_with_delay += 1
+            if user.req.timer >= 25: #5
                 user.generate_request(self.O[user.user_id])  # offload according to the priority
             # it has already finished the request
             if user.req.state == 4:
                 # rewards
-                self.fin_req_count += 1       
+                self.fin_req_count += 1
+                  
+#****************************PMC-start-adding-usage_history***************************
 
                 self.usage_history[user.user_id] += 1
+                #print("user id: ", user.user_id, "usage history: ", self.usage_history[user.user_id])
                 
+#****************************PMC-end-adding-usage_history***************************
+
                 user.req.state = 5  # request turn to "disconnect"
                 self.E[int(user.req.edge_id)].server_workload.remove(user.req.user_id)
                 user.generate_request(self.O[user.user_id])  # offload according to the priority
-        
-                if user.req.tasktype.task_priority == 1:
-                    self.fin_task_prio_1 += 1
-                if user.req.tasktype.task_priority == 2:
-                    self.fin_task_prio_2 += 1
-                if user.req.tasktype.task_priority == 3:
-                    self.fin_task_prio_3 += 1     
-                                
-        #****************************action_prioritization***************************   
- 
-        users_prioritization = action_prioritization(s_, "task_priority") 
-        
-        #print("users_prioritization: ", users_prioritization)
-        
-        #****************************action_prioritization***************************  
-        
+
+        print("in the proposed algorithm: ")
+        #print("task_without_delay: ", task_without_delay) 
+        #print("task_with_delay: ", task_with_delay)  
+        print("algorithm's performance: ", task_without_delay - task_with_delay)        
         # edge update
         for edge in self.E:
-            edge.maintain_request(self.R, self.U, users_prioritization)
-            self.table = edge.migration_update(self.O, self.B, self.table, self.U, self.E, users_prioritization)
+            edge.maintain_request(self.R, self.U)
+            self.table = edge.migration_update(self.O, self.B, self.table, self.U, self.E)
 
         # rewards
-        self.rewards = self.fin_req_count - self.prev_fin_req_count
-        self.prev_fin_req_count = self.fin_req_count
-        
-        self.rewards_task_prio_1 = self.fin_task_prio_1 - self.prev_fin_task_prio_1
-        self.prev_fin_task_prio_1 = self.fin_task_prio_1 
-        
-        self.rewards_task_prio_2 = self.fin_task_prio_2 - self.prev_fin_task_prio_2
-        self.prev_fin_task_prio_2 = self.fin_task_prio_2 
-        
-        self.rewards_task_prio_3 = self.fin_task_prio_3 - self.prev_fin_task_prio_3
-        self.prev_fin_task_prio_3 = self.fin_task_prio_3 
+        self.rewards = self.fin_req_count - self.prev_count
+        self.prev_count = self.fin_req_count
 
-        # penalizations
-        self.penalizations = self.fail_req_count - self.prev_fail_req_count
-        self.prev_fail_req_count = self.fail_req_count 
-        
-        self.penalizations_task_prio_1 = self.fail_task_prio_1 - self.prev_fail_task_prio_1
-        self.prev_fail_task_prio_1 = self.fail_task_prio_1 
-        
-        self.penalizations_task_prio_2 = self.fail_task_prio_2 - self.prev_fail_task_prio_2
-        self.prev_fail_task_prio_2 = self.fail_task_prio_2 
-        
-        self.penalizations_task_prio_3 = self.fail_task_prio_3 - self.prev_fail_task_prio_3
-        self.prev_fail_task_prio_3 = self.fail_task_prio_3 
-                
         # every user start to move
         if self.time % self.step == 0:
             for user in self.U:
@@ -776,8 +972,8 @@ class Env():
         self.time += 1
 
         # return s_, r
-        return generate_state(self.table, self.U, self.E, self.usage_history, self.x_min, self.y_min), self.rewards, self.penalizations, self.rewards_task_prio_1, self.rewards_task_prio_2, self.rewards_task_prio_3, self.penalizations_task_prio_1, self.penalizations_task_prio_2, self.penalizations_task_prio_3
-        
+        return generate_state(self.table, self.U, self.E, self.usage_history, self.x_min, self.y_min), self.rewards
+
     def text_render(self):
         print("R:", self.R)
         print("B:", self.B)
@@ -803,19 +999,60 @@ class Env():
     def screen_demo(self):
         self.canvas.draw(self.E, self.U, self.O)
 
-#****************************action_prioritization***************************
+#****************************PMC-start-action_masking***************************
         
-def action_prioritization(s_, concept):
-    users_prioritization = []
-    if concept == "task_priority":
-        for user_id in range(USER_NUM):
-            users_prioritization.append((user_id, s_[s_.size - (USER_NUM) + user_id]))
-        users_prioritization.sort(key=lambda row: (row[1]), reverse=True)
-    return users_prioritization 
+def action_masking(s_, prob_weights, concept):
+    #print("observation: ", s_)
+    #print("size of observation: ", s_.size)
+    if (concept == "server_limit"):
+        #starting index of server_workload in s_: 140
+        #starting index of server_limit in s_: 150
+        number_of_full_servers = 0
+        full_servers = []
+        sum_remain_server_limit = 0
+        for i in range (10):
+             if s_[140+i] == s_[150+i]:
+                 #print("server ", i, "is full")                 
+                 '''
+                 3.         0.         0.         2.
+                 0.         1.         0.         0.         2.         0.
+		3.         3.         3.         2.         4.         4.
+ 		2.         2.         2.         4.        ]
+		server  0 is full
+		server  3 is full
+		server  8 is full
+                 '''
+                 number_of_full_servers += 1
+                 full_servers.append(i)
+             sum_remain_server_limit += (s_[150+i] - s_[140+i])
+                 
+        #print("sum_remain_server_limit: ", sum_remain_server_limit)
+                 
+        #print("number_of_full_servers: ", number_of_full_servers)
+        #print("full_servers: ", full_servers)   
+              
+        number_of_free_servers = 10 -  number_of_full_servers
+        #print("number_of_free_servers: ", number_of_free_servers)  
+              
+        for i in range (10):
+             if s_[140+i] == s_[150+i]:
+                 for j in range (10):
+                     if j not in full_servers:
+                         #prob_weights[j] = prob_weights[j] + (prob_weights[i]/number_of_free_servers) #first version
+                         #print("prob_weights[", i, "]: ", prob_weights[i])
+                         #print("prob_weights[",j,"] before increasing: ", prob_weights[j])
+                         if sum_remain_server_limit != 0: 
+                             prob_weights[j] = prob_weights[j] + prob_weights[i] * ((s_[150+j] - s_[140+j])/sum_remain_server_limit) #second version
+                             #print("rate of increasing: ", s_[150+j] - s_[140+j])
+                             #print("increasing amount: ", prob_weights[i] * ((s_[150+j] - s_[140+j])/sum_remain_server_limit))
+                             #print("prob_weights[", j, "] after increasing: ", prob_weights[j])
+                 prob_weights[i] = 0
+
+    return prob_weights 
             
-#****************************action_prioritization***************************  
+#****************************PMC-end-action_masking***************************  
         
-#********************credit-card-numbers-generator********************
+#****************************PMC-start-credit-card-numbers-generator***************************
 #reference: https://github.com/eye9poob/python
 
 visaPrefixList = [
@@ -921,4 +1158,4 @@ def output(title, numbers):
 
     return '\n'.join(result)
 
-#********************credit-card-numbers-generator********************
+#****************************PMC-end-credit-card-numbers-generator***************************
