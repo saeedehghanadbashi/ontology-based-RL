@@ -19,7 +19,7 @@ b_bound = 1e9
 MAX_REQ_TIMER = 5 #10 #25 #5
 ALGORITHM = "prop"
 METHOD = "AP"
-CONCEPT = "task_priority"
+CONCEPT = "application_type"
 SERVER_LIMIT_RANGE = "low"
 
 LATENCY_REQUIREMENTS = "simple scenario"
