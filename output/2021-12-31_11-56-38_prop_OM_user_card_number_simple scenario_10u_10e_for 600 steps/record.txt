@@ -1,0 +1,74 @@
+time(s):600
+
+user_number:10
+
+edge_number:10
+
+limit:4
+
+task information:
+req_u2e_size:270000
+process_loading:1080000
+req_e2u_size:96
+
+Episode:  0 Reward:   486 Penalization:   190###  r_var: 1.00 b_var: 1.00 
+Episode:  1 Reward:   494 Penalization:   208###  r_var: 1.00 b_var: 1.00 
+Episode:  2 Reward:   562 Penalization:   169###  r_var: 1.00 b_var: 1.00 
+Episode:  3 Reward:   490 Penalization:   210###  r_var: 1.00 b_var: 1.00 
+Episode:  4 Reward:   382 Penalization:   232###  r_var: 1.00 b_var: 1.00 
+Episode:  5 Reward:   580 Penalization:   164###  r_var: 1.00 b_var: 1.00 
+Episode:  6 Reward:   490 Penalization:   193###  r_var: 1.00 b_var: 1.00 
+Episode:  7 Reward:   497 Penalization:   188###  r_var: 1.00 b_var: 1.00 
+Episode:  8 Reward:   400 Penalization:   250###  r_var: 1.00 b_var: 1.00 
+Episode:  9 Reward:   556 Penalization:   157###  r_var: 1.00 b_var: 1.00 
+Episode: 10 Reward:   470 Penalization:   214###  r_var: 1.00 b_var: 1.00 
+Episode: 11 Reward:   567 Penalization:   164###  r_var: 1.00 b_var: 1.00 
+Episode: 12 Reward:   483 Penalization:   199###  r_var: 1.00 b_var: 1.00 
+Episode: 13 Reward:   554 Penalization:   171###  r_var: 1.00 b_var: 1.00 
+Episode: 14 Reward:   492 Penalization:   207###  r_var: 1.00 b_var: 1.00 
+Episode: 15 Reward:   476 Penalization:   204###  r_var: 1.00 b_var: 1.00 
+Episode: 16 Reward:   563 Penalization:   161###  r_var: 1.00 b_var: 1.00 
+Episode: 17 Reward:   889 Penalization:    40###  r_var: 1.00 b_var: 1.00 
+Episode: 18 Reward:   797 Penalization:    74###  r_var: 1.00 b_var: 1.00 
+Episode: 19 Reward:   888 Penalization:    42###  r_var: 1.00 b_var: 1.00 
+Episode: 20 Reward:   890 Penalization:    45###  r_var: 0.99 b_var: 0.99 
+Episode: 21 Reward:   796 Penalization:    85###  r_var: 0.99 b_var: 0.99 
+Episode: 22 Reward:   874 Penalization:    41###  r_var: 0.99 b_var: 0.99 
+Episode: 23 Reward:   693 Penalization:   105###  r_var: 0.99 b_var: 0.99 
+Episode: 24 Reward:   797 Penalization:    75###  r_var: 0.99 b_var: 0.99 
+Episode: 25 Reward:   869 Penalization:    42###  r_var: 0.99 b_var: 0.99 
+Episode: 26 Reward:   893 Penalization:    38###  r_var: 0.99 b_var: 0.99 
+Episode: 27 Reward:   793 Penalization:    73###  r_var: 0.99 b_var: 0.99 
+Episode: 28 Reward:   877 Penalization:    39###  r_var: 0.99 b_var: 0.99 
+Episode: 29 Reward:   807 Penalization:    86###  r_var: 0.99 b_var: 0.99 
+Episode: 30 Reward:   702 Penalization:   112###  r_var: 0.98 b_var: 0.98 
+Episode: 31 Reward:   822 Penalization:    73###  r_var: 0.98 b_var: 0.98 
+Episode: 32 Reward:   884 Penalization:    42###  r_var: 0.98 b_var: 0.98 
+Episode: 33 Reward:   872 Penalization:    41###  r_var: 0.98 b_var: 0.98 
+Episode: 34 Reward:   770 Penalization:    85###  r_var: 0.98 b_var: 0.98 
+Episode: 35 Reward:   803 Penalization:    78###  r_var: 0.98 b_var: 0.98 
+Episode: 36 Reward:   880 Penalization:    43###  r_var: 0.98 b_var: 0.98 
+Episode: 37 Reward:   891 Penalization:    44###  r_var: 0.98 b_var: 0.98 
+Episode: 38 Reward:   884 Penalization:    49###  r_var: 0.98 b_var: 0.98 
+Episode: 39 Reward:   853 Penalization:    37###  r_var: 0.98 b_var: 0.98 
+Episode: 40 Reward:   816 Penalization:    71###  r_var: 0.98 b_var: 0.98 
+Episode: 41 Reward:   755 Penalization:    90###  r_var: 0.98 b_var: 0.98 
+Episode: 42 Reward:   695 Penalization:   119###  r_var: 0.98 b_var: 0.98 
+Episode: 43 Reward:   707 Penalization:   110###  r_var: 0.98 b_var: 0.98 
+Episode: 44 Reward:   691 Penalization:   104###  r_var: 0.98 b_var: 0.98 
+Episode: 45 Reward:   593 Penalization:   151###  r_var: 0.98 b_var: 0.98 
+Episode: 46 Reward:   792 Penalization:    80###  r_var: 0.98 b_var: 0.98 
+Episode: 47 Reward:   697 Penalization:   118###  r_var: 0.98 b_var: 0.98 
+Episode: 48 Reward:   790 Penalization:    88###  r_var: 0.98 b_var: 0.98 
+the mean of the rewards:738.9
+
+the mean of the penalizations:96.8
+
+the standard deviation of the rewards:72.75637429119183
+
+the range of the rewards:260
+
+the standard deviation of the penalizations:29.586483400363754
+
+the range of the penalizations:114
+

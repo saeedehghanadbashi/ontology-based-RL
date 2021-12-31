@@ -1,0 +1,99 @@
+time(s):600
+
+user_number:10
+
+edge_number:10
+
+limit:4
+
+task information:
+req_u2e_size:270000
+process_loading:1080000
+req_e2u_size:96
+
+Episode:  0 Reward:   210 Penalization:   330###  r_var: 1.00 b_var: 1.00 
+Episode:  1 Reward:   202 Penalization:   326###  r_var: 1.00 b_var: 1.00 
+Episode:  2 Reward:   201 Penalization:   331###  r_var: 1.00 b_var: 1.00 
+Episode:  3 Reward:   190 Penalization:   332###  r_var: 1.00 b_var: 1.00 
+Episode:  4 Reward:   196 Penalization:   347###  r_var: 1.00 b_var: 1.00 
+Episode:  5 Reward:   191 Penalization:   332###  r_var: 1.00 b_var: 1.00 
+Episode:  6 Reward:   198 Penalization:   337###  r_var: 1.00 b_var: 1.00 
+Episode:  7 Reward:   191 Penalization:   320###  r_var: 1.00 b_var: 1.00 
+Episode:  8 Reward:   204 Penalization:   336###  r_var: 1.00 b_var: 1.00 
+Episode:  9 Reward:   193 Penalization:   344###  r_var: 1.00 b_var: 1.00 
+Episode: 10 Reward:   208 Penalization:   331###  r_var: 1.00 b_var: 1.00 
+Episode: 11 Reward:   201 Penalization:   323###  r_var: 1.00 b_var: 1.00 
+Episode: 12 Reward:   209 Penalization:   323###  r_var: 1.00 b_var: 1.00 
+Episode: 13 Reward:   204 Penalization:   332###  r_var: 1.00 b_var: 1.00 
+Episode: 14 Reward:   194 Penalization:   327###  r_var: 1.00 b_var: 1.00 
+Episode: 15 Reward:   198 Penalization:   329###  r_var: 1.00 b_var: 1.00 
+Episode: 16 Reward:   198 Penalization:   329###  r_var: 1.00 b_var: 1.00 
+Episode: 17 Reward:   206 Penalization:   322###  r_var: 1.00 b_var: 1.00 
+Episode: 18 Reward:   199 Penalization:   332###  r_var: 1.00 b_var: 1.00 
+Episode: 19 Reward:   202 Penalization:   336###  r_var: 1.00 b_var: 1.00 
+Episode: 20 Reward:   200 Penalization:   321###  r_var: 1.00 b_var: 1.00 
+Episode: 21 Reward:   205 Penalization:   330###  r_var: 0.99 b_var: 0.99 
+Episode: 22 Reward:   191 Penalization:   323###  r_var: 0.99 b_var: 0.99 
+Episode: 23 Reward:   208 Penalization:   329###  r_var: 0.99 b_var: 0.99 
+Episode: 24 Reward:   204 Penalization:   334###  r_var: 0.99 b_var: 0.99 
+Episode: 25 Reward:   196 Penalization:   323###  r_var: 0.99 b_var: 0.99 
+Episode: 26 Reward:   201 Penalization:   339###  r_var: 0.99 b_var: 0.99 
+Episode: 27 Reward:   209 Penalization:   338###  r_var: 0.99 b_var: 0.99 
+Episode: 28 Reward:   202 Penalization:   323###  r_var: 0.99 b_var: 0.99 
+Episode: 29 Reward:   206 Penalization:   333###  r_var: 0.99 b_var: 0.99 
+Episode: 30 Reward:   194 Penalization:   328###  r_var: 0.99 b_var: 0.99 
+Episode: 31 Reward:   204 Penalization:   339###  r_var: 0.99 b_var: 0.99 
+Episode: 32 Reward:   198 Penalization:   316###  r_var: 0.99 b_var: 0.99 
+Episode: 33 Reward:   199 Penalization:   327###  r_var: 0.99 b_var: 0.99 
+Episode: 34 Reward:   209 Penalization:   339###  r_var: 0.99 b_var: 0.99 
+Episode: 35 Reward:   212 Penalization:   339###  r_var: 0.98 b_var: 0.98 
+Episode: 36 Reward:   193 Penalization:   346###  r_var: 0.98 b_var: 0.98 
+Episode: 37 Reward:   198 Penalization:   320###  r_var: 0.98 b_var: 0.98 
+Episode: 38 Reward:   202 Penalization:   316###  r_var: 0.98 b_var: 0.98 
+Episode: 39 Reward:   195 Penalization:   335###  r_var: 0.98 b_var: 0.98 
+Episode: 40 Reward:   202 Penalization:   351###  r_var: 0.98 b_var: 0.98 
+Episode: 41 Reward:   197 Penalization:   338###  r_var: 0.98 b_var: 0.98 
+Episode: 42 Reward:   203 Penalization:   319###  r_var: 0.98 b_var: 0.98 
+Episode: 43 Reward:   211 Penalization:   326###  r_var: 0.98 b_var: 0.98 
+Episode: 44 Reward:   206 Penalization:   314###  r_var: 0.97 b_var: 0.97 
+Episode: 45 Reward:   201 Penalization:   327###  r_var: 0.97 b_var: 0.97 
+Episode: 46 Reward:   203 Penalization:   344###  r_var: 0.97 b_var: 0.97 
+Episode: 47 Reward:   211 Penalization:   341###  r_var: 0.97 b_var: 0.97 
+Episode: 48 Reward:   201 Penalization:   340###  r_var: 0.97 b_var: 0.97 
+Episode: 49 Reward:   203 Penalization:   327###  r_var: 0.97 b_var: 0.97 
+Episode: 50 Reward:   207 Penalization:   335###  r_var: 0.97 b_var: 0.97 
+Episode: 51 Reward:   193 Penalization:   330###  r_var: 0.97 b_var: 0.97 
+Episode: 52 Reward:   190 Penalization:   322###  r_var: 0.97 b_var: 0.97 
+Episode: 53 Reward:   214 Penalization:   336###  r_var: 0.97 b_var: 0.97 
+Episode: 54 Reward:   208 Penalization:   333###  r_var: 0.97 b_var: 0.97 
+Episode: 55 Reward:   203 Penalization:   335###  r_var: 0.97 b_var: 0.97 
+Episode: 56 Reward:   202 Penalization:   333###  r_var: 0.97 b_var: 0.97 
+Episode: 57 Reward:   202 Penalization:   337###  r_var: 0.96 b_var: 0.96 
+Episode: 58 Reward:   202 Penalization:   339###  r_var: 0.96 b_var: 0.96 
+Episode: 59 Reward:   201 Penalization:   339###  r_var: 0.96 b_var: 0.96 
+Episode: 60 Reward:   208 Penalization:   332###  r_var: 0.96 b_var: 0.96 
+Episode: 61 Reward:   204 Penalization:   330###  r_var: 0.96 b_var: 0.96 
+Episode: 62 Reward:   207 Penalization:   323###  r_var: 0.96 b_var: 0.96 
+Episode: 63 Reward:   214 Penalization:   317###  r_var: 0.96 b_var: 0.96 
+Episode: 64 Reward:   203 Penalization:   328###  r_var: 0.96 b_var: 0.96 
+Episode: 65 Reward:   189 Penalization:   322###  r_var: 0.96 b_var: 0.96 
+Episode: 66 Reward:   203 Penalization:   335###  r_var: 0.96 b_var: 0.96 
+Episode: 67 Reward:   202 Penalization:   333###  r_var: 0.96 b_var: 0.96 
+Episode: 68 Reward:   204 Penalization:   321###  r_var: 0.96 b_var: 0.96 
+Episode: 69 Reward:   205 Penalization:   325###  r_var: 0.96 b_var: 0.96 
+Episode: 70 Reward:   199 Penalization:   315###  r_var: 0.96 b_var: 0.96 
+Episode: 71 Reward:   199 Penalization:   330###  r_var: 0.96 b_var: 0.96 
+Episode: 72 Reward:   207 Penalization:   328###  r_var: 0.96 b_var: 0.96 
+Episode: 73 Reward:   207 Penalization:   329###  r_var: 0.96 b_var: 0.96 
+the mean of the rewards:201.8
+
+the mean of the penalizations:326.6
+
+the standard deviation of the rewards:5.015974481593781
+
+the range of the rewards:18
+
+the standard deviation of the penalizations:5.6780278266313555
+
+the range of the penalizations:20
+

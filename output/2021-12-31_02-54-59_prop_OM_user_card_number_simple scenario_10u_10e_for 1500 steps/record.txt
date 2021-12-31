@@ -1,0 +1,53 @@
+time(s):1500
+
+user_number:10
+
+edge_number:10
+
+limit:4
+
+task information:
+req_u2e_size:270000
+process_loading:1080000
+req_e2u_size:96
+
+Episode:  0 Reward:   744 Penalization:   711###  r_var: 1.00 b_var: 1.00 
+Episode:  1 Reward:   499 Penalization:   818###  r_var: 1.00 b_var: 1.00 
+Episode:  2 Reward:   720 Penalization:   726###  r_var: 1.00 b_var: 1.00 
+Episode:  3 Reward:   720 Penalization:   728###  r_var: 1.00 b_var: 1.00 
+Episode:  4 Reward:   740 Penalization:   722###  r_var: 1.00 b_var: 1.00 
+Episode:  5 Reward:   725 Penalization:   727###  r_var: 1.00 b_var: 1.00 
+Episode:  6 Reward:   727 Penalization:   732###  r_var: 1.00 b_var: 1.00 
+Episode:  7 Reward:   747 Penalization:   727###  r_var: 1.00 b_var: 1.00 
+Episode:  8 Reward:   504 Penalization:   808###  r_var: 1.00 b_var: 1.00 
+Episode:  9 Reward:   506 Penalization:   807###  r_var: 1.00 b_var: 1.00 
+Episode: 10 Reward:   740 Penalization:   715###  r_var: 1.00 b_var: 1.00 
+Episode: 11 Reward:   735 Penalization:   733###  r_var: 1.00 b_var: 1.00 
+Episode: 12 Reward:   732 Penalization:   724###  r_var: 1.00 b_var: 1.00 
+Episode: 13 Reward:   747 Penalization:   712###  r_var: 0.99 b_var: 0.99 
+Episode: 14 Reward:   742 Penalization:   722###  r_var: 0.99 b_var: 0.99 
+Episode: 15 Reward:   743 Penalization:   725###  r_var: 0.99 b_var: 0.99 
+Episode: 16 Reward:   724 Penalization:   735###  r_var: 0.99 b_var: 0.99 
+Episode: 17 Reward:   753 Penalization:   727###  r_var: 0.99 b_var: 0.99 
+Episode: 18 Reward:   731 Penalization:   726###  r_var: 0.97 b_var: 0.97 
+Episode: 19 Reward:   727 Penalization:   709###  r_var: 0.97 b_var: 0.97 
+Episode: 20 Reward:   736 Penalization:   695###  r_var: 0.97 b_var: 0.97 
+Episode: 21 Reward:   735 Penalization:   719###  r_var: 0.97 b_var: 0.97 
+Episode: 22 Reward:   757 Penalization:   723###  r_var: 0.97 b_var: 0.97 
+Episode: 23 Reward:   733 Penalization:   720###  r_var: 0.97 b_var: 0.97 
+Episode: 24 Reward:   519 Penalization:   790###  r_var: 0.97 b_var: 0.97 
+Episode: 25 Reward:   749 Penalization:   701###  r_var: 0.97 b_var: 0.97 
+Episode: 26 Reward:   775 Penalization:   729###  r_var: 0.97 b_var: 0.97 
+Episode: 27 Reward:   760 Penalization:   738###  r_var: 0.97 b_var: 0.97 
+the mean of the rewards:722.2
+
+the mean of the penalizations:725.0
+
+the standard deviation of the rewards:69.28751691322182
+
+the range of the rewards:256
+
+the standard deviation of the penalizations:24.915858403835898
+
+the range of the penalizations:95
+
