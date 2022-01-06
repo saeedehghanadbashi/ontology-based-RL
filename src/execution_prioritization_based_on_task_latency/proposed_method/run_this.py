@@ -8,7 +8,7 @@ import datetime
 
 #####################  hyper parameters  ####################
 CHECK_EPISODE = 4
-LEARNING_MAX_EPISODE = 10
+LEARNING_MAX_EPISODE = 25 #10
 MAX_EP_STEPS = 1500 #600 #3000
 TEXT_RENDER = False
 SCREEN_RENDER = False
@@ -109,6 +109,7 @@ if __name__ == "__main__":
                 print('Episode:%3d' % episode, ' Reward: %5d' % ep_reward[episode], ' Reward for tasks with latency 1: %5d' % ep_reward1[episode], ' Reward for tasks with latency 2: %5d' % ep_reward2[episode], ' Reward for tasks with latency 3: %5d' % ep_reward3[episode], ' Penalization: %5d' % ep_penalization[episode], ' Penalization for tasks with latency 1: %5d' % ep_penalization1[episode], ' Penalization for tasks with latency 2: %5d' % ep_penalization2[episode], ' Penalization for tasks with latency 3: %5d' % ep_penalization3[episode], '###  r_var: %.2f ' % r_var,'b_var: %.2f ' % b_var, )
                 string = 'Episode:%3d' % episode + ' Reward: %5d' % ep_reward[episode] + ' Reward for tasks with latency 1: %5d' % ep_reward1[episode] + ' Reward for tasks with latency 2: %5d' % ep_reward2[episode] + ' Reward for tasks with latency 3: %5d' % ep_reward3[episode] + ' Penalization: %5d' % ep_penalization[episode] + ' Penalization for tasks with latency 1: %5d' % ep_penalization1[episode] + ' Penalization for tasks with latency 2: %5d' % ep_penalization2[episode] + ' Penalization for tasks with latency 3: %5d' % ep_penalization3[episode] + '###  r_var: %.2f ' % r_var + 'b_var: %.2f ' % b_var
                 epoch_inf.append(string)
+                '''
                 # variation change
                 if var_counter >= CHECK_EPISODE and np.mean(var_reward[-CHECK_EPISODE:]) >= max_rewards:
                     CHANGE = True
@@ -118,6 +119,8 @@ if __name__ == "__main__":
                 else:
                     CHANGE = False
                     var_counter += 1
+                '''
+                var_counter += 1
 
         # end the episode
         if SCREEN_RENDER:

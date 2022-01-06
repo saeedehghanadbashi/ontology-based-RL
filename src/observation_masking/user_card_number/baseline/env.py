@@ -653,6 +653,12 @@ class Env():
         for user_id in range(self.user_num):
             prob_weights = a[base:base + self.edge_num]
             #print("user", user_id, ":", prob_weights)
+            
+            for j in range (EDGE_NUM):
+                if np.isnan(prob_weights[j]):
+                    print("NaN value is: ", prob_weights[j])  
+                    print("array is: ", prob_weights)     
+                    
             action = np.random.choice(range(len(prob_weights)), p=prob_weights.ravel())  # select action w.r.t the actions prob
             base += self.edge_num            
                

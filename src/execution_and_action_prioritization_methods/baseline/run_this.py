@@ -8,7 +8,7 @@ import datetime
 
 #####################  hyper parameters  ####################
 CHECK_EPISODE = 4
-LEARNING_MAX_EPISODE = 10
+LEARNING_MAX_EPISODE = 25 #10
 MAX_EP_STEPS = 600 #1500 #600 #3000
 TEXT_RENDER = False
 SCREEN_RENDER = False
@@ -158,6 +158,7 @@ if __name__ == "__main__":
                 string = 'Episode:%3d' % episode + ' Reward: %5d' % ep_reward[episode] + ' Reward for tasks with priority 1: %5d' % ep_reward_task_prio_1[episode] + ' Reward for tasks with priority 2: %5d' % ep_reward_task_prio_2[episode] + ' Reward for tasks with priority 3: %5d' % ep_reward_task_prio_3[episode] + ' Reward for tasks with latency 1: %5d' % ep_reward_task_lat_1[episode] + ' Reward for tasks with latency 2: %5d' % ep_reward_task_lat_2[episode] + ' Reward for tasks with latency 3: %5d' % ep_reward_task_lat_3[episode] + ' Reward for tasks with application type 1: %5d' % ep_reward_app_typ_1[episode] + ' Reward for tasks with application type 2: %5d' % ep_reward_app_typ_2[episode] + ' Reward for tasks with application type 3: %5d' % ep_reward_app_typ_3[episode] + ' Reward for tasks with application type 4: %5d' % ep_reward_app_typ_4[episode] + ' Penalization: %5d' % ep_penalization[episode] + ' Penalization for tasks with priority 1: %5d' % ep_penalization_task_prio_1[episode] + ' Penalization for tasks with priority 2: %5d' % ep_penalization_task_prio_2[episode] + ' Penalization for tasks with priority 3: %5d' % ep_penalization_task_prio_3[episode] + ' Penalization for tasks with latency 1: %5d' % ep_penalization_task_lat_1[episode] + ' Penalization for tasks with latency 2: %5d' % ep_penalization_task_lat_2[episode] + ' Penalization for tasks with latency 3: %5d' % ep_penalization_task_lat_3[episode] + ' Penalization for tasks with application type 1: %5d' % ep_penalization_app_typ_1[episode] + ' Penalization for tasks with application type 2: %5d' % ep_penalization_app_typ_2[episode] + ' Penalization for tasks with application type 3: %5d' % ep_penalization_app_typ_3[episode] + ' Penalization for tasks with application type 4: %5d' % ep_penalization_app_typ_4[episode] + ' Usage history: ' + np.array2string(ep_usage_history[episode], precision=2, separator=',',
                       suppress_small=True) +' Security requirement: %5d' % ep_security_requirement[episode] + '###  r_var: %.2f ' % r_var + 'b_var: %.2f ' % b_var
                 epoch_inf.append(string)
+                '''
                 # variation change
                 if var_counter >= CHECK_EPISODE and np.mean(var_reward[-CHECK_EPISODE:]) >= max_rewards:
                     CHANGE = True
@@ -167,6 +168,8 @@ if __name__ == "__main__":
                 else:
                     CHANGE = False
                     var_counter += 1
+                '''
+                var_counter += 1
 
         # end the episode
         if SCREEN_RENDER:
