@@ -8,7 +8,7 @@ import copy
 
 #####################  hyper parameters  ####################
 LOCATION = "KAIST"
-USER_NUM = 50 #50 #25 #10
+USER_NUM = 25 #50 #25 #10
 EDGE_NUM = 10
 LIMIT = 4
 MAX_EP_STEPS = 1000 #3000
@@ -20,7 +20,7 @@ MAX_REQ_TIMER = 5 #10 #25 #5
 ALGORITHM = "base"
 METHOD = "AM"
 CONCEPT = "server_limit"
-SERVER_LIMIT_RANGE = "low"
+SERVER_LIMIT_RANGE = "medium"
 
 LATENCY_REQUIREMENTS = "hard scenario"
 #####################  function  ####################

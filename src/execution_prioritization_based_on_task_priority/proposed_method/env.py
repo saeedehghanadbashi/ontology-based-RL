@@ -8,7 +8,7 @@ import copy
 
 #####################  hyper parameters  ####################
 LOCATION = "KAIST"
-USER_NUM = 10 #50 #25 #10
+USER_NUM = 25 #50 #25 #10
 EDGE_NUM = 10
 LIMIT = 4
 MAX_EP_STEPS = 1000 #3000
@@ -22,7 +22,7 @@ METHOD = "EP"
 CONCEPT = "task_priority"
 SERVER_LIMIT_RANGE = "low"
 
-LATENCY_REQUIREMENTS = "simple scenario"
+LATENCY_REQUIREMENTS = "hard scenario"
 #####################  function  ####################
 def trans_rate(user_loc, edge_loc):
     B = 2e6

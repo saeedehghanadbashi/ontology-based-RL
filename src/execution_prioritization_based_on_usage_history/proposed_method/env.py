@@ -22,7 +22,7 @@ METHOD = "EP"
 CONCEPT = "usage_history"
 SERVER_LIMIT_RANGE = "low"
 
-LATENCY_REQUIREMENTS = "simple scenario"
+LATENCY_REQUIREMENTS = "hard scenario"
 #####################  function  ####################
 def trans_rate(user_loc, edge_loc):
     B = 2e6
