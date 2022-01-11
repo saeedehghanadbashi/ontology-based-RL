@@ -1,4 +1,0 @@
-python3 src/action_masking_with_server_limit/baseline/run_this.py
-python3 src/action_masking_with_server_limit/proposed_method/run_this.py
-python3 src/action_masking_with_server_limit/proposed_method/run_this.py
-python3 src/action_masking_with_server_limit/proposed_method/run_this.py

@@ -661,7 +661,14 @@ class Env():
         s_ = generate_state(self.table, self.U, self.E, self.usage_history, self.x_min, self.y_min)   
         for user_id in range(self.user_num):
             prob_weights = a[base:base + self.edge_num]                                       
-            
+
+            for j in range (EDGE_NUM):
+                if np.isnan(prob_weights[j]):
+                    #print("NaN value is: ", prob_weights[j])  
+                    #print("array is: ", prob_weights)  
+                    for k in range (EDGE_NUM):
+                        prob_weights[k] = 0.1  
+                                    
             action1 = np.random.choice(range(len(prob_weights)), p=prob_weights.ravel())  # select action w.r.t the actions prob
             
             action2 = np.random.choice(range(len(prob_weights)), p=prob_weights.ravel())  # select action w.r.t the actions prob

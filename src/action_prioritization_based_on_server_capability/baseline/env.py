@@ -9,7 +9,7 @@ import datetime
 
 #####################  hyper parameters  ####################
 LOCATION = "KAIST"
-USER_NUM = 25 #50 #25 #10
+USER_NUM = 10 #50 #25 #10
 EDGE_NUM = 10
 LIMIT = 4
 MAX_EP_STEPS = 1000 #3000
@@ -671,7 +671,14 @@ class Env():
         s_ = generate_state(self.table, self.U, self.E, self.usage_history, self.x_min, self.y_min) 
         for user_id in range(self.user_num):
             prob_weights = a[base:base + self.edge_num]                                       
-            
+
+            for j in range (EDGE_NUM):
+                if np.isnan(prob_weights[j]):
+                    #print("NaN value is: ", prob_weights[j])  
+                    #print("array is: ", prob_weights)  
+                    for k in range (EDGE_NUM):
+                        prob_weights[k] = 0.1  
+                                    
             action = np.random.choice(range(len(prob_weights)), p=prob_weights.ravel())  # select action w.r.t the actions prob
                                      
             base += self.edge_num 

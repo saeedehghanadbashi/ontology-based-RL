@@ -686,7 +686,14 @@ class Env():
                 if sum(prob_weights_after_action_masking) == 0:
                     for j in range (EDGE_NUM):
                        prob_weights_after_action_masking[j] = 0.1 
-                       
+
+            for j in range (EDGE_NUM):
+                if np.isnan(prob_weights_after_action_masking[j]):
+                    #print("NaN value is: ", prob_weights_after_action_masking[j])  
+                    #print("array is: ", prob_weights_after_action_masking)  
+                    for k in range (EDGE_NUM):
+                        prob_weights_after_action_masking[k] = 0.1     
+                                              
 #****************************action_masking***************************
 
             action = np.random.choice(range(len(prob_weights_after_action_masking)), p=prob_weights_after_action_masking.ravel())  # select action w.r.t the actions prob
