@@ -8,7 +8,7 @@ import copy
 
 #####################  hyper parameters  ####################
 LOCATION = "KAIST"
-USER_NUM = 10 #50 #25 #10
+USER_NUM = 50 #25 #10
 EDGE_NUM = 10
 LIMIT = 4
 MAX_EP_STEPS = 1000 #3000

@@ -9,7 +9,7 @@ import datetime
 
 #####################  hyper parameters  ####################
 LOCATION = "KAIST"
-USER_NUM = 10 #50 #25 #10
+USER_NUM = 50 #25 #10
 EDGE_NUM = 10
 LIMIT = 4
 MAX_EP_STEPS = 1000 #3000
@@ -23,7 +23,7 @@ METHOD = "AP"
 CONCEPT = "server_capability"
 SERVER_LIMIT_RANGE = "low"
 
-LATENCY_REQUIREMENTS = "hard scenario"
+LATENCY_REQUIREMENTS = "simple scenario"
 #####################  function  ####################
 def trans_rate(user_loc, edge_loc):
     B = 2e6

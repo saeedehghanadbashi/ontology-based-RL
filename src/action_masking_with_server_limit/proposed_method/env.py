@@ -23,7 +23,7 @@ METHOD = "AM"
 CONCEPT = "server_limit"
 SERVER_LIMIT_RANGE = "high"
 
-LATENCY_REQUIREMENTS = "hard scenario"
+LATENCY_REQUIREMENTS = "simple scenario"
 #####################  function  ####################
 def trans_rate(user_loc, edge_loc):
     B = 2e6

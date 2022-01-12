@@ -9,7 +9,7 @@ import datetime
 #####################  hyper parameters  ####################
 CHECK_EPISODE = 4
 LEARNING_MAX_EPISODE = 25 #10
-MAX_EP_STEPS = 600 #1500 #600 #3000
+MAX_EP_STEPS = 1500 #600 #3000
 TEXT_RENDER = False
 SCREEN_RENDER = False
 CHANGE = False
