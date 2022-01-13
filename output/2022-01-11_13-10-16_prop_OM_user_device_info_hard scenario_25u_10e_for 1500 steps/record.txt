@@ -1,0 +1,50 @@
+time(s):1500
+
+user_number:25
+
+edge_number:10
+
+limit:4
+
+task information:
+req_u2e_size:270000
+process_loading:1080000
+req_e2u_size:96
+
+Episode:  0 Reward:  9893 Penalization:  1203###  r_var: 1.00 b_var: 1.00 
+Episode:  1 Reward: 10510 Penalization:   953###  r_var: 1.00 b_var: 1.00 
+Episode:  2 Reward: 10916 Penalization:   958###  r_var: 1.00 b_var: 1.00 
+Episode:  3 Reward: 10430 Penalization:  1049###  r_var: 1.00 b_var: 1.00 
+Episode:  4 Reward: 11438 Penalization:   748###  r_var: 1.00 b_var: 1.00 
+Episode:  5 Reward: 10696 Penalization:  1027###  r_var: 1.00 b_var: 1.00 
+Episode:  6 Reward: 11293 Penalization:   781###  r_var: 1.00 b_var: 1.00 
+Episode:  7 Reward: 10545 Penalization:   948###  r_var: 1.00 b_var: 1.00 
+Episode:  8 Reward:  8998 Penalization:  1488###  r_var: 1.00 b_var: 1.00 
+Episode:  9 Reward: 10083 Penalization:  1071###  r_var: 1.00 b_var: 1.00 
+Episode: 10 Reward: 10003 Penalization:  1073###  r_var: 1.00 b_var: 1.00 
+Episode: 11 Reward: 11952 Penalization:   570###  r_var: 1.00 b_var: 1.00 
+Episode: 12 Reward:  9957 Penalization:  1197###  r_var: 1.00 b_var: 1.00 
+Episode: 13 Reward:  9616 Penalization:  1298###  r_var: 1.00 b_var: 1.00 
+Episode: 14 Reward:  9725 Penalization:  1283###  r_var: 1.00 b_var: 1.00 
+Episode: 15 Reward:  8800 Penalization:  1468###  r_var: 1.00 b_var: 1.00 
+Episode: 16 Reward:  9177 Penalization:  1343###  r_var: 1.00 b_var: 1.00 
+Episode: 17 Reward: 10027 Penalization:  1142###  r_var: 1.00 b_var: 1.00 
+Episode: 18 Reward: 11293 Penalization:   813###  r_var: 1.00 b_var: 1.00 
+Episode: 19 Reward:  9412 Penalization:  1275###  r_var: 1.00 b_var: 1.00 
+Episode: 20 Reward: 10249 Penalization:  1059###  r_var: 1.00 b_var: 1.00 
+Episode: 21 Reward: 11774 Penalization:   681###  r_var: 1.00 b_var: 1.00 
+Episode: 22 Reward: 10669 Penalization:   906###  r_var: 1.00 b_var: 1.00 
+Episode: 23 Reward: 10122 Penalization:  1174###  r_var: 1.00 b_var: 1.00 
+Episode: 24 Reward:  9595 Penalization:  1358###  r_var: 1.00 b_var: 1.00 
+the mean of the rewards:10286.92
+
+the mean of the penalizations:1074.64
+
+the standard deviation of the rewards:819.1677688971898
+
+the range of the rewards:3152
+
+the standard deviation of the penalizations:237.00360841134886
+
+the range of the penalizations:918
+

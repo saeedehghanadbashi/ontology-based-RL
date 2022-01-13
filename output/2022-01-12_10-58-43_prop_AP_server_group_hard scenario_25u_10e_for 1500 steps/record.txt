@@ -1,0 +1,52 @@
+time(s):1500
+
+user_number:25
+
+edge_number:10
+
+limit:4
+
+task information:
+req_u2e_size:270000
+process_loading:1080000
+req_e2u_size:96
+
+Episode:  0 Reward: 11474 Penalization:   494 Security requirement:  7728###  r_var: 1.00 b_var: 1.00 
+Episode:  1 Reward: 10431 Penalization:   836 Security requirement:  6492###  r_var: 1.00 b_var: 1.00 
+Episode:  2 Reward: 10522 Penalization:   791 Security requirement:  7394###  r_var: 1.00 b_var: 1.00 
+Episode:  3 Reward:  9510 Penalization:  1189 Security requirement:  6972###  r_var: 1.00 b_var: 1.00 
+Episode:  4 Reward:  9060 Penalization:  1265 Security requirement:  5986###  r_var: 1.00 b_var: 1.00 
+Episode:  5 Reward: 10031 Penalization:   992 Security requirement:  7643###  r_var: 1.00 b_var: 1.00 
+Episode:  6 Reward:  9760 Penalization:  1056 Security requirement:  6883###  r_var: 1.00 b_var: 1.00 
+Episode:  7 Reward:  8437 Penalization:  1462 Security requirement:  5411###  r_var: 1.00 b_var: 1.00 
+Episode:  8 Reward:  9963 Penalization:   946 Security requirement:  6591###  r_var: 1.00 b_var: 1.00 
+Episode:  9 Reward: 10659 Penalization:   839 Security requirement:  4977###  r_var: 1.00 b_var: 1.00 
+Episode: 10 Reward: 11082 Penalization:   553 Security requirement:  7258###  r_var: 1.00 b_var: 1.00 
+Episode: 11 Reward: 10845 Penalization:   738 Security requirement:  6954###  r_var: 1.00 b_var: 1.00 
+Episode: 12 Reward:  9635 Penalization:  1071 Security requirement:  5302###  r_var: 1.00 b_var: 1.00 
+Episode: 13 Reward: 11250 Penalization:   547 Security requirement:  7778###  r_var: 1.00 b_var: 1.00 
+Episode: 14 Reward: 11416 Penalization:   449 Security requirement:  8094###  r_var: 1.00 b_var: 1.00 
+Episode: 15 Reward:  9073 Penalization:  1172 Security requirement:  6513###  r_var: 1.00 b_var: 1.00 
+Episode: 16 Reward: 10562 Penalization:   693 Security requirement:  7520###  r_var: 1.00 b_var: 1.00 
+Episode: 17 Reward:  9575 Penalization:  1055 Security requirement:  5853###  r_var: 1.00 b_var: 1.00 
+Episode: 18 Reward:  7846 Penalization:  1713 Security requirement:  5471###  r_var: 1.00 b_var: 1.00 
+Episode: 19 Reward:  7726 Penalization:  1742 Security requirement:  5143###  r_var: 1.00 b_var: 1.00 
+Episode: 20 Reward:  9639 Penalization:  1100 Security requirement:  5862###  r_var: 1.00 b_var: 1.00 
+Episode: 21 Reward:  9695 Penalization:  1065 Security requirement:  7033###  r_var: 1.00 b_var: 1.00 
+Episode: 22 Reward: 10210 Penalization:   897 Security requirement:  7325###  r_var: 1.00 b_var: 1.00 
+Episode: 23 Reward:  9522 Penalization:  1103 Security requirement:  6861###  r_var: 1.00 b_var: 1.00 
+Episode: 24 Reward: 10047 Penalization:  1002 Security requirement:  6846###  r_var: 1.00 b_var: 1.00 
+the mean of the rewards:9918.8
+
+the mean of the security requirement:6635.6
+
+the mean of the penalizations:990.8
+
+the standard deviation of the rewards:975.2378991815278
+
+the range of the rewards:3748
+
+the standard deviation of the penalizations:327.38149000821653
+
+the range of the penalizations:1293
+
