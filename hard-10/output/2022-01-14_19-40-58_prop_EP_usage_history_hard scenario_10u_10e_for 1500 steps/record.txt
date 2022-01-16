@@ -1,0 +1,152 @@
+time(s):1500
+
+user_number:10
+
+edge_number:10
+
+limit:4
+
+task information:
+req_u2e_size:270000
+process_loading:1080000
+req_e2u_size:96
+
+Episode:  0 Reward:  5338 Penalization:    75 Usage history: [534.,525.,547.,534.,529.,540.,534.,534.,530.,531.]###  r_var: 1.00 b_var: 1.00 
+Episode:  1 Reward:  4987 Penalization:   159 Usage history: [498.,494.,501.,501.,497.,499.,500.,499.,496.,502.]###  r_var: 1.00 b_var: 1.00 
+Episode:  2 Reward:  5232 Penalization:    68 Usage history: [522.,521.,524.,526.,521.,530.,525.,527.,513.,523.]###  r_var: 1.00 b_var: 1.00 
+Episode:  3 Reward:  5214 Penalization:    90 Usage history: [522.,519.,521.,522.,516.,520.,534.,524.,521.,515.]###  r_var: 1.00 b_var: 1.00 
+Episode:  4 Reward:  4835 Penalization:   171 Usage history: [485.,483.,486.,486.,483.,485.,480.,483.,481.,483.]###  r_var: 1.00 b_var: 1.00 
+Episode:  5 Reward:  5401 Penalization:    69 Usage history: [535.,542.,544.,540.,540.,540.,541.,541.,541.,537.]###  r_var: 1.00 b_var: 1.00 
+Episode:  6 Reward:  4981 Penalization:   164 Usage history: [496.,496.,497.,498.,499.,492.,510.,498.,499.,496.]###  r_var: 1.00 b_var: 1.00 
+Episode:  7 Reward:  5009 Penalization:   159 Usage history: [506.,492.,506.,501.,494.,504.,503.,503.,503.,497.]###  r_var: 1.00 b_var: 1.00 
+Episode:  8 Reward:  5593 Penalization:    18 Usage history: [552.,547.,573.,557.,550.,564.,571.,571.,559.,549.]###  r_var: 1.00 b_var: 1.00 
+Episode:  9 Reward:  5233 Penalization:    86 Usage history: [524.,518.,525.,520.,521.,530.,528.,526.,518.,523.]###  r_var: 1.00 b_var: 1.00 
+Episode: 10 Reward:  4857 Penalization:   194 Usage history: [485.,491.,490.,485.,485.,482.,488.,485.,484.,482.]###  r_var: 1.00 b_var: 1.00 
+Episode: 11 Reward:  4997 Penalization:   155 Usage history: [496.,499.,499.,503.,501.,501.,500.,500.,496.,502.]###  r_var: 1.00 b_var: 1.00 
+Episode: 12 Reward:  5569 Penalization:    17 Usage history: [546.,541.,564.,553.,551.,563.,587.,567.,547.,550.]###  r_var: 1.00 b_var: 1.00 
+Episode: 13 Reward:  5384 Penalization:    76 Usage history: [528.,537.,550.,535.,533.,544.,546.,543.,534.,534.]###  r_var: 1.00 b_var: 1.00 
+Episode: 14 Reward:  4881 Penalization:   168 Usage history: [490.,486.,490.,487.,487.,490.,489.,489.,487.,486.]###  r_var: 1.00 b_var: 1.00 
+Episode: 15 Reward:  4941 Penalization:   147 Usage history: [495.,491.,496.,491.,495.,496.,500.,496.,488.,493.]###  r_var: 1.00 b_var: 1.00 
+Episode: 16 Reward:  5232 Penalization:   102 Usage history: [522.,525.,524.,524.,523.,522.,524.,524.,522.,522.]###  r_var: 1.00 b_var: 1.00 
+Episode: 17 Reward:  5173 Penalization:   111 Usage history: [514.,512.,519.,519.,515.,526.,533.,515.,510.,510.]###  r_var: 1.00 b_var: 1.00 
+Episode: 18 Reward:  4923 Penalization:   164 Usage history: [490.,491.,500.,488.,492.,491.,497.,492.,492.,490.]###  r_var: 1.00 b_var: 1.00 
+Episode: 19 Reward:  5093 Penalization:   117 Usage history: [510.,506.,518.,511.,504.,508.,516.,512.,504.,504.]###  r_var: 1.00 b_var: 1.00 
+Episode: 20 Reward:  5003 Penalization:   164 Usage history: [501.,498.,500.,503.,495.,501.,500.,504.,499.,502.]###  r_var: 1.00 b_var: 1.00 
+Episode: 21 Reward:  5382 Penalization:    62 Usage history: [540.,522.,542.,537.,539.,548.,540.,539.,538.,537.]###  r_var: 1.00 b_var: 1.00 
+Episode: 22 Reward:  5418 Penalization:    39 Usage history: [540.,529.,545.,545.,536.,545.,549.,555.,538.,536.]###  r_var: 1.00 b_var: 1.00 
+Episode: 23 Reward:  5118 Penalization:   130 Usage history: [507.,506.,518.,510.,512.,516.,522.,515.,500.,512.]###  r_var: 1.00 b_var: 1.00 
+Episode: 24 Reward:  5129 Penalization:   117 Usage history: [517.,507.,515.,513.,511.,513.,510.,513.,513.,517.]###  r_var: 1.00 b_var: 1.00 
+the mean of the rewards:5156.92
+
+the mean of the penalizations:112.88
+
+the standard deviation of the rewards:214.63567643800508
+
+the range of the rewards:758
+
+the standard deviation of the penalizations:50.08019169292386
+
+the range of the penalizations:177
+
+the mean of the usage history in the epoch: 0 is: 515.692
+
+the standard deviation of the usage history in the epoch: 0 is: 22.103147649147168
+
+the mean of the usage history in the epoch: 1 is: 512.9
+
+the standard deviation of the usage history in the epoch: 1 is: 2.9137604568666933
+
+the mean of the usage history in the epoch: 2 is: 512.35
+
+the standard deviation of the usage history in the epoch: 2 is: 4.798697740012388
+
+the mean of the usage history in the epoch: 3 is: 522.1666666666666
+
+the standard deviation of the usage history in the epoch: 3 is: 14.997962824626848
+
+the mean of the usage history in the epoch: 4 is: 526.175
+
+the standard deviation of the usage history in the epoch: 4 is: 15.049730064024404
+
+the mean of the usage history in the epoch: 5 is: 521.0
+
+the standard deviation of the usage history in the epoch: 5 is: 17.01528724412256
+
+the mean of the usage history in the epoch: 6 is: 519.05
+
+the standard deviation of the usage history in the epoch: 6 is: 16.250564092773313
+
+the mean of the usage history in the epoch: 7 is: 515.2285714285714
+
+the standard deviation of the usage history in the epoch: 7 is: 17.765272245568987
+
+the mean of the usage history in the epoch: 8 is: 515.4875
+
+the standard deviation of the usage history in the epoch: 8 is: 16.812936797299866
+
+the mean of the usage history in the epoch: 9 is: 516.3444444444444
+
+the standard deviation of the usage history in the epoch: 9 is: 16.03964609689317
+
+the mean of the usage history in the epoch: 10 is: 514.12
+
+the standard deviation of the usage history in the epoch: 10 is: 16.64708983576409
+
+the mean of the usage history in the epoch: 11 is: 511.75454545454545
+
+the standard deviation of the usage history in the epoch: 11 is: 17.55313303484147
+
+the mean of the usage history in the epoch: 12 is: 513.975
+
+the standard deviation of the usage history in the epoch: 12 is: 18.44697920166515
+
+the mean of the usage history in the epoch: 13 is: 517.276923076923
+
+the standard deviation of the usage history in the epoch: 13 is: 21.394828772973437
+
+the mean of the usage history in the epoch: 14 is: 516.0214285714286
+
+the standard deviation of the usage history in the epoch: 14 is: 21.11582610851155
+
+the mean of the usage history in the epoch: 15 is: 514.0
+
+the standard deviation of the usage history in the epoch: 15 is: 21.769703718700445
+
+the mean of the usage history in the epoch: 16 is: 514.58125
+
+the standard deviation of the usage history in the epoch: 16 is: 21.220412306020354
+
+the mean of the usage history in the epoch: 17 is: 517.2117647058824
+
+the standard deviation of the usage history in the epoch: 17 is: 23.232378074649617
+
+the mean of the usage history in the epoch: 18 is: 516.3055555555555
+
+the standard deviation of the usage history in the epoch: 18 is: 22.91120473631048
+
+the mean of the usage history in the epoch: 19 is: 515.3473684210526
+
+the standard deviation of the usage history in the epoch: 19 is: 22.69025685691299
+
+the mean of the usage history in the epoch: 20 is: 516.585
+
+the standard deviation of the usage history in the epoch: 20 is: 22.770436425330104
+
+the mean of the usage history in the epoch: 21 is: 515.0095238095238
+
+the standard deviation of the usage history in the epoch: 21 is: 23.315637604751448
+
+the mean of the usage history in the epoch: 22 is: 515.3
+
+the standard deviation of the usage history in the epoch: 22 is: 22.842762927934487
+
+the mean of the usage history in the epoch: 23 is: 515.6434782608695
+
+the standard deviation of the usage history in the epoch: 23 is: 22.41687691250494
+
+the mean of the usage history in the epoch: 24 is: 514.9375
+
+the standard deviation of the usage history in the epoch: 24 is: 22.209800999033437
+
+the mean of the standard deviation of the usage history: 18.571373309089577
+

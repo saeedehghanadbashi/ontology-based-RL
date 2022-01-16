@@ -1,0 +1,66 @@
+time(s):1500
+
+user_number:10
+
+edge_number:10
+
+limit:4
+
+task information:
+req_u2e_size:270000
+process_loading:1080000
+req_e2u_size:96
+
+Episode:  0 Reward:  5349 Reward for tasks with application type 1:  1011 Reward for tasks with application type 2:  2200 Reward for tasks with application type 3:   510 Reward for tasks with application type 4:  1628 Penalization:    36 Penalization for tasks with application type 1:     6 Penalization for tasks with application type 2:    18 Penalization for tasks with application type 3:     1 Penalization for tasks with application type 4:    11###  r_var: 1.00 b_var: 1.00 
+Episode:  1 Reward:  4679 Reward for tasks with application type 1:   958 Reward for tasks with application type 2:  1855 Reward for tasks with application type 3:   465 Reward for tasks with application type 4:  1401 Penalization:   171 Penalization for tasks with application type 1:    26 Penalization for tasks with application type 2:    94 Penalization for tasks with application type 3:     6 Penalization for tasks with application type 4:    45###  r_var: 1.00 b_var: 1.00 
+Episode:  2 Reward:  4924 Reward for tasks with application type 1:   976 Reward for tasks with application type 2:  1970 Reward for tasks with application type 3:   505 Reward for tasks with application type 4:  1473 Penalization:   124 Penalization for tasks with application type 1:    21 Penalization for tasks with application type 2:    80 Penalization for tasks with application type 3:     2 Penalization for tasks with application type 4:    21###  r_var: 1.00 b_var: 1.00 
+Episode:  3 Reward:  5451 Reward for tasks with application type 1:  1051 Reward for tasks with application type 2:  2177 Reward for tasks with application type 3:   567 Reward for tasks with application type 4:  1656 Penalization:    22 Penalization for tasks with application type 1:     5 Penalization for tasks with application type 2:    16 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:     1###  r_var: 1.00 b_var: 1.00 
+Episode:  4 Reward:  5196 Reward for tasks with application type 1:  1072 Reward for tasks with application type 2:  2033 Reward for tasks with application type 3:   504 Reward for tasks with application type 4:  1587 Penalization:    56 Penalization for tasks with application type 1:    10 Penalization for tasks with application type 2:    31 Penalization for tasks with application type 3:     1 Penalization for tasks with application type 4:    14###  r_var: 1.00 b_var: 1.00 
+Episode:  5 Reward:  4756 Reward for tasks with application type 1:   969 Reward for tasks with application type 2:  1949 Reward for tasks with application type 3:   468 Reward for tasks with application type 4:  1370 Penalization:   204 Penalization for tasks with application type 1:    34 Penalization for tasks with application type 2:   102 Penalization for tasks with application type 3:     9 Penalization for tasks with application type 4:    59###  r_var: 1.00 b_var: 1.00 
+Episode:  6 Reward:  5009 Reward for tasks with application type 1:  1048 Reward for tasks with application type 2:  1933 Reward for tasks with application type 3:   525 Reward for tasks with application type 4:  1503 Penalization:   119 Penalization for tasks with application type 1:    16 Penalization for tasks with application type 2:    62 Penalization for tasks with application type 3:     9 Penalization for tasks with application type 4:    32###  r_var: 1.00 b_var: 1.00 
+Episode:  7 Reward:  4936 Reward for tasks with application type 1:  1019 Reward for tasks with application type 2:  1950 Reward for tasks with application type 3:   529 Reward for tasks with application type 4:  1438 Penalization:    97 Penalization for tasks with application type 1:    17 Penalization for tasks with application type 2:    46 Penalization for tasks with application type 3:     4 Penalization for tasks with application type 4:    30###  r_var: 1.00 b_var: 1.00 
+Episode:  8 Reward:  4869 Reward for tasks with application type 1:   969 Reward for tasks with application type 2:  1968 Reward for tasks with application type 3:   475 Reward for tasks with application type 4:  1457 Penalization:    86 Penalization for tasks with application type 1:     9 Penalization for tasks with application type 2:    59 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:    18###  r_var: 1.00 b_var: 1.00 
+Episode:  9 Reward:  5401 Reward for tasks with application type 1:  1086 Reward for tasks with application type 2:  2197 Reward for tasks with application type 3:   491 Reward for tasks with application type 4:  1627 Penalization:    30 Penalization for tasks with application type 1:     2 Penalization for tasks with application type 2:    17 Penalization for tasks with application type 3:     1 Penalization for tasks with application type 4:    10###  r_var: 1.00 b_var: 1.00 
+Episode: 10 Reward:  4574 Reward for tasks with application type 1:   961 Reward for tasks with application type 2:  1850 Reward for tasks with application type 3:   423 Reward for tasks with application type 4:  1340 Penalization:   191 Penalization for tasks with application type 1:    30 Penalization for tasks with application type 2:   119 Penalization for tasks with application type 3:     5 Penalization for tasks with application type 4:    37###  r_var: 1.00 b_var: 1.00 
+Episode: 11 Reward:  5035 Reward for tasks with application type 1:  1031 Reward for tasks with application type 2:  2026 Reward for tasks with application type 3:   517 Reward for tasks with application type 4:  1461 Penalization:    63 Penalization for tasks with application type 1:     6 Penalization for tasks with application type 2:    43 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:    14###  r_var: 1.00 b_var: 1.00 
+Episode: 12 Reward:  4819 Reward for tasks with application type 1:   949 Reward for tasks with application type 2:  1972 Reward for tasks with application type 3:   497 Reward for tasks with application type 4:  1401 Penalization:   118 Penalization for tasks with application type 1:    15 Penalization for tasks with application type 2:    69 Penalization for tasks with application type 3:     6 Penalization for tasks with application type 4:    28###  r_var: 1.00 b_var: 1.00 
+Episode: 13 Reward:  5151 Reward for tasks with application type 1:  1018 Reward for tasks with application type 2:  2138 Reward for tasks with application type 3:   507 Reward for tasks with application type 4:  1488 Penalization:    59 Penalization for tasks with application type 1:    10 Penalization for tasks with application type 2:    44 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:     5###  r_var: 1.00 b_var: 1.00 
+Episode: 14 Reward:  4829 Reward for tasks with application type 1:   907 Reward for tasks with application type 2:  1999 Reward for tasks with application type 3:   487 Reward for tasks with application type 4:  1436 Penalization:   147 Penalization for tasks with application type 1:    19 Penalization for tasks with application type 2:    84 Penalization for tasks with application type 3:     7 Penalization for tasks with application type 4:    37###  r_var: 1.00 b_var: 1.00 
+Episode: 15 Reward:  4822 Reward for tasks with application type 1:   950 Reward for tasks with application type 2:  1933 Reward for tasks with application type 3:   473 Reward for tasks with application type 4:  1466 Penalization:   133 Penalization for tasks with application type 1:    15 Penalization for tasks with application type 2:    65 Penalization for tasks with application type 3:     6 Penalization for tasks with application type 4:    47###  r_var: 1.00 b_var: 1.00 
+Episode: 16 Reward:  5128 Reward for tasks with application type 1:   984 Reward for tasks with application type 2:  2113 Reward for tasks with application type 3:   529 Reward for tasks with application type 4:  1502 Penalization:    71 Penalization for tasks with application type 1:     8 Penalization for tasks with application type 2:    45 Penalization for tasks with application type 3:     1 Penalization for tasks with application type 4:    17###  r_var: 1.00 b_var: 1.00 
+Episode: 17 Reward:  5261 Reward for tasks with application type 1:  1039 Reward for tasks with application type 2:  2178 Reward for tasks with application type 3:   524 Reward for tasks with application type 4:  1520 Penalization:    44 Penalization for tasks with application type 1:     3 Penalization for tasks with application type 2:    32 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:     9###  r_var: 1.00 b_var: 1.00 
+Episode: 18 Reward:  5217 Reward for tasks with application type 1:  1002 Reward for tasks with application type 2:  2062 Reward for tasks with application type 3:   507 Reward for tasks with application type 4:  1646 Penalization:    81 Penalization for tasks with application type 1:    14 Penalization for tasks with application type 2:    50 Penalization for tasks with application type 3:     2 Penalization for tasks with application type 4:    15###  r_var: 1.00 b_var: 1.00 
+Episode: 19 Reward:  5539 Reward for tasks with application type 1:  1141 Reward for tasks with application type 2:  2328 Reward for tasks with application type 3:   518 Reward for tasks with application type 4:  1552 Penalization:    25 Penalization for tasks with application type 1:     5 Penalization for tasks with application type 2:    18 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:     2###  r_var: 1.00 b_var: 1.00 
+Episode: 20 Reward:  5117 Reward for tasks with application type 1:  1026 Reward for tasks with application type 2:  2093 Reward for tasks with application type 3:   488 Reward for tasks with application type 4:  1510 Penalization:    87 Penalization for tasks with application type 1:     9 Penalization for tasks with application type 2:    56 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:    22###  r_var: 1.00 b_var: 1.00 
+Episode: 21 Reward:  5409 Reward for tasks with application type 1:  1076 Reward for tasks with application type 2:  2184 Reward for tasks with application type 3:   569 Reward for tasks with application type 4:  1580 Penalization:    55 Penalization for tasks with application type 1:     9 Penalization for tasks with application type 2:    38 Penalization for tasks with application type 3:     2 Penalization for tasks with application type 4:     6###  r_var: 1.00 b_var: 1.00 
+Episode: 22 Reward:  4705 Reward for tasks with application type 1:   898 Reward for tasks with application type 2:  1907 Reward for tasks with application type 3:   457 Reward for tasks with application type 4:  1443 Penalization:   174 Penalization for tasks with application type 1:    29 Penalization for tasks with application type 2:    83 Penalization for tasks with application type 3:     8 Penalization for tasks with application type 4:    54###  r_var: 1.00 b_var: 1.00 
+Episode: 23 Reward:  4893 Reward for tasks with application type 1:   962 Reward for tasks with application type 2:  1982 Reward for tasks with application type 3:   477 Reward for tasks with application type 4:  1472 Penalization:   104 Penalization for tasks with application type 1:    17 Penalization for tasks with application type 2:    66 Penalization for tasks with application type 3:     1 Penalization for tasks with application type 4:    20###  r_var: 1.00 b_var: 1.00 
+Episode: 24 Reward:  5305 Reward for tasks with application type 1:  1068 Reward for tasks with application type 2:  2223 Reward for tasks with application type 3:   523 Reward for tasks with application type 4:  1491 Penalization:    38 Penalization for tasks with application type 1:     3 Penalization for tasks with application type 2:    31 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:     4###  r_var: 1.00 b_var: 1.00 
+the mean of the rewards:5054.96
+
+the mean of the rewards for tasks with application type 1:1006.84
+
+the mean of the rewards for tasks with application type 2:2048.8
+
+the mean of the rewards for tasks with application type 3:501.4
+
+the mean of the rewards for tasks with application type 4:1497.92
+
+the mean of the penalizations:93.4
+
+the mean of the penalizations for tasks with application type 1:13.52
+
+the mean of the penalizations for tasks with application type 2:54.72
+
+the mean of the penalizations for tasks with application type 3:2.84
+
+the mean of the penalizations for tasks with application type 4:22.32
+
+the standard deviation of the rewards:263.23882388431997
+
+the range of the rewards:965
+
+the standard deviation of the penalizations:52.67712976235512
+
+the range of the penalizations:182
+

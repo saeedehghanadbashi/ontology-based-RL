@@ -672,6 +672,7 @@ class Env():
         s_ = generate_state(self.table, self.U, self.E, self.usage_history, self.x_min, self.y_min) 
         #print("current observation: ", s_)  
         for user_id in range(self.user_num):
+            #print("user id", user_id)
             prob_weights = a[base:base + self.edge_num]                                       
 
             for j in range (EDGE_NUM):
@@ -702,6 +703,10 @@ class Env():
             #****************************action_prioritization***************************  
              
             #print("prioritized action: ", action)
+                  
+            #****************************observation_augmentation***************************            
+            s_[0 + action]  = 0
+            #****************************observation_augmentation***************************       
                                                    
             self.O[user_id] = action 
 
@@ -803,6 +808,7 @@ def action_prioritization(s_, user_req_resource, action1, action2, action3, conc
         print("server", action2, "_capability: ", E[action2].capability)
         print("server", action3, "_capability: ", E[action3].capability)
         '''
+        
     return action 
             
 #****************************action_prioritization***************************  
