@@ -181,11 +181,12 @@ def transform_state(S, U, E, usage_history, concept):
 
 def observation_masking(S, U, E, concept):
     if concept == "user_card_number":
-        cnt = 0
+        #cnt = 0
         for user in U:
             if user.free_user == 1:
-                    S = np.delete(S, S.size - (USER_NUM - cnt) + user.user_id - cnt)
-                    cnt += 1
+                #S = np.delete(S, S.size - (USER_NUM - cnt) + user.user_id - cnt)
+                #cnt += 1
+                S[S.size - USER_NUM + user.user_id] = 0
                     
         '''This method could not be used due to the variable size of the state.        
         for user in U:

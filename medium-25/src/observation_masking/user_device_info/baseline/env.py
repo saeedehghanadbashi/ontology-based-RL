@@ -72,6 +72,7 @@ def generate_state(two_table, U, E, usage_history, x_min, y_min):
     #S = transform_state(S, U, E, usage_history, "user_card_number")
     S = transform_state(S, U, E, usage_history, "user_device_type")
     S = transform_state(S, U, E, usage_history, "user_device_OS")
+    S = transform_state(S, U, E, usage_history, "user_device_DB")
     #S = transform_state(S, U, E, usage_history, "usage_history")
     #S = transform_state(S, U, E, usage_history, "server_group")
     #S = transform_state(S, U, E, usage_history, "server_board")
@@ -109,6 +110,12 @@ def transform_state(S, U, E, usage_history, concept):
         S = np.pad(S, (0,  len(U)), 'constant')
         for user in U:
             S[count] = user.user_device_OS
+            count += 1
+            
+    if concept == "user_device_DB":
+        S = np.pad(S, (0,  len(U)), 'constant')
+        for user in U:
+            S[count] = user.user_device_DB
             count += 1
 
     if concept == "usage_history":
@@ -247,6 +254,7 @@ class UE():
         self.user_card_number = credit_card_number(generator, mastercardPrefixList, 16, 1)
         self.user_device_type = random. randint(1,3) # 1 for smartphones, 2 for wearable gadgets, and 3 for laptops                
         self.user_device_OS = random. randint(1,4) # 1 for Windows, 2 for Linux, 3 for Android, and 4 for iOS
+        self.user_device_DB = random. randint(1,5) # 1 for MySQL, 2 for MongoDB, 3 for Oracle, and 4 for PostgreSQL
         self.user_id = user_id  # number of the user
         self.loc = np.zeros((1, 2))
         self.num_step = 0  # the number of step

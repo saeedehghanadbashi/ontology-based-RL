@@ -1,0 +1,194 @@
+time(s):1500
+
+user_number:10
+
+edge_number:10
+
+limit:4
+
+task information:
+req_u2e_size:270000
+process_loading:1080000
+req_e2u_size:96
+
+Episode:  0 Reward:  5675 Reward for tasks with priority 1:  2330 Reward for tasks with priority 2:  2263 Reward for tasks with priority 3:  1082 Reward for tasks with latency 1:  3345 Reward for tasks with latency 2:  1754 Reward for tasks with latency 3:   576 Reward for tasks with application type 1:  1082 Reward for tasks with application type 2:  2263 Reward for tasks with application type 3:   576 Reward for tasks with application type 4:  1754 Penalization:    33 Penalization for tasks with priority 1:     2 Penalization for tasks with priority 2:    23 Penalization for tasks with priority 3:     8 Penalization for tasks with latency 1:    31 Penalization for tasks with latency 2:     2 Penalization for tasks with latency 3:     0 Penalization for tasks with application type 1:     8 Penalization for tasks with application type 2:    23 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:     2 Usage history: [590.,578.,587.,594.,562.,575.,565.,542.,548.,534.] Security requirement:  1790###  r_var: 1.00 b_var: 1.00 
+Episode:  1 Reward:  5029 Reward for tasks with priority 1:  2045 Reward for tasks with priority 2:  1996 Reward for tasks with priority 3:   988 Reward for tasks with latency 1:  2984 Reward for tasks with latency 2:  1537 Reward for tasks with latency 3:   508 Reward for tasks with application type 1:   988 Reward for tasks with application type 2:  1996 Reward for tasks with application type 3:   508 Reward for tasks with application type 4:  1537 Penalization:   194 Penalization for tasks with priority 1:    17 Penalization for tasks with priority 2:   109 Penalization for tasks with priority 3:    68 Penalization for tasks with latency 1:   177 Penalization for tasks with latency 2:    16 Penalization for tasks with latency 3:     1 Penalization for tasks with application type 1:    68 Penalization for tasks with application type 2:   109 Penalization for tasks with application type 3:     1 Penalization for tasks with application type 4:    16 Usage history: [564.,529.,541.,547.,520.,495.,469.,451.,461.,452.] Security requirement:  1784###  r_var: 1.00 b_var: 1.00 
+Episode:  2 Reward:  5785 Reward for tasks with priority 1:  2259 Reward for tasks with priority 2:  2313 Reward for tasks with priority 3:  1213 Reward for tasks with latency 1:  3526 Reward for tasks with latency 2:  1681 Reward for tasks with latency 3:   578 Reward for tasks with application type 1:  1213 Reward for tasks with application type 2:  2313 Reward for tasks with application type 3:   578 Reward for tasks with application type 4:  1681 Penalization:    15 Penalization for tasks with priority 1:     0 Penalization for tasks with priority 2:    11 Penalization for tasks with priority 3:     4 Penalization for tasks with latency 1:    15 Penalization for tasks with latency 2:     0 Penalization for tasks with latency 3:     0 Penalization for tasks with application type 1:     4 Penalization for tasks with application type 2:    11 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:     0 Usage history: [589.,570.,600.,589.,578.,595.,563.,574.,571.,556.] Security requirement:  1904###  r_var: 1.00 b_var: 1.00 
+Episode:  3 Reward:  5552 Reward for tasks with priority 1:  2270 Reward for tasks with priority 2:  2143 Reward for tasks with priority 3:  1139 Reward for tasks with latency 1:  3282 Reward for tasks with latency 2:  1663 Reward for tasks with latency 3:   607 Reward for tasks with application type 1:  1139 Reward for tasks with application type 2:  2143 Reward for tasks with application type 3:   607 Reward for tasks with application type 4:  1663 Penalization:    42 Penalization for tasks with priority 1:     2 Penalization for tasks with priority 2:    26 Penalization for tasks with priority 3:    14 Penalization for tasks with latency 1:    40 Penalization for tasks with latency 2:     1 Penalization for tasks with latency 3:     1 Penalization for tasks with application type 1:    14 Penalization for tasks with application type 2:    26 Penalization for tasks with application type 3:     1 Penalization for tasks with application type 4:     1 Usage history: [590.,582.,590.,575.,551.,535.,550.,540.,527.,512.] Security requirement:  1832###  r_var: 1.00 b_var: 1.00 
+Episode:  4 Reward:  5468 Reward for tasks with priority 1:  2197 Reward for tasks with priority 2:  2227 Reward for tasks with priority 3:  1044 Reward for tasks with latency 1:  3271 Reward for tasks with latency 2:  1592 Reward for tasks with latency 3:   605 Reward for tasks with application type 1:  1044 Reward for tasks with application type 2:  2227 Reward for tasks with application type 3:   605 Reward for tasks with application type 4:  1592 Penalization:    88 Penalization for tasks with priority 1:    15 Penalization for tasks with priority 2:    58 Penalization for tasks with priority 3:    15 Penalization for tasks with latency 1:    73 Penalization for tasks with latency 2:    15 Penalization for tasks with latency 3:     0 Penalization for tasks with application type 1:    15 Penalization for tasks with application type 2:    58 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:    15 Usage history: [572.,587.,564.,554.,547.,543.,554.,532.,503.,512.] Security requirement:  1777###  r_var: 1.00 b_var: 1.00 
+Episode:  5 Reward:  5353 Reward for tasks with priority 1:  2077 Reward for tasks with priority 2:  2201 Reward for tasks with priority 3:  1075 Reward for tasks with latency 1:  3276 Reward for tasks with latency 2:  1564 Reward for tasks with latency 3:   513 Reward for tasks with application type 1:  1075 Reward for tasks with application type 2:  2201 Reward for tasks with application type 3:   513 Reward for tasks with application type 4:  1564 Penalization:   113 Penalization for tasks with priority 1:    12 Penalization for tasks with priority 2:    69 Penalization for tasks with priority 3:    32 Penalization for tasks with latency 1:   101 Penalization for tasks with latency 2:    12 Penalization for tasks with latency 3:     0 Penalization for tasks with application type 1:    32 Penalization for tasks with application type 2:    69 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:    12 Usage history: [584.,573.,559.,529.,546.,514.,548.,524.,478.,498.] Security requirement:  2141###  r_var: 1.00 b_var: 1.00 
+Episode:  6 Reward:  5754 Reward for tasks with priority 1:  2245 Reward for tasks with priority 2:  2332 Reward for tasks with priority 3:  1177 Reward for tasks with latency 1:  3509 Reward for tasks with latency 2:  1704 Reward for tasks with latency 3:   541 Reward for tasks with application type 1:  1177 Reward for tasks with application type 2:  2332 Reward for tasks with application type 3:   541 Reward for tasks with application type 4:  1704 Penalization:     9 Penalization for tasks with priority 1:     0 Penalization for tasks with priority 2:     6 Penalization for tasks with priority 3:     3 Penalization for tasks with latency 1:     9 Penalization for tasks with latency 2:     0 Penalization for tasks with latency 3:     0 Penalization for tasks with application type 1:     3 Penalization for tasks with application type 2:     6 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:     0 Usage history: [588.,601.,569.,588.,590.,579.,578.,562.,539.,560.] Security requirement:  2126###  r_var: 1.00 b_var: 1.00 
+Episode:  7 Reward:  5693 Reward for tasks with priority 1:  2263 Reward for tasks with priority 2:  2311 Reward for tasks with priority 3:  1119 Reward for tasks with latency 1:  3430 Reward for tasks with latency 2:  1674 Reward for tasks with latency 3:   589 Reward for tasks with application type 1:  1119 Reward for tasks with application type 2:  2311 Reward for tasks with application type 3:   589 Reward for tasks with application type 4:  1674 Penalization:    16 Penalization for tasks with priority 1:     0 Penalization for tasks with priority 2:    15 Penalization for tasks with priority 3:     1 Penalization for tasks with latency 1:    16 Penalization for tasks with latency 2:     0 Penalization for tasks with latency 3:     0 Penalization for tasks with application type 1:     1 Penalization for tasks with application type 2:    15 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:     0 Usage history: [586.,585.,593.,569.,581.,563.,562.,555.,550.,549.] Security requirement:  2162###  r_var: 1.00 b_var: 1.00 
+Episode:  8 Reward:  5227 Reward for tasks with priority 1:  2064 Reward for tasks with priority 2:  2175 Reward for tasks with priority 3:   988 Reward for tasks with latency 1:  3163 Reward for tasks with latency 2:  1553 Reward for tasks with latency 3:   511 Reward for tasks with application type 1:   988 Reward for tasks with application type 2:  2175 Reward for tasks with application type 3:   511 Reward for tasks with application type 4:  1553 Penalization:   141 Penalization for tasks with priority 1:    23 Penalization for tasks with priority 2:    82 Penalization for tasks with priority 3:    36 Penalization for tasks with latency 1:   118 Penalization for tasks with latency 2:    23 Penalization for tasks with latency 3:     0 Penalization for tasks with application type 1:    36 Penalization for tasks with application type 2:    82 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:    23 Usage history: [562.,568.,562.,546.,529.,523.,489.,499.,466.,483.] Security requirement:  1946###  r_var: 1.00 b_var: 1.00 
+Episode:  9 Reward:  5397 Reward for tasks with priority 1:  2163 Reward for tasks with priority 2:  2136 Reward for tasks with priority 3:  1098 Reward for tasks with latency 1:  3234 Reward for tasks with latency 2:  1634 Reward for tasks with latency 3:   529 Reward for tasks with application type 1:  1098 Reward for tasks with application type 2:  2136 Reward for tasks with application type 3:   529 Reward for tasks with application type 4:  1634 Penalization:    77 Penalization for tasks with priority 1:     5 Penalization for tasks with priority 2:    59 Penalization for tasks with priority 3:    13 Penalization for tasks with latency 1:    72 Penalization for tasks with latency 2:     5 Penalization for tasks with latency 3:     0 Penalization for tasks with application type 1:    13 Penalization for tasks with application type 2:    59 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:     5 Usage history: [565.,562.,574.,536.,538.,558.,547.,525.,488.,504.] Security requirement:  2201###  r_var: 1.00 b_var: 1.00 
+Episode: 10 Reward:  5528 Reward for tasks with priority 1:  2255 Reward for tasks with priority 2:  2179 Reward for tasks with priority 3:  1094 Reward for tasks with latency 1:  3273 Reward for tasks with latency 2:  1698 Reward for tasks with latency 3:   557 Reward for tasks with application type 1:  1094 Reward for tasks with application type 2:  2179 Reward for tasks with application type 3:   557 Reward for tasks with application type 4:  1698 Penalization:    70 Penalization for tasks with priority 1:     7 Penalization for tasks with priority 2:    43 Penalization for tasks with priority 3:    20 Penalization for tasks with latency 1:    63 Penalization for tasks with latency 2:     7 Penalization for tasks with latency 3:     0 Penalization for tasks with application type 1:    20 Penalization for tasks with application type 2:    43 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:     7 Usage history: [588.,575.,566.,586.,542.,564.,538.,547.,509.,513.] Security requirement:  1795###  r_var: 1.00 b_var: 1.00 
+Episode: 11 Reward:  5795 Reward for tasks with priority 1:  2324 Reward for tasks with priority 2:  2280 Reward for tasks with priority 3:  1191 Reward for tasks with latency 1:  3471 Reward for tasks with latency 2:  1714 Reward for tasks with latency 3:   610 Reward for tasks with application type 1:  1191 Reward for tasks with application type 2:  2280 Reward for tasks with application type 3:   610 Reward for tasks with application type 4:  1714 Penalization:    11 Penalization for tasks with priority 1:     1 Penalization for tasks with priority 2:     8 Penalization for tasks with priority 3:     2 Penalization for tasks with latency 1:    10 Penalization for tasks with latency 2:     1 Penalization for tasks with latency 3:     0 Penalization for tasks with application type 1:     2 Penalization for tasks with application type 2:     8 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:     1 Usage history: [599.,596.,580.,586.,572.,578.,572.,593.,553.,566.] Security requirement:  2126###  r_var: 1.00 b_var: 1.00 
+Episode: 12 Reward:  5454 Reward for tasks with priority 1:  2152 Reward for tasks with priority 2:  2211 Reward for tasks with priority 3:  1091 Reward for tasks with latency 1:  3302 Reward for tasks with latency 2:  1648 Reward for tasks with latency 3:   504 Reward for tasks with application type 1:  1091 Reward for tasks with application type 2:  2211 Reward for tasks with application type 3:   504 Reward for tasks with application type 4:  1648 Penalization:    73 Penalization for tasks with priority 1:     6 Penalization for tasks with priority 2:    47 Penalization for tasks with priority 3:    20 Penalization for tasks with latency 1:    67 Penalization for tasks with latency 2:     6 Penalization for tasks with latency 3:     0 Penalization for tasks with application type 1:    20 Penalization for tasks with application type 2:    47 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:     6 Usage history: [577.,564.,574.,562.,566.,558.,500.,515.,518.,520.] Security requirement:  1896###  r_var: 1.00 b_var: 1.00 
+Episode: 13 Reward:  5222 Reward for tasks with priority 1:  2058 Reward for tasks with priority 2:  2094 Reward for tasks with priority 3:  1070 Reward for tasks with latency 1:  3164 Reward for tasks with latency 2:  1536 Reward for tasks with latency 3:   522 Reward for tasks with application type 1:  1070 Reward for tasks with application type 2:  2094 Reward for tasks with application type 3:   522 Reward for tasks with application type 4:  1536 Penalization:   122 Penalization for tasks with priority 1:    10 Penalization for tasks with priority 2:    69 Penalization for tasks with priority 3:    43 Penalization for tasks with latency 1:   112 Penalization for tasks with latency 2:     9 Penalization for tasks with latency 3:     1 Penalization for tasks with application type 1:    43 Penalization for tasks with application type 2:    69 Penalization for tasks with application type 3:     1 Penalization for tasks with application type 4:     9 Usage history: [565.,561.,550.,544.,514.,540.,491.,499.,496.,462.] Security requirement:  1859###  r_var: 1.00 b_var: 1.00 
+Episode: 14 Reward:  5480 Reward for tasks with priority 1:  2227 Reward for tasks with priority 2:  2167 Reward for tasks with priority 3:  1086 Reward for tasks with latency 1:  3253 Reward for tasks with latency 2:  1683 Reward for tasks with latency 3:   544 Reward for tasks with application type 1:  1086 Reward for tasks with application type 2:  2167 Reward for tasks with application type 3:   544 Reward for tasks with application type 4:  1683 Penalization:    87 Penalization for tasks with priority 1:    13 Penalization for tasks with priority 2:    46 Penalization for tasks with priority 3:    28 Penalization for tasks with latency 1:    74 Penalization for tasks with latency 2:    12 Penalization for tasks with latency 3:     1 Penalization for tasks with application type 1:    28 Penalization for tasks with application type 2:    46 Penalization for tasks with application type 3:     1 Penalization for tasks with application type 4:    12 Usage history: [587.,576.,551.,559.,555.,556.,535.,533.,515.,513.] Security requirement:  1276###  r_var: 1.00 b_var: 1.00 
+Episode: 15 Reward:  5309 Reward for tasks with priority 1:  2086 Reward for tasks with priority 2:  2161 Reward for tasks with priority 3:  1062 Reward for tasks with latency 1:  3223 Reward for tasks with latency 2:  1581 Reward for tasks with latency 3:   505 Reward for tasks with application type 1:  1062 Reward for tasks with application type 2:  2161 Reward for tasks with application type 3:   505 Reward for tasks with application type 4:  1581 Penalization:   105 Penalization for tasks with priority 1:    11 Penalization for tasks with priority 2:    61 Penalization for tasks with priority 3:    33 Penalization for tasks with latency 1:    94 Penalization for tasks with latency 2:    11 Penalization for tasks with latency 3:     0 Penalization for tasks with application type 1:    33 Penalization for tasks with application type 2:    61 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:    11 Usage history: [579.,555.,574.,558.,551.,535.,506.,490.,503.,458.] Security requirement:  1766###  r_var: 1.00 b_var: 1.00 
+Episode: 16 Reward:  5489 Reward for tasks with priority 1:  2226 Reward for tasks with priority 2:  2158 Reward for tasks with priority 3:  1105 Reward for tasks with latency 1:  3263 Reward for tasks with latency 2:  1640 Reward for tasks with latency 3:   586 Reward for tasks with application type 1:  1105 Reward for tasks with application type 2:  2158 Reward for tasks with application type 3:   586 Reward for tasks with application type 4:  1640 Penalization:    70 Penalization for tasks with priority 1:     6 Penalization for tasks with priority 2:    46 Penalization for tasks with priority 3:    18 Penalization for tasks with latency 1:    64 Penalization for tasks with latency 2:     6 Penalization for tasks with latency 3:     0 Penalization for tasks with application type 1:    18 Penalization for tasks with application type 2:    46 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:     6 Usage history: [594.,595.,563.,569.,552.,539.,533.,531.,517.,496.] Security requirement:  1655###  r_var: 1.00 b_var: 1.00 
+Episode: 17 Reward:  5737 Reward for tasks with priority 1:  2281 Reward for tasks with priority 2:  2312 Reward for tasks with priority 3:  1144 Reward for tasks with latency 1:  3456 Reward for tasks with latency 2:  1753 Reward for tasks with latency 3:   528 Reward for tasks with application type 1:  1144 Reward for tasks with application type 2:  2312 Reward for tasks with application type 3:   528 Reward for tasks with application type 4:  1753 Penalization:    13 Penalization for tasks with priority 1:     0 Penalization for tasks with priority 2:     8 Penalization for tasks with priority 3:     5 Penalization for tasks with latency 1:    13 Penalization for tasks with latency 2:     0 Penalization for tasks with latency 3:     0 Penalization for tasks with application type 1:     5 Penalization for tasks with application type 2:     8 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:     0 Usage history: [579.,577.,593.,588.,588.,587.,548.,566.,551.,560.] Security requirement:  1559###  r_var: 1.00 b_var: 1.00 
+Episode: 18 Reward:  5294 Reward for tasks with priority 1:  2086 Reward for tasks with priority 2:  2163 Reward for tasks with priority 3:  1045 Reward for tasks with latency 1:  3208 Reward for tasks with latency 2:  1585 Reward for tasks with latency 3:   501 Reward for tasks with application type 1:  1045 Reward for tasks with application type 2:  2163 Reward for tasks with application type 3:   501 Reward for tasks with application type 4:  1585 Penalization:   104 Penalization for tasks with priority 1:    10 Penalization for tasks with priority 2:    62 Penalization for tasks with priority 3:    32 Penalization for tasks with latency 1:    94 Penalization for tasks with latency 2:     9 Penalization for tasks with latency 3:     1 Penalization for tasks with application type 1:    32 Penalization for tasks with application type 2:    62 Penalization for tasks with application type 3:     1 Penalization for tasks with application type 4:     9 Usage history: [575.,551.,583.,560.,536.,530.,511.,484.,472.,492.] Security requirement:  1917###  r_var: 1.00 b_var: 1.00 
+Episode: 19 Reward:  5717 Reward for tasks with priority 1:  2269 Reward for tasks with priority 2:  2267 Reward for tasks with priority 3:  1181 Reward for tasks with latency 1:  3448 Reward for tasks with latency 2:  1686 Reward for tasks with latency 3:   583 Reward for tasks with application type 1:  1181 Reward for tasks with application type 2:  2267 Reward for tasks with application type 3:   583 Reward for tasks with application type 4:  1686 Penalization:    16 Penalization for tasks with priority 1:     0 Penalization for tasks with priority 2:    12 Penalization for tasks with priority 3:     4 Penalization for tasks with latency 1:    16 Penalization for tasks with latency 2:     0 Penalization for tasks with latency 3:     0 Penalization for tasks with application type 1:     4 Penalization for tasks with application type 2:    12 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:     0 Usage history: [588.,578.,586.,590.,569.,579.,541.,584.,554.,548.] Security requirement:  1634###  r_var: 1.00 b_var: 1.00 
+Episode: 20 Reward:  5268 Reward for tasks with priority 1:  2100 Reward for tasks with priority 2:  2095 Reward for tasks with priority 3:  1073 Reward for tasks with latency 1:  3168 Reward for tasks with latency 2:  1604 Reward for tasks with latency 3:   496 Reward for tasks with application type 1:  1073 Reward for tasks with application type 2:  2095 Reward for tasks with application type 3:   496 Reward for tasks with application type 4:  1604 Penalization:   106 Penalization for tasks with priority 1:    16 Penalization for tasks with priority 2:    55 Penalization for tasks with priority 3:    35 Penalization for tasks with latency 1:    90 Penalization for tasks with latency 2:    15 Penalization for tasks with latency 3:     1 Penalization for tasks with application type 1:    35 Penalization for tasks with application type 2:    55 Penalization for tasks with application type 3:     1 Penalization for tasks with application type 4:    15 Usage history: [575.,553.,551.,549.,535.,530.,504.,512.,485.,474.] Security requirement:  1114###  r_var: 1.00 b_var: 1.00 
+Episode: 21 Reward:  5439 Reward for tasks with priority 1:  2222 Reward for tasks with priority 2:  2133 Reward for tasks with priority 3:  1084 Reward for tasks with latency 1:  3217 Reward for tasks with latency 2:  1655 Reward for tasks with latency 3:   567 Reward for tasks with application type 1:  1084 Reward for tasks with application type 2:  2133 Reward for tasks with application type 3:   567 Reward for tasks with application type 4:  1655 Penalization:    89 Penalization for tasks with priority 1:    10 Penalization for tasks with priority 2:    47 Penalization for tasks with priority 3:    32 Penalization for tasks with latency 1:    79 Penalization for tasks with latency 2:    10 Penalization for tasks with latency 3:     0 Penalization for tasks with application type 1:    32 Penalization for tasks with application type 2:    47 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:    10 Usage history: [581.,584.,570.,550.,537.,530.,532.,530.,514.,511.] Security requirement:  2270###  r_var: 1.00 b_var: 1.00 
+Episode: 22 Reward:  5390 Reward for tasks with priority 1:  2063 Reward for tasks with priority 2:  2222 Reward for tasks with priority 3:  1105 Reward for tasks with latency 1:  3327 Reward for tasks with latency 2:  1545 Reward for tasks with latency 3:   518 Reward for tasks with application type 1:  1105 Reward for tasks with application type 2:  2222 Reward for tasks with application type 3:   518 Reward for tasks with application type 4:  1545 Penalization:    76 Penalization for tasks with priority 1:     3 Penalization for tasks with priority 2:    47 Penalization for tasks with priority 3:    26 Penalization for tasks with latency 1:    73 Penalization for tasks with latency 2:     3 Penalization for tasks with latency 3:     0 Penalization for tasks with application type 1:    26 Penalization for tasks with application type 2:    47 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:     3 Usage history: [602.,553.,577.,571.,541.,543.,526.,503.,485.,489.] Security requirement:  2171###  r_var: 1.00 b_var: 1.00 
+Episode: 23 Reward:  5126 Reward for tasks with priority 1:  2059 Reward for tasks with priority 2:  2023 Reward for tasks with priority 3:  1044 Reward for tasks with latency 1:  3067 Reward for tasks with latency 2:  1601 Reward for tasks with latency 3:   458 Reward for tasks with application type 1:  1044 Reward for tasks with application type 2:  2023 Reward for tasks with application type 3:   458 Reward for tasks with application type 4:  1601 Penalization:   148 Penalization for tasks with priority 1:    22 Penalization for tasks with priority 2:    90 Penalization for tasks with priority 3:    36 Penalization for tasks with latency 1:   126 Penalization for tasks with latency 2:    22 Penalization for tasks with latency 3:     0 Penalization for tasks with application type 1:    36 Penalization for tasks with application type 2:    90 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:    22 Usage history: [569.,565.,550.,532.,527.,527.,477.,478.,438.,463.] Security requirement:  1598###  r_var: 1.00 b_var: 1.00 
+Episode: 24 Reward:  5703 Reward for tasks with priority 1:  2293 Reward for tasks with priority 2:  2308 Reward for tasks with priority 3:  1102 Reward for tasks with latency 1:  3410 Reward for tasks with latency 2:  1728 Reward for tasks with latency 3:   565 Reward for tasks with application type 1:  1102 Reward for tasks with application type 2:  2308 Reward for tasks with application type 3:   565 Reward for tasks with application type 4:  1728 Penalization:    25 Penalization for tasks with priority 1:     0 Penalization for tasks with priority 2:    13 Penalization for tasks with priority 3:    12 Penalization for tasks with latency 1:    25 Penalization for tasks with latency 2:     0 Penalization for tasks with latency 3:     0 Penalization for tasks with application type 1:    12 Penalization for tasks with application type 2:    13 Penalization for tasks with application type 3:     0 Penalization for tasks with application type 4:     0 Usage history: [597.,580.,579.,586.,570.,575.,549.,566.,548.,553.] Security requirement:  1826###  r_var: 1.00 b_var: 1.00 
+the mean of the rewards:5475.36
+
+the mean of the rewards for tasks with priority 1:2184.56
+
+the mean of the rewards for tasks with priority 2:2194.8
+
+the mean of the rewards for tasks with priority 3:1096.0
+
+the mean of the rewards for tasks with latency 1:3290.8
+
+the mean of the rewards for tasks with latency 2:1640.52
+
+the mean of the rewards for tasks with latency 3:544.04
+
+the mean of the rewards for tasks with application type 1:1096.0
+
+the mean of the rewards for tasks with application type 2:2194.8
+
+the mean of the rewards for tasks with application type 3:544.04
+
+the mean of the rewards for tasks with application type 4:1640.52
+
+the mean of the security requirement:1845.0
+
+the mean of the penalizations:73.72
+
+the mean of the penalizations for tasks with priority 1:7.64
+
+the mean of the penalizations for tasks with priority 2:44.48
+
+the mean of the penalizations for tasks with priority 3:21.6
+
+the mean of the penalizations for tasks with latency 1:66.08
+
+the mean of the penalizations for tasks with latency 2:7.4
+
+the mean of the penalizations for tasks with latency 3:0.24
+
+the mean of the penalizations for tasks with application type 1:21.6
+
+the mean of the penalizations for tasks with application type 2:44.48
+
+the mean of the penalizations for tasks with application type 3:0.24
+
+the mean of the penalizations for tasks with application type 4:7.4
+
+the standard deviation of the rewards:212.73342567636143
+
+the range of the rewards:766
+
+the standard deviation of the penalizations:48.55472788514008
+
+the range of the penalizations:185
+
+the mean of the usage history in the epoch: 0 is: 547.536
+
+the standard deviation of the usage history in the epoch: 0 is: 35.06680344713501
+
+the mean of the usage history in the epoch: 1 is: 570.3
+
+the standard deviation of the usage history in the epoch: 1 is: 15.556670594957007
+
+the mean of the usage history in the epoch: 2 is: 541.45
+
+the standard deviation of the usage history in the epoch: 2 is: 43.4010080528091
+
+the mean of the usage history in the epoch: 3 is: 540.6333333333333
+
+the standard deviation of the usage history in the epoch: 3 is: 41.33076604930305
+
+the mean of the usage history in the epoch: 4 is: 541.45
+
+the standard deviation of the usage history in the epoch: 4 is: 37.941369242556334
+
+the mean of the usage history in the epoch: 5 is: 538.52
+
+the standard deviation of the usage history in the epoch: 5 is: 37.07788559235815
+
+the mean of the usage history in the epoch: 6 is: 544.05
+
+the standard deviation of the usage history in the epoch: 6 is: 36.69397089441261
+
+the mean of the usage history in the epoch: 7 is: 541.9571428571429
+
+the standard deviation of the usage history in the epoch: 7 is: 37.05572472228654
+
+the mean of the usage history in the epoch: 8 is: 545.925
+
+the standard deviation of the usage history in the epoch: 8 is: 36.63255894692588
+
+the mean of the usage history in the epoch: 9 is: 546.2555555555556
+
+the standard deviation of the usage history in the epoch: 9 is: 36.00819694060757
+
+the mean of the usage history in the epoch: 10 is: 544.72
+
+the standard deviation of the usage history in the epoch: 10 is: 36.48399100975659
+
+the mean of the usage history in the epoch: 11 is: 545.0181818181818
+
+the standard deviation of the usage history in the epoch: 11 is: 35.478798231717796
+
+the mean of the usage history in the epoch: 12 is: 543.1166666666667
+
+the standard deviation of the usage history in the epoch: 12 is: 35.82670868996419
+
+the mean of the usage history in the epoch: 13 is: 543.2923076923076
+
+the standard deviation of the usage history in the epoch: 13 is: 35.243863874842134
+
+the mean of the usage history in the epoch: 14 is: 545.8785714285714
+
+the standard deviation of the usage history in the epoch: 14 is: 35.40852759619654
+
+the mean of the usage history in the epoch: 15 is: 546.34
+
+the standard deviation of the usage history in the epoch: 15 is: 34.92655723085228
+
+the mean of the usage history in the epoch: 16 is: 545.925
+
+the standard deviation of the usage history in the epoch: 16 is: 34.48506017103638
+
+the mean of the usage history in the epoch: 17 is: 544.5588235294117
+
+the standard deviation of the usage history in the epoch: 17 is: 34.94229796179998
+
+the mean of the usage history in the epoch: 18 is: 545.9333333333333
+
+the standard deviation of the usage history in the epoch: 18 is: 34.61303543785523
+
+the mean of the usage history in the epoch: 19 is: 547.4842105263158
+
+the standard deviation of the usage history in the epoch: 19 is: 34.554720344128704
+
+the mean of the usage history in the epoch: 20 is: 546.875
+
+the standard deviation of the usage history in the epoch: 20 is: 34.5110036799859
+
+the mean of the usage history in the epoch: 21 is: 546.8714285714286
+
+the standard deviation of the usage history in the epoch: 21 is: 34.10177544403479
+
+the mean of the usage history in the epoch: 22 is: 547.25
+
+the standard deviation of the usage history in the epoch: 22 is: 33.82812506560991
+
+the mean of the usage history in the epoch: 23 is: 548.6086956521739
+
+the standard deviation of the usage history in the epoch: 23 is: 33.81193400128677
+
+the mean of the usage history in the epoch: 24 is: 546.7041666666667
+
+the standard deviation of the usage history in the epoch: 24 is: 35.315482666561735
+
+the mean of the standard deviation of the usage history: 35.211873435559205
+
