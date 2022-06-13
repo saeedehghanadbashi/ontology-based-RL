@@ -4,6 +4,8 @@ Ubiquitous and pervasive systems interact with each other and perform actions fa
 
 To address this problem, we propose an Ontology-based unCertainty handling model (OnCertain), which enables the RL-based system to augment its observation and reason about the unanticipated situations using prior ontological knowledge. Our model is evaluated in a traffic signal control system and an edge computing environment. The results show that the OnCertain model can improve the RL-based systems' observation and, consequently, their performance in such environments.
 
+This repository provides the implementation of the Ontology-based unCertainty handling model (OnCertain). 
+
 References
 
 Baseline Code
