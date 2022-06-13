@@ -6,3 +6,15 @@ To address this problem, we propose an Ontology-based unCertainty handling model
 
 This repository provides the implementation of the Ontology-based unCertainty handling model (OnCertain). If you use this code please cite the paper using the following bibtex:
 
+Handling Uncertainty in Self-adaptive Systems: An Ontology-based Reinforcement Learning Model, submitted to the Pervasive and Mobile Computing Journal (PMC), 2022.
+
+References
+
+Baseline Code
+
+https://github.com/davidtw0320/Resources-Allocation-in-The-Edge-Computing-Environment-Using-Reinforcement-Learning
+
+Mobility Data
+
+Mongnam Han, Youngseok Lee, Sue B. Moon, Keon Jang, Dooyoung Lee, CRAWDAD dataset kaist/wibro (v. 2008‑06‑04), downloaded from https://crawdad.org/kaist/wibro/20080604, https://doi.org/10.15783/C72S3B, Jun 2008.
+
